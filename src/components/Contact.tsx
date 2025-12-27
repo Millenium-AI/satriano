@@ -47,20 +47,20 @@ export default function Contact() {
     <section
       id="contact"
       ref={ref}
-      className="py-20 bg-gradient-to-b from-white to-slate-50"
+      className="py-20 bg-transparent"
     >
       <div className="container mx-auto px-4">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
             Get Your
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600">
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#800020] to-[#A0522D]">
               Free Estimate
             </span>
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto mt-6">
             Contact us today for a no-cost, no-obligation consultation
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto mt-6"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-[#800020] to-[#FFD700] mx-auto mt-6"></div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
@@ -78,31 +78,31 @@ export default function Contact() {
 
               <div className="space-y-6">
                 <div className="flex items-start gap-4 p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#800020] to-[#FFD700] flex items-center justify-center flex-shrink-0">
                     <Phone className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-slate-900 mb-1">Phone</h4>
-                    <a href="tel:727-954-0041" className="text-cyan-600 hover:text-cyan-700 text-lg font-semibold">
+                    <a href="tel:727-954-0041" className="text-[#800020] hover:text-cyan-700 text-lg font-semibold">
                       727-954-0041
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4 p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#800020] to-[#FFD700] flex items-center justify-center flex-shrink-0">
                     <Mail className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <h4 className="font-semibold text-slate-900 mb-1">Email</h4>
-                    <a href="mailto:sal@satrianomarine.com" className="text-cyan-600 hover:text-cyan-700">
+                    <a href="mailto:sal@satrianomarine.com" className="text-[#800020] hover:text-cyan-700">
                       sal@satrianomarine.com
                     </a>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4 p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#800020] to-[#FFD700] flex items-center justify-center flex-shrink-0">
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -128,7 +128,7 @@ export default function Contact() {
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 transition-all outline-none"
+                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-[#800020 focus:ring-2 focus:ring-[#FFD700]/20 transition-all outline-none"
                     placeholder="Your name"
                   />
                 </div>
@@ -143,7 +143,7 @@ export default function Contact() {
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 transition-all outline-none"
+                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-[#800020] focus:ring-2 focus:ring-[#FFD700]/20 transition-all outline-none"
                     placeholder="your.email@example.com"
                   />
                 </div>
@@ -158,7 +158,7 @@ export default function Contact() {
                     required
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 transition-all outline-none"
+                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-[#800020] focus:ring-2 focus:ring-[#FFD700]/20 transition-all outline-none"
                     placeholder="(123) 456-7890"
                   />
                 </div>
@@ -173,7 +173,7 @@ export default function Contact() {
                     rows={4}
                     value={formData.message}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 transition-all outline-none resize-none"
+                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-[#800020] focus:ring-2 focus:ring-[#FFD700]/20 transition-all outline-none resize-none"
                     placeholder="Tell us about your project..."
                   ></textarea>
                 </div>
@@ -186,7 +186,7 @@ export default function Contact() {
                     name="source"
                     value={formData.source}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-200 transition-all outline-none"
+                    className="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-[#800020] focus:ring-2 focus:ring-[#FFD700]/20 transition-all outline-none"
                   >
                     <option value="">Please select one</option>
                     <option value="Yard Sign">Yard Sign</option>
@@ -201,7 +201,7 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  className="w-full px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-lg hover:shadow-xl hover:scale-105 transition-all duration-300 font-semibold text-lg flex items-center justify-center gap-2 group"
+                  className="w-full px-8 py-4 bg-gradient-to-r from-[#800020] to-[#FFD700] text-white rounded-lg hover:shadow-xl hover:scale-105 transition-all duration-300 font-semibold text-lg flex items-center justify-center gap-2 group"
                 >
                   <span>Send Message</span>
                   <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
