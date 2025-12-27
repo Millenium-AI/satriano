@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { CheckCircle2 } from 'lucide-react';
+import side from '../assets/Side.jpg'; // or '../assets/Side.jpg'
 
 export default function About() {
   const [isVisible, setIsVisible] = useState(false);
@@ -60,11 +61,8 @@ export default function About() {
               Experienced in New Dock Design, Construction & Boat Lifts
             </h3>
             <p className="text-lg text-slate-700 mb-6 leading-relaxed">
-              Satriano Marine Construction is a family-owned and operated business dedicated to providing
-              high-quality marine construction service. We take pride in our work and are personal in our service.
-            </p>
+            Satriano Marine Construction, a family-owned and operated business dedicated to providing high-quality marine construction service. We take pride in our work and are personal in our service.            </p>
             <p className="text-lg text-slate-700 mb-8 leading-relaxed">
-              With over 40 years in the construction business, you can count on us to complete any job large or small.
               We serve all of Pinellas County with expert craftsmanship and unmatched customer service.
             </p>
 
@@ -89,7 +87,7 @@ export default function About() {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-r from-[#800020] to-[#FFD700] rounded-3xl opacity-20 blur-2xl"></div>
               <img
-                src="https://images.pexels.com/photos/1350592/pexels-photo-1350592.jpeg?auto=compress&cs=tinysrgb&w=800"
+                src={side}
                 alt="Dock and Boat Lift"
                 className="relative rounded-2xl shadow-2xl w-full h-[500px] object-cover"
               />
