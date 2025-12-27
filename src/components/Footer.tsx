@@ -9,12 +9,12 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white">
+    <footer className="bg-gradient-to-br from-[#800020] via-[#5a0016] to-[#800020] text-white">
       <div className="container mx-auto px-4 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <Anchor className="w-8 h-8 text-cyan-400" />
+              <Anchor className="w-8 h-8 text-white" />
               <div>
                 <h3 className="text-xl font-bold">Satriano Marine</h3>
                 <p className="text-sm text-slate-300">Construction</p>
@@ -25,18 +25,18 @@ export default function Footer() {
             </p>
             <div className="space-y-3">
               <div className="flex items-center gap-2 text-sm">
-                <MapPin className="w-4 h-4 text-cyan-400 flex-shrink-0" />
+                <MapPin className="w-4 h-4 text-white flex-shrink-0" />
                 <span className="text-slate-300">North Redington Beach, FL</span>
               </div>
               <div className="flex items-center gap-2 text-sm">
-                <Phone className="w-4 h-4 text-cyan-400 flex-shrink-0" />
-                <a href="tel:727-954-0041" className="text-slate-300 hover:text-cyan-400 transition-colors">
+                <Phone className="w-4 h-4 text-white flex-shrink-0" />
+                <a href="tel:727-954-0041" className="text-slate-300 hover:text-white transition-colors">
                   727-954-0041
                 </a>
               </div>
               <div className="flex items-center gap-2 text-sm">
-                <Mail className="w-4 h-4 text-cyan-400 flex-shrink-0" />
-                <a href="mailto:sal@satrianomarine.com" className="text-slate-300 hover:text-cyan-400 transition-colors">
+                <Mail className="w-4 h-4 text-white flex-shrink-0" />
+                <a href="mailto:sal@satrianomarine.com" className="text-slate-300 hover:text-white transition-colors">
                   sal@satrianomarine.com
                 </a>
               </div>
@@ -44,7 +44,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-lg font-bold mb-4 text-cyan-400">Quick Links</h4>
+            <h4 className="text-lg font-bold mb-4 text-white">Quick Links</h4>
             <ul className="space-y-2">
               <li>
                 <button onClick={() => scrollToSection('home')} className="text-slate-300 hover:text-white transition-colors">
@@ -75,7 +75,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-lg font-bold mb-4 text-cyan-400">Our Services</h4>
+            <h4 className="text-lg font-bold mb-4 text-white">Our Services</h4>
             <ul className="space-y-2 text-slate-300">
               <li>Dock Design & Construction</li>
               <li>Dock Repair & Maintenance</li>
@@ -87,14 +87,14 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-lg font-bold mb-4 text-cyan-400">Service Area</h4>
+            <h4 className="text-lg font-bold mb-4 text-white">Service Area</h4>
             <p className="text-slate-300 text-sm leading-relaxed mb-4">
               Serving all of Pinellas County including St. Petersburg, Treasure Island, Clearwater, Madeira Beach, Indian Shores, and surrounding areas.
             </p>
             <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20">
               <p className="text-sm font-semibold mb-2">State Certified</p>
               <p className="text-xs text-slate-300">General Contractor</p>
-              <p className="text-cyan-400 font-bold mt-1">CGC 1531210</p>
+              <p className="text-white font-bold mt-1">CGC 1531210</p>
             </div>
           </div>
         </div>
