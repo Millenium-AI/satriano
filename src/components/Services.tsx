@@ -1,5 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
-import { Anchor, Wrench, Search, Sparkles, Settings, ClipboardCheck } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';import { Anchor, Wrench, Search, Sparkles, Settings,ArrowRight,  ClipboardCheck } from 'lucide-react';
 
 export default function Services() {
   const [isVisible, setIsVisible] = useState(false);
