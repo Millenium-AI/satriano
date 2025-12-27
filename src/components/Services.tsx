@@ -31,37 +31,37 @@ export default function Services() {
       icon: Anchor,
       title: 'New Dock Design & Construction',
       description: 'Custom dock design and construction tailored to your waterfront property. We handle everything from permits to completion.',
-      color: 'from-cyan-500 to-blue-500'
+      color: 'from-500 to-500'
     },
     {
       icon: Wrench,
       title: 'Dock Repair & Maintenance',
       description: 'Expert repair and maintenance services to keep your dock safe and functional. We fix damage from storms, age, and wear.',
-      color: 'from-blue-500 to-indigo-500'
+      color: 'from-500 to-500'
     },
     {
       icon: Sparkles,
       title: 'Dock & Boat Lift Accessories',
       description: 'Wide selection of premium accessories to enhance your dock and boat lift including bumpers, cleats, ladders, and more.',
-      color: 'from-cyan-600 to-teal-500'
+      color: 'from-600 to-500'
     },
     {
       icon: Settings,
       title: 'New Boat Lift Design & Installation',
       description: 'Professional boat lift design and installation for vessels of all sizes. Quality motors, cables, and remote controls.',
-      color: 'from-blue-600 to-cyan-600'
+      color: 'from-600 to-600'
     },
     {
       icon: Search,
       title: 'Boat Lift Repair & Maintenance',
       description: 'Complete boat lift service including motor replacement, cable repair, adjustments, and preventative maintenance.',
-      color: 'from-teal-500 to-blue-500'
+      color: 'from-500 to-500'
     },
     {
       icon: ClipboardCheck,
       title: 'Dock & Boat Lift Inspections',
       description: 'Thorough inspections for buyers, sellers, and owners. Detailed reports on dock and boat lift integrity and safety.',
-      color: 'from-cyan-500 to-blue-600'
+      color: 'from-500 to-600'
     }
   ];
 
@@ -75,14 +75,14 @@ export default function Services() {
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
             Expert Dock & Boat Lift
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600">
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-600 to-600">
               Solutions
             </span>
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto mt-6">
             From design to installation to maintenance, we're your one-stop shop for all dock and boat lift needs
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto mt-6"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-500 to-600 mx-auto mt-6"></div>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -96,14 +96,14 @@ export default function Services() {
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-blue-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-500/5 to-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                 <div className="relative">
                   <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${service.color} p-4 mb-6 transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500`}>
                     <Icon className="w-full h-full text-white" />
                   </div>
 
-                  <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-cyan-600 transition-colors">
+                  <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-600 transition-colors">
                     {service.title}
                   </h3>
 
@@ -116,7 +116,7 @@ export default function Services() {
                       const element = document.getElementById('contact');
                       if (element) element.scrollIntoView({ behavior: 'smooth' });
                     }}
-                    className="text-cyan-600 font-semibold flex items-center gap-2 group-hover:gap-3 transition-all"
+                    className="text-600 font-semibold flex items-center gap-2 group-hover:gap-3 transition-all"
                   >
                     Learn More
                     <span className="text-xl">→</span>
