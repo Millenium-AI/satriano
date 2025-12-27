@@ -1,8 +1,9 @@
+// src/App.tsx
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Services from './Services';
+import Home from './pages/Home';
 import DockDesign from './pages/DockDesign';
 import DockRepair from './pages/DockRepair';
-import Accessories from './pages/Accessories';
+import DockAccessories from './pages/DockAccessories';
 import BoatLiftInstallation from './pages/BoatLiftInstallation';
 import BoatLiftRepair from './pages/BoatLiftRepair';
 import Inspections from './pages/Inspections';
@@ -11,13 +12,34 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Services />} />
-        <Route path="/services/dock-design" element={<DockDesign />} />
-        <Route path="/services/dock-repair" element={<DockRepair />} />
-        <Route path="/services/accessories" element={<Accessories />} />
-        <Route path="/services/boat-lift-installation" element={<BoatLiftInstallation />} />
-        <Route path="/services/boat-lift-repair" element={<BoatLiftRepair />} />
-        <Route path="/services/inspections" element={<Inspections />} />
+        {/* Full one-page site */}
+        <Route path="/" element={<Home />} />
+
+        {/* Service detail pages */}
+        <Route
+          path="/services/new-dock-design-construction"
+          element={<DockDesign />}
+        />
+        <Route
+          path="/services/dock-repair-maintenance"
+          element={<DockRepair />}
+        />
+        <Route
+          path="/services/dock-boat-lift-accessories"
+          element={<DockAccessories />}
+        />
+        <Route
+          path="/services/new-boat-lift-design-installation"
+          element={<BoatLiftInstallation />}
+        />
+        <Route
+          path="/services/boat-lift-repair-maintenance"
+          element={<BoatLiftRepair />}
+        />
+        <Route
+          path="/services/dock-boat-lift-inspections"
+          element={<Inspections />}
+        />
       </Routes>
     </BrowserRouter>
   );
