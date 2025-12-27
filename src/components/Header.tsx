@@ -22,83 +22,72 @@ export default function Header() {
   };
 
   return (
-    <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white shadow-lg'
-          : 'bg-white/95 backdrop-blur-sm'
-      }`}
-    >
+    <header className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-lg' : 'bg-white/95 backdrop-blur-sm'}`}>
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between py-4">
-          <div className="flexrose-900 -1">
-            <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from- to-yellow-600 bg-clip-text text-transparent cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-              Satriano Marine
-            </h1>
-            <p className="text-xs text-slate-600">Construction Excellence</p>
+        <div className="flex items-center justify-between h-20">
+          <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <div className="text-2xl font-bold">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#800020] to-[#A0522D]">
+                Satriano Marine
+              </span>
+            </div>
+            <div className="hidden md:block text-sm text-slate-600 border-l-2 border-[#FFD700] pl-3">
+              Construction Excellence
+            </div>
           </div>
 
           <nav className="hidden lg:flex items-center gap-8">
-            <button onClick={() => scrollToSection('home')} className="text-slate-700 hover:text- transition-colors font-medium">
+            <button onClick={() => scrollToSection('home')} className="text-slate-700 hover:text-[#800020] transition-colors font-medium">
               HOME
             </button>
-            <button onClick={() => scrollToSection('about')} className="text-slate-700 hover:text- transition-colors font-medium">
+            <button onClick={() => scrollToSection('about')} className="text-slate-700 hover:text-[#800020] transition-colors font-medium">
               ABOUT
             </button>
-            <button onClick={() => scrollToSection('services')} className="text-slate-700 hover:text- transition-colors font-medium">
+            <button onClick={() => scrollToSection('services')} className="text-slate-700 hover:text-[#800020] transition-colors font-medium">
               SERVICES
             </button>
-            <button onClick={() => scrollToSection('contact')} className="text-slate-700 hover:text- transition-colors font-medium">
+            <button onClick={() => scrollToSection('contact')} className="text-slate-700 hover:text-[#800020] transition-colors font-medium">
               CONTACT
             </button>
-            <button onClick={() => scrollToSection('testimonials')} className="text-slate-700 hover:text- transition-colors font-medium">
+            <button onClick={() => scrollToSection('testimonials')} className="text-slate-700 hover:text-[#800020] transition-colors font-medium">
               REVIEWS
             </button>
           </nav>
 
-          <a
-            href="tel:727-954-0041"
-            className="hidden lg:flex items-center gap-2 ml-8 px-6 py-3 bg-gradient-to-r from-rose-800 to-yellow-600 text-white rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 font-semibold"
-          >
+          <a href="tel:727-954-0041" className="hidden lg:flex items-center gap-2 bg-gradient-to-r from-[#800020] to-[#A0522D] text-white px-6 py-3 rounded-lg hover:shadow-lg transition-all">
             <Phone className="w-4 h-4" />
-            <span>727-954-0041</span>
+            <span className="font-semibold">727-954-0041</span>
           </a>
 
-          <button
-            className="lg:hidden text-slate-700 p-2"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="lg:hidden p-2 hover:bg-slate-100 rounded-lg transition-colors">
+            {isMobileMenuOpen ? <X className="w-6 h-6 text-[#800020]" /> : <Menu className="w-6 h-6 text-[#800020]" />}
           </button>
         </div>
 
         {isMobileMenuOpen && (
-          <nav className="lg:hidden py-4 border-t border-slate-200 animate-fadeIn">
-            <div className="flex flex-col gap-4">
-              <button onClick={() => scrollToSection('home')} className="text-slate-700 hover:text- transition-colors font-medium text-left">
+          <div className="lg:hidden py-4 border-t border-slate-200">
+            <nav className="flex flex-col gap-4">
+              <button onClick={() => scrollToSection('home')} className="text-slate-700 hover:text-[#800020] transition-colors font-medium text-left">
                 HOME
               </button>
-              <button onClick={() => scrollToSection('about')} className="text-slate-700 hover:text- transition-colors font-medium text-left">
+              <button onClick={() => scrollToSection('about')} className="text-slate-700 hover:text-[#800020] transition-colors font-medium text-left">
                 ABOUT
               </button>
-              <button onClick={() => scrollToSection('services')} className="text-slate-700 hover:text- transition-colors font-medium text-left">
+              <button onClick={() => scrollToSection('services')} className="text-slate-700 hover:text-[#800020] transition-colors font-medium text-left">
                 SERVICES
               </button>
-              <button onClick={() => scrollToSection('contact')} className="text-slate-700 hover:text- transition-colors font-medium text-left">
+              <button onClick={() => scrollToSection('contact')} className="text-slate-700 hover:text-[#800020] transition-colors font-medium text-left">
                 CONTACT
               </button>
-              <button onClick={() => scrollToSection('testimonials')} className="text-slate-700 hover:text- transition-colors font-medium text-left">
+              <button onClick={() => scrollToSection('testimonials')} className="text-slate-700 hover:text-[#800020] transition-colors font-medium text-left">
                 REVIEWS
               </button>
-              <a
-                href="tel:727-954-0041"
-                className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-rose-800 to-yellow-600 text-white rounded-full hover:shadow-lg transition-all duration-300 font-semibold"
-              >
+              <a href="tel:727-954-0041" className="flex items-center justify-center gap-2 bg-gradient-to-r from-[#800020] to-[#A0522D] text-white px-6 py-3 rounded-lg hover:shadow-lg transition-all mt-2">
                 <Phone className="w-4 h-4" />
-                <span>727-954-0041</span>
+                <span className="font-semibold">727-954-0041</span>
               </a>
-            </div>
-          </nav>
+            </nav>
+          </div>
         )}
       </div>
     </header>
