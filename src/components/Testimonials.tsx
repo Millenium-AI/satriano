@@ -149,26 +149,6 @@ export default function Testimonials() {
           ></iframe>
         </div>
 
-        <div
-          className={`text-center bg-gradient-to-br from-amber-50 to-yellow-50 p-8 rounded-2xl border border-[#FFD700] max-w-2xl mx-auto transition-all duration-1000 delay-500 ${
-            isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-          }`}
-        >
-          <div className="flex items-center justify-center gap-2 mb-4">
-            {[...Array(5)].map((_, i) => (
-              <Star
-                key={i}
-                className="w-8 h-8 fill-[#FFD700] text-[#FFD700]"
-              />
-            ))}
-          </div>
-          <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#800020] to-[#A0522D] mb-2">
-            5.0
-          </div>
-          <div className="text-slate-600 font-medium">
-            Based on 100+ reviews
-          </div>
-        </div>
       </div>
     </section>
   );
