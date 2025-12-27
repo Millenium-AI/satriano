@@ -34,7 +34,7 @@ export default function Testimonials() {
     },
     {
       name: 'Linda M.',
-      text: 'Sal was very easy to work with, was earlier on installation than he\'d estimated, and his crew was great! The boat lift works perfectly and looks beautiful. Highly recommend!',
+      text: "Sal was very easy to work with, was earlier on installation than he'd estimated, and his crew was great! The boat lift works perfectly and looks beautiful. Highly recommend!",
       rating: 5
     },
     {
@@ -44,7 +44,7 @@ export default function Testimonials() {
     },
     {
       name: 'Norm Maia',
-      text: 'Sal was excellent, on time, called ahead, gave us multiple quotes to explore all options. His work is top quality and his team is professional. We couldn\'t be happier!',
+      text: "Sal was excellent, on time, called ahead, gave us multiple quotes to explore all options. His work is top quality and his team is professional. We couldn't be happier!",
       rating: 5
     },
     {
@@ -75,9 +75,17 @@ export default function Testimonials() {
   ];
 
   return (
-    <section id="testimonials" ref={ref} className="py-20 bg-gradient-to-b from-transparent to-slate-50">
+    <section
+      id="testimonials"
+      ref={ref}
+      className="py-20 bg-gradient-to-b from-transparent to-slate-50"
+    >
       <div className="container mx-auto px-4">
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div
+          className={`text-center mb-16 transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
             What Our Customers
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#800020] to-[#A0522D]">
@@ -93,25 +101,34 @@ export default function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className={`bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 border border-slate-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+              className={`bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 border border-slate-100 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
               style={{ transitionDelay: `${index * 50}ms` }}
             >
               <div className="flex items-center gap-1 mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-[#FFD700] text-[#FFD700]" />
+                  <Star
+                    key={i}
+                    className="w-5 h-5 fill-[#FFD700] text-[#FFD700]"
+                  />
                 ))}
               </div>
-              
+
               <Quote className="w-8 h-8 text-[#800020] opacity-20 mb-4" />
-              
-              <p className="text-slate-700 mb-6 italic">"{testimonial.text}"</p>
-              
+
+              <p className="text-slate-700 mb-6 italic">
+                "{testimonial.text}"
+              </p>
+
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 bg-gradient-to-br from-[#800020] to-[#A0522D] rounded-full flex items-center justify-center text-white font-bold text-lg">
                   {testimonial.name.charAt(0)}
                 </div>
                 <div>
-                  <div className="font-semibold text-slate-900">{testimonial.name}</div>
+                  <div className="font-semibold text-slate-900">
+                    {testimonial.name}
+                  </div>
                   <div className="text-sm text-slate-600">Verified Customer</div>
                 </div>
               </div>
@@ -119,10 +136,30 @@ export default function Testimonials() {
           ))}
         </div>
 
-        <div className={`text-center bg-gradient-to-br from-amber-50 to-yellow-50 p-8 rounded-2xl border border-[#FFD700] max-w-2xl mx-auto transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+        {/* Google Maps embed */}
+        <div className="mb-12 flex justify-center">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3528.583700119941!2d-82.819318!3d27.822582299999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c2fd78750437c7%3A0xa1c03e39f5b066d6!2sSatriano%20Marine%20Construction%2C%20LLC.!5e0!3m2!1sen!2sus!4v1766864154175!5m2!1sen!2sus"
+            width="400"
+            height="300"
+            style={{ border: 0 }}
+            loading="lazy"
+            allowFullScreen
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+
+        <div
+          className={`text-center bg-gradient-to-br from-amber-50 to-yellow-50 p-8 rounded-2xl border border-[#FFD700] max-w-2xl mx-auto transition-all duration-1000 delay-500 ${
+            isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+          }`}
+        >
           <div className="flex items-center justify-center gap-2 mb-4">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-8 h-8 fill-[#FFD700] text-[#FFD700]" />
+              <Star
+                key={i}
+                className="w-8 h-8 fill-[#FFD700] text-[#FFD700]"
+              />
             ))}
           </div>
           <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#800020] to-[#A0522D] mb-2">
