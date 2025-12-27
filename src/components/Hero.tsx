@@ -28,7 +28,9 @@ export default function Hero() {
           </p>
 
           <p className="text-lg md:text-xl text-slate-700 mb-12 max-w-3xl mx-auto animate-slide-up animation-delay-200">
-          With over 40 years in the construction business you can count on us to complete any job large or small.
+          With over 40 years in the construction business;
+          <br /> 
+          you can count on us to complete any job large or small.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-slide-up animation-delay-300">
