@@ -41,17 +41,17 @@ export default function About() {
     <section
       id="about"
       ref={ref}
-      className="py-20 bg-gradient-to-b from-white to-slate-50"
+      className="py-20 bg-gradient-to-b from-white to-amber-50"
     >
       <div className="container mx-auto px-4">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
             Pinellas County's Leading
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600">
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#800020] to-[#A0522D]">
               Dock & Boat Lift Company
             </span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto mt-6"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-[#800020] to-[#FFD700] mx-auto mt-6"></div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -68,7 +68,7 @@ export default function About() {
               We serve all of Pinellas County with expert craftsmanship and unmatched customer service.
             </p>
 
-            <div className="bg-gradient-to-br from-cyan-50 to-blue-50 p-8 rounded-2xl border border-cyan-100 shadow-lg">
+            <div className="bg-gradient-to-br from-amber-50 to-yellow-50 p-8 rounded-2xl border border-[#FFD700] shadow-lg">
               <h4 className="text-xl font-bold text-slate-900 mb-4">Our Services Include:</h4>
               <div className="grid sm:grid-cols-2 gap-3">
                 {services.map((service, index) => (
@@ -77,7 +77,7 @@ export default function About() {
                     className={`flex items-start gap-3 transition-all duration-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-5'}`}
                     style={{ transitionDelay: `${300 + index * 50}ms` }}
                   >
-                    <CheckCircle2 className="w-5 h-5 text-cyan-600 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-[#800020] flex-shrink-0 mt-0.5" />
                     <span className="text-slate-700">{service}</span>
                   </div>
                 ))}
@@ -87,7 +87,7 @@ export default function About() {
 
           <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
             <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-3xl opacity-20 blur-2xl"></div>
+              <div className="absolute -inset-4 bg-gradient-to-r from-[#800020] to-[#FFD700] rounded-3xl opacity-20 blur-2xl"></div>
               <img
                 src="https://images.pexels.com/photos/1350592/pexels-photo-1350592.jpeg?auto=compress&cs=tinysrgb&w=800"
                 alt="Dock and Boat Lift"
@@ -97,11 +97,11 @@ export default function About() {
 
             <div className="mt-8 grid grid-cols-2 gap-4">
               <div className="bg-white p-6 rounded-xl shadow-lg border border-slate-100 hover:shadow-xl transition-shadow">
-                <div className="text-3xl font-bold text-cyan-600 mb-2">CGC 1531210</div>
+                <div className="text-3xl font-bold text-[#800020] mb-2">CGC 1531210</div>
                 <div className="text-sm text-slate-600">State Certified General Contractor</div>
               </div>
               <div className="bg-white p-6 rounded-xl shadow-lg border border-slate-100 hover:shadow-xl transition-shadow">
-                <div className="text-3xl font-bold text-cyan-600 mb-2">Family</div>
+                <div className="text-3xl font-bold text-[#FFD700] mb-2">Family</div>
                 <div className="text-sm text-slate-600">Owned & Operated</div>
               </div>
             </div>
