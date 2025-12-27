@@ -58,7 +58,7 @@ export default function Contact() {
             </span>
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto mt-6">
-            Contact us today for a no-cost, no-obligation consultation
+            Contact us today for a no-cost, no-obligation consultation!
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-[#800020] to-[#FFD700] mx-auto mt-6"></div>
         </div>

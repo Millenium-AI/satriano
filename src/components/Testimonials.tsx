@@ -93,7 +93,7 @@ export default function Testimonials() {
             </span>
           </h2>
           <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            Don't just take our word for it - hear from our satisfied customers
+            Don't just take our word for it - hear from our satisfied customers!
           </p>
         </div>
 
