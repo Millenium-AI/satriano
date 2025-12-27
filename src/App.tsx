@@ -18,8 +18,9 @@ function App() {
       <Contact />
       <Testimonials />
       <Footer />
-    </div>
+      </div>
   );
 }
 
 export default App;
+
