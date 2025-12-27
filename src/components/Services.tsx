@@ -95,15 +95,13 @@ export default function Services() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-            Expert Dock & Boat Lift
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#800020] to-[#A0522D]">
-              Solutions
-            </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 leading-tight">
+            Providing Expert Dock &amp; Boat Lift Solutions
           </h2>
+
           <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-            From design to installation to maintenance, we're your one-stop shop
-            for all dock and boat lift needs
+            From design to installation to maintenance, we&apos;re your one-stop shop
+            for all dock and boat lift needs.
           </p>
         </div>
 
@@ -131,9 +129,7 @@ export default function Services() {
                 <p className="text-slate-600 mb-6">{service.description}</p>
 
                 <button
-                  onClick={() =>
-                    navigate(`/services/${service.slug}`)
-                  }
+                  onClick={() => navigate(`/services/${service.slug}`)}
                   className="text-[#800020] font-semibold flex items-center gap-2 group-hover:gap-3 transition-all"
                 >
                   Learn More
