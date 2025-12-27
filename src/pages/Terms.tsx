@@ -5,14 +5,16 @@ export default function Terms() {
   return (
     <section className="py-20 bg-slate-50 min-h-screen">
       <div className="container mx-auto px-4 max-w-3xl">
-        {/* Back to home link */}
-        <a
-          href="/"
-          className="inline-flex items-center gap-2 text-[#800020] hover:text-[#A0522D] transition-colors mb-8 group"
-        >
-          <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-          <span className="font-semibold">Back to Home</span>
-        </a>
+        {/* Back to home link - matches Hero button styling */}
+        <div className="mb-8">
+          <a
+            href="/"
+            className="inline-flex items-center gap-2 bg-white text-[#800020] px-6 py-3 rounded-lg font-semibold border-2 border-[#800020] hover:bg-[#800020] hover:text-white transition-all group"
+          >
+            <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+            Back to Home
+          </a>
+        </div>
 
         <h1 className="text-4xl font-bold text-slate-900 mb-6">
           Terms &amp; Conditions
