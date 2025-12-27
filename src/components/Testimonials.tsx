@@ -75,69 +75,61 @@ export default function Testimonials() {
   ];
 
   return (
-    <section
-      id="testimonials"
-      ref={ref}
-      className="py-20 bg-slate-50"
-    >
+    <section id="testimonials" ref={ref} className="py-20 bg-gradient-to-b from-transparent to-slate-50">
       <div className="container mx-auto px-4">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
             What Our Customers
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600">
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#800020] to-[#A0522D]">
               Are Saying
             </span>
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto mt-6">
+          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
             Don't just take our word for it - hear from our satisfied customers
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-600 mx-auto mt-6"></div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className={`bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
-              style={{ transitionDelay: `${index * 100}ms` }}
+              className={`bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 border border-slate-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+              style={{ transitionDelay: `${index * 50}ms` }}
             >
-              <div className="flex items-center justify-between mb-4">
-                <Quote className="w-10 h-10 text-cyan-500/20" />
-                <div className="flex gap-1">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
+              <div className="flex items-center gap-1 mb-4">
+                {[...Array(testimonial.rating)].map((_, i) => (
+                  <Star key={i} className="w-5 h-5 fill-[#FFD700] text-[#FFD700]" />
+                ))}
               </div>
-
-              <p className="text-slate-700 leading-relaxed mb-6">
-                "{testimonial.text}"
-              </p>
-
-              <div className="flex items-center gap-3 pt-4 border-t border-slate-100">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-white font-bold text-lg">
+              
+              <Quote className="w-8 h-8 text-[#800020] opacity-20 mb-4" />
+              
+              <p className="text-slate-700 mb-6 italic">"{testimonial.text}"</p>
+              
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-gradient-to-br from-[#800020] to-[#A0522D] rounded-full flex items-center justify-center text-white font-bold text-lg">
                   {testimonial.name.charAt(0)}
                 </div>
                 <div>
                   <div className="font-semibold text-slate-900">{testimonial.name}</div>
-                  <div className="text-sm text-slate-500">Verified Customer</div>
+                  <div className="text-sm text-slate-600">Verified Customer</div>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        <div className={`mt-16 text-center transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-50 to-blue-50 rounded-full border border-cyan-200">
-            <div className="flex">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
-              ))}
-            </div>
-            <span className="text-2xl font-bold text-slate-900">5.0</span>
-            <span className="text-slate-600">Based on 100+ reviews</span>
+        <div className={`text-center bg-gradient-to-br from-amber-50 to-yellow-50 p-8 rounded-2xl border border-[#FFD700] max-w-2xl mx-auto transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+          <div className="flex items-center justify-center gap-2 mb-4">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="w-8 h-8 fill-[#FFD700] text-[#FFD700]" />
+            ))}
+          </div>
+          <div className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#800020] to-[#A0522D] mb-2">
+            5.0
+          </div>
+          <div className="text-slate-600 font-medium">
+            Based on 100+ reviews
           </div>
         </div>
       </div>
