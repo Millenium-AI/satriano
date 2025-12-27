@@ -1,26 +1,26 @@
-import TopStrip from './components/TopStrip';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import About from './components/About';
-import Services from './components/Services';
-import Contact from './components/Contact';
-import Testimonials from './components/Testimonials';
-import Footer from './components/Footer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Services from './Services';
+import DockDesign from './pages/DockDesign';
+import DockRepair from './pages/DockRepair';
+import Accessories from './pages/Accessories';
+import BoatLiftInstallation from './pages/BoatLiftInstallation';
+import BoatLiftRepair from './pages/BoatLiftRepair';
+import Inspections from './pages/Inspections';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-amber-50">
-      <TopStrip />
-      <Header />
-      <Hero />
-      <About />
-      <Services />
-      <Contact />
-      <Testimonials />
-      <Footer />
-      </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Services />} />
+        <Route path="/services/dock-design" element={<DockDesign />} />
+        <Route path="/services/dock-repair" element={<DockRepair />} />
+        <Route path="/services/accessories" element={<Accessories />} />
+        <Route path="/services/boat-lift-installation" element={<BoatLiftInstallation />} />
+        <Route path="/services/boat-lift-repair" element={<BoatLiftRepair />} />
+        <Route path="/services/inspections" element={<Inspections />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
 export default App;
-
