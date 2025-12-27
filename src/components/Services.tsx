@@ -31,58 +31,53 @@ export default function Services() {
       icon: Anchor,
       title: 'New Dock Design & Construction',
       description: 'Custom dock design and construction tailored to your waterfront property. We handle everything from permits to completion.',
-      color: 'from-500 to-500'
+      color: 'from-[#800020] to-[#A0522D]'
     },
     {
       icon: Wrench,
       title: 'Dock Repair & Maintenance',
       description: 'Expert repair and maintenance services to keep your dock safe and functional. We fix damage from storms, age, and wear.',
-      color: 'from-500 to-500'
+      color: 'from-[#800020] to-[#A0522D]'
     },
     {
       icon: Sparkles,
       title: 'Dock & Boat Lift Accessories',
       description: 'Wide selection of premium accessories to enhance your dock and boat lift including bumpers, cleats, ladders, and more.',
-      color: 'from-600 to-500'
+      color: 'from-[#A0522D] to-[#FFD700]'
     },
     {
       icon: Settings,
       title: 'New Boat Lift Design & Installation',
       description: 'Professional boat lift design and installation for vessels of all sizes. Quality motors, cables, and remote controls.',
-      color: 'from-600 to-600'
+      color: 'from-[#800020] to-[#FFD700]'
     },
     {
       icon: Search,
       title: 'Boat Lift Repair & Maintenance',
       description: 'Complete boat lift service including motor replacement, cable repair, adjustments, and preventative maintenance.',
-      color: 'from-500 to-500'
+      color: 'from-[#800020] to-[#A0522D]'
     },
     {
       icon: ClipboardCheck,
       title: 'Dock & Boat Lift Inspections',
       description: 'Thorough inspections for buyers, sellers, and owners. Detailed reports on dock and boat lift integrity and safety.',
-      color: 'from-500 to-600'
+      color: 'from-[#A0522D] to-[#FFD700]'
     }
   ];
 
   return (
-    <section
-      id="services"
-      ref={ref}
-      className="py-20 bg-slate-50"
-    >
+    <section id="services" ref={ref} className="py-20">
       <div className="container mx-auto px-4">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
             Expert Dock & Boat Lift
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-600 to-600">
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#800020] to-[#A0522D]">
               Solutions
             </span>
           </h2>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto mt-6">
+          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
             From design to installation to maintenance, we're your one-stop shop for all dock and boat lift needs
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-500 to-600 mx-auto mt-6"></div>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -91,37 +86,24 @@ export default function Services() {
             return (
               <div
                 key={index}
-                className={`group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                }`}
+                className={`group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-[#FFD700] ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-500/5 to-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-                <div className="relative">
-                  <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${service.color} p-4 mb-6 transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500`}>
-                    <Icon className="w-full h-full text-white" />
-                  </div>
-
-                  <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-600 transition-colors">
-                    {service.title}
-                  </h3>
-
-                  <p className="text-slate-600 leading-relaxed mb-6">
-                    {service.description}
-                  </p>
-
-                  <button
-                    onClick={() => {
-                      const element = document.getElementById('contact');
-                      if (element) element.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                    className="text-600 font-semibold flex items-center gap-2 group-hover:gap-3 transition-all"
-                  >
-                    Learn More
-                    <span className="text-xl">→</span>
-                  </button>
+                <div className={`w-16 h-16 bg-gradient-to-br ${service.color} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
+                  <Icon className="w-8 h-8 text-white" />
                 </div>
+                <h3 className="text-xl font-bold text-slate-900 mb-4">{service.title}</h3>
+                <p className="text-slate-600 mb-6">{service.description}</p>
+                <button
+                  onClick={() => {
+                    const element = document.getElementById('contact');
+                    if (element) element.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="text-[#800020] font-semibold flex items-center gap-2 group-hover:gap-3 transition-all"
+                >
+                  Learn More
+                  <ArrowRight className="w-4 h-4" />
+                </button>
               </div>
             );
           })}
