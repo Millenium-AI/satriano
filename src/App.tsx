@@ -7,6 +7,8 @@ import DockAccessories from './pages/DockAccessories';
 import BoatLiftInstallation from './pages/BoatLiftInstallation';
 import BoatLiftRepair from './pages/BoatLiftRepair';
 import Inspections from './pages/Inspections';
+import Privacy from './pages/Privacy';
+import Terms from './pages/Terms';
 
 function App() {
   return (
@@ -40,6 +42,10 @@ function App() {
           path="/services/dock-boat-lift-inspections"
           element={<Inspections />}
         />
+
+        {/* Legal pages */}
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms" element={<Terms />} />
       </Routes>
     </BrowserRouter>
   );
