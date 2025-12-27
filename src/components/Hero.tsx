@@ -12,7 +12,7 @@ export default function Hero() {
     <section id="home" className="relative min-h-[600px] md:min-h-[700px] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via- to-rose-900">
       <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/1010657/pexels-photo-1010657.jpeg?auto=compress&cs=tinysrgb&w=1920')] bg-cover bg-center opacity-20"></div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-/50 to-slate-900/90"></div>
+      <div className="absolute inset-0 bg-gradient-to-b -900/90"></div>
 
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-72 h-72 bg-rose-800/10 rounded-full blur-3xl animate-pulse"></div>
