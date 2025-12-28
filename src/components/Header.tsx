@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import logo from '../assets/SMClogo.svg';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -44,6 +45,7 @@ export default function Header() {
             className="flex items-center gap-3 cursor-pointer"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
+            <img src={logo} alt="Satriano Marine Construction" className="h-12 w-12" />
             <div className="text-2xl font-bold">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#800020] to-[#A0522D]">
                 Satriano Marine
