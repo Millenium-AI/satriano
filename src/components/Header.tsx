@@ -84,12 +84,7 @@ export default function Header() {
             <div
               className="relative"
               onMouseEnter={() => setIsServicesOpen(true)}
-              onMouseLeave={(e) => {
-                const related = e.relatedTarget as HTMLElement | null;
-                if (!related || !e.currentTarget.contains(related)) {
-                  setIsServicesOpen(false);
-                }
-              }}
+              onMouseLeave={() => setIsServicesOpen(false)}
             >
               <button className="text-burgundy hover:text-gold transition-colors font-medium flex items-center gap-1">
                 SERVICES
@@ -98,7 +93,12 @@ export default function Header() {
 
 
               {isServicesOpen && (
-                <div className="absolute left-0 mt-2 w-80 shadow-lg rounded-lg border border-gold py-2 text-left" style={{ backgroundColor: '#FEF7EB' }}>
+                <div 
+                  className="absolute left-0 mt-2 w-80 shadow-lg rounded-lg border border-gold py-2 text-left" 
+                  style={{ backgroundColor: '#FEF7EB' }}
+                  onMouseEnter={() => setIsServicesOpen(true)}
+                  onMouseLeave={() => setIsServicesOpen(false)}
+                >
                   <button
                     onClick={() => goToService('new-dock-design-construction')}
                     className="block w-full text-left px-4 py-2 text-sm text-burgundy hover:bg-gold/10"

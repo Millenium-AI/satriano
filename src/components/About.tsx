@@ -75,7 +75,7 @@ export default function About() {
 
             <p className="text-lg text-burgundy mb-4 leading-relaxed">
               Satriano Marine Construction, a family-owned and operated business
-              dedicated to providing high-quality marine construction service. 
+              dedicated to providing a high-quality marine construction service. 
               We take pride in our work and are personal in our service.
             </p>
 
