@@ -3,12 +3,15 @@ import { Menu, X, Phone } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/SMClogo.svg';
 
+
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
 
+
   const navigate = useNavigate();
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,6 +20,7 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -27,17 +31,20 @@ export default function Header() {
     }
   };
 
+
   const goToService = (slug: string) => {
     navigate(`/services/${slug}`);
     setIsMobileMenuOpen(false);
     setIsServicesOpen(false);
   };
 
+
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-cream shadow-lg' : 'bg-cream/95 backdrop-blur-sm'
+        isScrolled ? 'shadow-lg' : 'backdrop-blur-sm'
       }`}
+      style={{ backgroundColor: '#FEF7EB' }}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
@@ -56,6 +63,7 @@ export default function Header() {
             </div>
           </div>
 
+
           {/* DESKTOP NAV */}
           <nav className="hidden lg:flex items-center gap-8">
             <button
@@ -70,6 +78,7 @@ export default function Header() {
             >
               ABOUT
             </button>
+
 
             {/* SERVICES DROPDOWN (DESKTOP) */}
             <div
@@ -87,8 +96,9 @@ export default function Header() {
                 <span className="text-xs">▼</span>
               </button>
 
+
               {isServicesOpen && (
-                <div className="absolute left-0 mt-2 w-80 bg-cream shadow-lg rounded-lg border border-gold py-2 text-left">
+                <div className="absolute left-0 mt-2 w-80 shadow-lg rounded-lg border border-gold py-2 text-left" style={{ backgroundColor: '#FEF7EB' }}>
                   <button
                     onClick={() => goToService('new-dock-design-construction')}
                     className="block w-full text-left px-4 py-2 text-sm text-burgundy hover:bg-gold/10"
@@ -131,6 +141,7 @@ export default function Header() {
               )}
             </div>
 
+
             <button
               onClick={() => scrollToSection('contact')}
               className="text-burgundy hover:text-gold transition-colors font-medium"
@@ -145,6 +156,7 @@ export default function Header() {
             </button>
           </nav>
 
+
           <a
             href="tel:727-954-0041"
             className="hidden lg:flex items-center gap-2 bg-burgundy text-cream px-6 py-3 rounded-lg hover:shadow-lg transition-all"
@@ -152,6 +164,7 @@ export default function Header() {
             <Phone className="w-4 h-4" />
             <span className="font-semibold">727-954-0041</span>
           </a>
+
 
           {/* MOBILE MENU BUTTON */}
           <button
@@ -165,6 +178,7 @@ export default function Header() {
             )}
           </button>
         </div>
+
 
         {/* MOBILE MENU */}
         {isMobileMenuOpen && (
@@ -183,6 +197,7 @@ export default function Header() {
                 ABOUT
               </button>
 
+
               {/* SERVICES DROPDOWN (MOBILE) */}
               <div className="flex flex-col gap-2">
                 <button
@@ -192,6 +207,7 @@ export default function Header() {
                   <span>SERVICES</span>
                   <span className="text-xs">{isServicesOpen ? '▲' : '▼'}</span>
                 </button>
+
 
                 {isServicesOpen && (
                   <div className="pl-4 flex flex-col gap-2">
@@ -240,6 +256,7 @@ export default function Header() {
                   </div>
                 )}
               </div>
+
 
               <button
                 onClick={() => scrollToSection('contact')}
