@@ -42,7 +42,7 @@ export default function About() {
     <section
       id="about"
       ref={ref}
-      className="py-20 bg-gradient-to-b from-white to-amber-50"
+      className="py-20 bg-gradient-to-b from-cream to-cream/80"
     >
       <div className="container mx-auto px-4">
         <div
@@ -52,13 +52,13 @@ export default function About() {
               : 'opacity-0 translate-y-10'
           }`}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-burgundy mb-4">
             Pinellas County&apos;s Leading
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#800020] to-[#A0522D]">
+            <span className="block text-gold">
               Dock &amp; Boat Lift Company
             </span>
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-[#800020] to-[#FFD700] mx-auto mt-6" />
+          <div className="w-24 h-1 bg-gradient-to-r from-burgundy to-gold mx-auto mt-6" />
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -69,18 +69,18 @@ export default function About() {
                 : 'opacity-0 -translate-x-10'
             }`}
           >
-            <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-6">
+            <h3 className="text-2xl md:text-3xl font-bold text-burgundy mb-6">
               Experienced in New Dock Design, Construction &amp; Boat Lifts
             </h3>
 
-            <p className="text-lg text-slate-700 mb-4 leading-relaxed">
+            <p className="text-lg text-burgundy mb-4 leading-relaxed">
               Satriano Marine Construction, a family-owned and operated business
               dedicated to providing high-quality marine construction service. 
               We take pride in our work and are personal in our service.
             </p>
 
-            <div className="bg-gradient-to-br from-amber-50 to-yellow-50 p-8 rounded-2xl border border-[#FFD700] shadow-lg mb-6">
-              <h4 className="text-xl font-bold text-slate-900 mb-4">
+            <div className="bg-gold/20 p-8 rounded-2xl border border-gold shadow-lg mb-6">
+              <h4 className="text-xl font-bold text-burgundy mb-4">
                 Our Services Include:
               </h4>
               <div className="grid sm:grid-cols-2 gap-3">
@@ -94,19 +94,19 @@ export default function About() {
                     }`}
                     style={{ transitionDelay: `${300 + index * 50}ms` }}
                   >
-                    <CheckCircle2 className="w-5 h-5 text-[#800020] flex-shrink-0 mt-0.5" />
-                    <span className="text-slate-700">{service}</span>
+                    <CheckCircle2 className="w-5 h-5 text-burgundy flex-shrink-0 mt-0.5" />
+                    <span className="text-burgundy">{service}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <p className="text-lg text-slate-700 mb-4 leading-relaxed">
+            <p className="text-lg text-burgundy mb-4 leading-relaxed">
               We serve all of Pinellas County with expert craftsmanship and
               unmatched customer service.
             </p>
 
-            <p className="text-lg text-slate-700 mb-6 leading-relaxed">
+            <p className="text-lg text-burgundy mb-6 leading-relaxed">
               If you have waterfront property and are in need of dock or boat
               lift services, please contact us today to see how we can offer
               professional, quality dock and boat lift solutions that set us
@@ -122,7 +122,7 @@ export default function About() {
             }`}
           >
             <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-[#800020] to-[#FFD700] rounded-3xl opacity-20 blur-2xl" />
+              <div className="absolute -inset-4 bg-gradient-to-r from-burgundy to-gold rounded-3xl opacity-20 blur-2xl" />
               <img
                 src={side}
                 alt="Dock and Boat Lift"
@@ -131,19 +131,19 @@ export default function About() {
             </div>
 
             <div className="mt-8 grid grid-cols-2 gap-4">
-              <div className="bg-white p-6 rounded-xl shadow-lg border border-slate-100 hover:shadow-xl transition-shadow">
-                <div className="text-3xl font-bold text-[#800020] mb-2">
+              <div className="bg-cream p-6 rounded-xl shadow-lg border border-gold hover:shadow-xl transition-shadow">
+                <div className="text-3xl font-bold text-burgundy mb-2">
                   CGC 1531210
                 </div>
-                <div className="text-sm text-slate-600">
+                <div className="text-sm text-burgundy">
                   State Certified General Contractor
                 </div>
               </div>
-              <div className="bg-white p-6 rounded-xl shadow-lg border border-slate-100 hover:shadow-xl transition-shadow">
-                <div className="text-3xl font-bold text-[#FFD700] mb-2">
+              <div className="bg-cream p-6 rounded-xl shadow-lg border border-gold hover:shadow-xl transition-shadow">
+                <div className="text-3xl font-bold text-gold mb-2">
                   Family
                 </div>
-                <div className="text-sm text-slate-600">
+                <div className="text-sm text-burgundy">
                   Owned &amp; Operated
                 </div>
               </div>

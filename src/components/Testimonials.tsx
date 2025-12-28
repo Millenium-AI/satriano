@@ -78,7 +78,7 @@ export default function Testimonials() {
     <section
       id="testimonials"
       ref={ref}
-      className="py-20 bg-gradient-to-b from-transparent to-slate-50"
+      className="py-20 bg-cream"
     >
       <div className="container mx-auto px-4">
         <div
@@ -86,13 +86,13 @@ export default function Testimonials() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-burgundy mb-4">
             What Our Customers
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#800020] to-[#A0522D]">
+            <span className="block text-gold">
               Are Saying
             </span>
           </h2>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+          <p className="text-xl text-burgundy max-w-2xl mx-auto">
             Don't just take our word for it - hear from our satisfied customers!
           </p>
         </div>
@@ -101,7 +101,7 @@ export default function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className={`bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 border border-slate-100 ${
+              className={`bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 border border-gold ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
               style={{ transitionDelay: `${index * 50}ms` }}
@@ -110,26 +110,26 @@ export default function Testimonials() {
                 {[...Array(testimonial.rating)].map((_, i) => (
                   <Star
                     key={i}
-                    className="w-5 h-5 fill-[#FFD700] text-[#FFD700]"
+                    className="w-5 h-5 fill-gold text-gold"
                   />
                 ))}
               </div>
 
-              <Quote className="w-8 h-8 text-[#800020] opacity-20 mb-4" />
+              <Quote className="w-8 h-8 text-burgundy opacity-20 mb-4" />
 
-              <p className="text-slate-700 mb-6 italic">
+              <p className="text-burgundy mb-6 italic">
                 "{testimonial.text}"
               </p>
 
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#800020] to-[#A0522D] rounded-full flex items-center justify-center text-white font-bold text-lg">
+                <div className="w-12 h-12 bg-burgundy rounded-full flex items-center justify-center text-cream font-bold text-lg">
                   {testimonial.name.charAt(0)}
                 </div>
                 <div>
-                  <div className="font-semibold text-slate-900">
+                  <div className="font-semibold text-burgundy">
                     {testimonial.name}
                   </div>
-                  <div className="text-sm text-slate-600">Verified Customer</div>
+                  <div className="text-sm text-gold">Verified Customer</div>
                 </div>
               </div>
             </div>

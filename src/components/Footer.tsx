@@ -9,43 +9,43 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-gradient-to-br from-[#800020] via-[#5a0016] to-[#800020] text-white">
+    <footer className="bg-burgundy text-cream">
       <div className="container mx-auto px-4 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand + contact */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <Anchor className="w-8 h-8 text-white" />
+              <Anchor className="w-8 h-8 text-cream" />
               <div>
                 <h3 className="text-xl font-bold">Satriano Marine</h3>
-                <p className="text-sm text-slate-300">Construction</p>
+                <p className="text-sm text-cream/60">Construction</p>
               </div>
             </div>
-            <p className="text-slate-300 leading-relaxed mb-6">
+            <p className="text-cream/80 leading-relaxed mb-6">
               Proudly serving Pinellas County with the best in dock construction,
               repair, boat lift installation, and maintenance.
             </p>
             <div className="space-y-3">
               <div className="flex items-center gap-2 text-sm">
-                <MapPin className="w-4 h-4 text-white flex-shrink-0" />
-                <span className="text-slate-300">
+                <MapPin className="w-4 h-4 text-cream flex-shrink-0" />
+                <span className="text-cream/80">
                   North Redington Beach, FL
                 </span>
               </div>
               <div className="flex items-center gap-2 text-sm">
-                <Phone className="w-4 h-4 text-white flex-shrink-0" />
+                <Phone className="w-4 h-4 text-cream flex-shrink-0" />
                 <a
                   href="tel:727-954-0041"
-                  className="text-slate-300 hover:text-white transition-colors"
+                  className="text-cream/80 hover:text-cream transition-colors"
                 >
                   727-954-0041
                 </a>
               </div>
               <div className="flex items-center gap-2 text-sm">
-                <Mail className="w-4 h-4 text-white flex-shrink-0" />
+                <Mail className="w-4 h-4 text-cream flex-shrink-0" />
                 <a
                   href="mailto:sal@satrianomarine.com"
-                  className="text-slate-300 hover:text-white transition-colors"
+                  className="text-cream/80 hover:text-cream transition-colors"
                 >
                   sal@satrianomarine.com
                 </a>
@@ -55,12 +55,12 @@ export default function Footer() {
 
           {/* Quick links -> components/sections on Home */}
           <div>
-            <h4 className="text-lg font-bold mb-4 text-white">Quick Links</h4>
+            <h4 className="text-lg font-bold mb-4 text-cream">Quick Links</h4>
             <ul className="space-y-2">
               <li>
                 <button
                   onClick={() => scrollToSection('about')}
-                  className="text-slate-300 hover:text-white transition-colors"
+                  className="text-cream/80 hover:text-cream transition-colors"
                 >
                   About
                 </button>
@@ -68,7 +68,7 @@ export default function Footer() {
               <li>
                 <button
                   onClick={() => scrollToSection('services')}
-                  className="text-slate-300 hover:text-white transition-colors"
+                  className="text-cream/80 hover:text-cream transition-colors"
                 >
                   Services
                 </button>
@@ -76,7 +76,7 @@ export default function Footer() {
               <li>
                 <button
                   onClick={() => scrollToSection('testimonials')}
-                  className="text-slate-300 hover:text-white transition-colors"
+                  className="text-cream/80 hover:text-cream transition-colors"
                 >
                   Reviews
                 </button>
@@ -84,7 +84,7 @@ export default function Footer() {
               <li>
                 <button
                   onClick={() => scrollToSection('contact')}
-                  className="text-slate-300 hover:text-white transition-colors"
+                  className="text-cream/80 hover:text-cream transition-colors"
                 >
                   Contact
                 </button>
@@ -94,12 +94,12 @@ export default function Footer() {
 
           {/* Our Services -> routed pages */}
           <div>
-            <h4 className="text-lg font-bold mb-4 text-white">Our Services</h4>
-            <ul className="space-y-2 text-slate-300">
+            <h4 className="text-lg font-bold mb-4 text-cream">Our Services</h4>
+            <ul className="space-y-2 text-cream/80">
               <li>
                 <a
                   href="/services/new-dock-design-construction"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-cream transition-colors"
                 >
                   Dock Design & Construction
                 </a>
@@ -107,7 +107,7 @@ export default function Footer() {
               <li>
                 <a
                   href="/services/dock-repair-maintenance"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-cream transition-colors"
                 >
                   Dock Repair & Maintenance
                 </a>
@@ -115,7 +115,7 @@ export default function Footer() {
               <li>
                 <a
                   href="/services/new-boat-lift-design-installation"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-cream transition-colors"
                 >
                   Boat Lift Installation
                 </a>
@@ -123,7 +123,7 @@ export default function Footer() {
               <li>
                 <a
                   href="/services/boat-lift-repair-maintenance"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-cream transition-colors"
                 >
                   Boat Lift Repair
                 </a>
@@ -131,7 +131,7 @@ export default function Footer() {
               <li>
                 <a
                   href="/services/dock-boat-lift-inspections"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-cream transition-colors"
                 >
                   Inspections
                 </a>
@@ -139,7 +139,7 @@ export default function Footer() {
               <li>
                 <a
                   href="/services/dock-boat-lift-accessories"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-cream transition-colors"
                 >
                   Accessories
                 </a>
@@ -149,31 +149,31 @@ export default function Footer() {
 
           {/* Service area / license */}
           <div>
-            <h4 className="text-lg font-bold mb-4 text-white">Service Area</h4>
-            <p className="text-slate-300 text-sm leading-relaxed mb-4">
+            <h4 className="text-lg font-bold mb-4 text-cream">Service Area</h4>
+            <p className="text-cream/80 text-sm leading-relaxed mb-4">
               Serving all of Pinellas County including St. Petersburg, Treasure
               Island, Clearwater, Madeira Beach, Indian Shores, and surrounding
               areas.
             </p>
-            <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg border border-white/20">
-              <p className="text-sm font-semibold mb-2">State Certified</p>
-              <p className="text-xs text-slate-300">General Contractor</p>
-              <p className="text-white font-bold mt-1">CGC 1531210</p>
+            <div className="bg-cream/10 backdrop-blur-sm p-4 rounded-lg border border-cream/20">
+              <p className="text-sm font-semibold mb-2 text-cream">State Certified</p>
+              <p className="text-xs text-cream/80">General Contractor</p>
+              <p className="text-cream font-bold mt-1">CGC 1531210</p>
             </div>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-white/10">
+        <div className="pt-8 border-t border-cream/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-slate-400 text-sm text-center md:text-left">
+            <p className="text-cream/60 text-sm text-center md:text-left">
               © {new Date().getFullYear()} Satriano Marine Construction, LLC.
               All Rights Reserved.
             </p>
-            <div className="flex gap-6 text-sm text-slate-400">
-              <a href="/privacy" className="hover:text-white transition-colors">
+            <div className="flex gap-6 text-sm text-cream/60">
+              <a href="/privacy" className="hover:text-cream transition-colors">
                 Privacy Policy
               </a>
-              <a href="/terms" className="hover:text-white transition-colors">
+              <a href="/terms" className="hover:text-cream transition-colors">
                 Terms &amp; Conditions
               </a>
             </div>

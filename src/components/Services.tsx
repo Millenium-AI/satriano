@@ -42,7 +42,7 @@ export default function Services() {
       title: 'New Dock Design & Construction',
       description:
         'Custom dock design and construction tailored to your waterfront property. We handle everything from permits to completion.',
-      color: 'from-[#800020] to-[#A0522D]',
+      color: 'from-burgundy to-burgundy',
       slug: 'new-dock-design-construction',
     },
     {
@@ -50,7 +50,7 @@ export default function Services() {
       title: 'Dock Repair & Maintenance',
       description:
         'Expert repair and maintenance services to keep your dock safe and functional. We fix damage from storms, age, and wear.',
-      color: 'from-[#800020] to-[#A0522D]',
+      color: 'from-burgundy to-burgundy',
       slug: 'dock-repair-maintenance',
     },
     {
@@ -58,7 +58,7 @@ export default function Services() {
       title: 'Dock & Boat Lift Accessories',
       description:
         'Wide selection of premium accessories to enhance your dock and boat lift including bumpers, cleats, ladders, and more.',
-      color: 'from-[#A0522D] to-[#FFD700]',
+      color: 'from-gold to-gold',
       slug: 'dock-boat-lift-accessories',
     },
     {
@@ -66,7 +66,7 @@ export default function Services() {
       title: 'New Boat Lift Design & Installation',
       description:
         'Professional boat lift design and installation for vessels of all sizes. Quality motors, cables, and remote controls.',
-      color: 'from-[#800020] to-[#FFD700]',
+      color: 'from-burgundy to-gold',
       slug: 'new-boat-lift-design-installation',
     },
     {
@@ -74,7 +74,7 @@ export default function Services() {
       title: 'Boat Lift Repair & Maintenance',
       description:
         'Complete boat lift service including motor replacement, cable repair, adjustments, and preventative maintenance.',
-      color: 'from-[#800020] to-[#A0522D]',
+      color: 'from-burgundy to-burgundy',
       slug: 'boat-lift-repair-maintenance',
     },
     {
@@ -82,24 +82,24 @@ export default function Services() {
       title: 'Dock & Boat Lift Inspections',
       description:
         'Thorough inspections for buyers, sellers, and owners. Detailed reports on dock and boat lift integrity and safety.',
-      color: 'from-[#A0522D] to-[#FFD700]',
+      color: 'from-gold to-gold',
       slug: 'dock-boat-lift-inspections',
     },
   ];
 
   return (
-    <section id="services" ref={ref} className="py-20">
+    <section id="services" ref={ref} className="py-20 bg-cream">
       <div className="container mx-auto px-4">
         <div
           className={`text-center mb-16 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 leading-tight">
+          <h2 className="text-4xl md:text-5xl font-bold text-burgundy mb-4 leading-tight">
             Providing Expert Dock &amp; Boat Lift Solutions
           </h2>
 
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+          <p className="text-xl text-burgundy max-w-2xl mx-auto">
             From design to installation to maintenance, we&apos;re your one-stop shop
             for all dock and boat lift needs.
           </p>
@@ -111,7 +111,7 @@ export default function Services() {
             return (
               <div
                 key={service.slug}
-                className={`group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-slate-100 hover:border-[#FFD700] ${
+                className={`group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gold hover:border-burgundy ${
                   isVisible
                     ? 'opacity-100 translate-y-0'
                     : 'opacity-0 translate-y-10'
@@ -121,16 +121,16 @@ export default function Services() {
                 <div
                   className={`w-16 h-16 bg-gradient-to-br ${service.color} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}
                 >
-                  <Icon className="w-8 h-8 text-white" />
+                  <Icon className="w-8 h-8 text-cream" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-4">
+                <h3 className="text-xl font-bold text-burgundy mb-4">
                   {service.title}
                 </h3>
-                <p className="text-slate-600 mb-6">{service.description}</p>
+                <p className="text-burgundy mb-6">{service.description}</p>
 
                 <button
                   onClick={() => navigate(`/services/${service.slug}`)}
-                  className="text-[#800020] font-semibold flex items-center gap-2 group-hover:gap-3 transition-all"
+                  className="text-burgundy font-semibold flex items-center gap-2 group-hover:gap-3 transition-all hover:text-gold"
                 >
                   Learn More
                   <ArrowRight className="w-4 h-4" />

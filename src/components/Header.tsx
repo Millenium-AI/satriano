@@ -36,7 +36,7 @@ export default function Header() {
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-lg' : 'bg-white/95 backdrop-blur-sm'
+        isScrolled ? 'bg-cream shadow-lg' : 'bg-cream/95 backdrop-blur-sm'
       }`}
     >
       <div className="container mx-auto px-4">
@@ -47,11 +47,11 @@ export default function Header() {
           >
             <img src={logo} alt="Satriano Marine Construction" className="h-12 w-12" />
             <div className="text-2xl font-bold">
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#800020] to-[#A0522D]">
+              <span className="text-burgundy">
                 Satriano Marine
               </span>
             </div>
-            <div className="hidden md:block text-sm text-slate-600 border-l-2 border-[#FFD700] pl-3">
+            <div className="hidden md:block text-sm text-burgundy border-l-2 border-gold pl-3">
               Construction Excellence
             </div>
           </div>
@@ -60,13 +60,13 @@ export default function Header() {
           <nav className="hidden lg:flex items-center gap-8">
             <button
               onClick={() => scrollToSection('home')}
-              className="text-slate-700 hover:text-[#800020] transition-colors font-medium"
+              className="text-burgundy hover:text-gold transition-colors font-medium"
             >
               HOME
             </button>
             <button
               onClick={() => scrollToSection('about')}
-              className="text-slate-700 hover:text-[#800020] transition-colors font-medium"
+              className="text-burgundy hover:text-gold transition-colors font-medium"
             >
               ABOUT
             </button>
@@ -82,28 +82,28 @@ export default function Header() {
                 }
               }}
             >
-              <button className="text-slate-700 hover:text-[#800020] transition-colors font-medium flex items-center gap-1">
+              <button className="text-burgundy hover:text-gold transition-colors font-medium flex items-center gap-1">
                 SERVICES
                 <span className="text-xs">▼</span>
               </button>
 
               {isServicesOpen && (
-                <div className="absolute left-0 mt-2 w-80 bg-white shadow-lg rounded-lg border border-slate-200 py-2 text-left">
+                <div className="absolute left-0 mt-2 w-80 bg-cream shadow-lg rounded-lg border border-gold py-2 text-left">
                   <button
                     onClick={() => goToService('new-dock-design-construction')}
-                    className="block w-full text-left px-4 py-2 text-sm text-slate-700 hover:bg-slate-100"
+                    className="block w-full text-left px-4 py-2 text-sm text-burgundy hover:bg-gold/10"
                   >
                     New Dock Design & Construction
                   </button>
                   <button
                     onClick={() => goToService('dock-repair-maintenance')}
-                    className="block w-full text-left px-4 py-2 text-sm text-slate-700 hover:bg-slate-100"
+                    className="block w-full text-left px-4 py-2 text-sm text-burgundy hover:bg-gold/10"
                   >
                     Dock Repair & Maintenance
                   </button>
                   <button
                     onClick={() => goToService('dock-boat-lift-accessories')}
-                    className="block w-full text-left px-4 py-2 text-sm text-slate-700 hover:bg-slate-100"
+                    className="block w-full text-left px-4 py-2 text-sm text-burgundy hover:bg-gold/10"
                   >
                     Dock & Boat Lift Accessories
                   </button>
@@ -111,19 +111,19 @@ export default function Header() {
                     onClick={() =>
                       goToService('new-boat-lift-design-installation')
                     }
-                    className="block w-full text-left px-4 py-2 text-sm text-slate-700 hover:bg-slate-100"
+                    className="block w-full text-left px-4 py-2 text-sm text-burgundy hover:bg-gold/10"
                   >
                     New Boat Lift Design & Installation
                   </button>
                   <button
                     onClick={() => goToService('boat-lift-repair-maintenance')}
-                    className="block w-full text-left px-4 py-2 text-sm text-slate-700 hover:bg-slate-100"
+                    className="block w-full text-left px-4 py-2 text-sm text-burgundy hover:bg-gold/10"
                   >
                     Boat Lift Repair & Maintenance
                   </button>
                   <button
                     onClick={() => goToService('dock-boat-lift-inspections')}
-                    className="block w-full text-left px-4 py-2 text-sm text-slate-700 hover:bg-slate-100"
+                    className="block w-full text-left px-4 py-2 text-sm text-burgundy hover:bg-gold/10"
                   >
                     Dock & Boat Lift Inspections
                   </button>
@@ -133,13 +133,13 @@ export default function Header() {
 
             <button
               onClick={() => scrollToSection('contact')}
-              className="text-slate-700 hover:text-[#800020] transition-colors font-medium"
+              className="text-burgundy hover:text-gold transition-colors font-medium"
             >
               CONTACT
             </button>
             <button
               onClick={() => scrollToSection('testimonials')}
-              className="text-slate-700 hover:text-[#800020] transition-colors font-medium"
+              className="text-burgundy hover:text-gold transition-colors font-medium"
             >
               REVIEWS
             </button>
@@ -147,7 +147,7 @@ export default function Header() {
 
           <a
             href="tel:727-954-0041"
-            className="hidden lg:flex items-center gap-2 bg-gradient-to-r from-[#800020] to-[#A0522D] text-white px-6 py-3 rounded-lg hover:shadow-lg transition-all"
+            className="hidden lg:flex items-center gap-2 bg-burgundy text-cream px-6 py-3 rounded-lg hover:shadow-lg transition-all"
           >
             <Phone className="w-4 h-4" />
             <span className="font-semibold">727-954-0041</span>
@@ -156,29 +156,29 @@ export default function Header() {
           {/* MOBILE MENU BUTTON */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 hover:bg-slate-100 rounded-lg transition-colors"
+            className="lg:hidden p-2 hover:bg-gold/10 rounded-lg transition-colors"
           >
             {isMobileMenuOpen ? (
-              <X className="w-6 h-6 text-[#800020]" />
+              <X className="w-6 h-6 text-burgundy" />
             ) : (
-              <Menu className="w-6 h-6 text-[#800020]" />
+              <Menu className="w-6 h-6 text-burgundy" />
             )}
           </button>
         </div>
 
         {/* MOBILE MENU */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-slate-200">
+          <div className="lg:hidden py-4 border-t border-gold">
             <nav className="flex flex-col gap-4">
               <button
                 onClick={() => scrollToSection('home')}
-                className="text-slate-700 hover:text-[#800020] transition-colors font-medium text-left"
+                className="text-burgundy hover:text-gold transition-colors font-medium text-left"
               >
                 HOME
               </button>
               <button
                 onClick={() => scrollToSection('about')}
-                className="text-slate-700 hover:text-[#800020] transition-colors font-medium text-left"
+                className="text-burgundy hover:text-gold transition-colors font-medium text-left"
               >
                 ABOUT
               </button>
@@ -187,7 +187,7 @@ export default function Header() {
               <div className="flex flex-col gap-2">
                 <button
                   onClick={() => setIsServicesOpen((prev) => !prev)}
-                  className="text-slate-700 hover:text-[#800020] transition-colors font-medium text-left flex justify-between items-center"
+                  className="text-burgundy hover:text-gold transition-colors font-medium text-left flex justify-between items-center"
                 >
                   <span>SERVICES</span>
                   <span className="text-xs">{isServicesOpen ? '▲' : '▼'}</span>
@@ -199,19 +199,19 @@ export default function Header() {
                       onClick={() =>
                         goToService('new-dock-design-construction')
                       }
-                      className="text-slate-700 hover:text-[#800020] transition-colors font-medium text-left text-sm"
+                      className="text-burgundy hover:text-gold transition-colors font-medium text-left text-sm"
                     >
                       New Dock Design & Construction
                     </button>
                     <button
                       onClick={() => goToService('dock-repair-maintenance')}
-                      className="text-slate-700 hover:text-[#800020] transition-colors font-medium text-left text-sm"
+                      className="text-burgundy hover:text-gold transition-colors font-medium text-left text-sm"
                     >
                       Dock Repair & Maintenance
                     </button>
                     <button
                       onClick={() => goToService('dock-boat-lift-accessories')}
-                      className="text-slate-700 hover:text-[#800020] transition-colors font-medium text-left text-sm"
+                      className="text-burgundy hover:text-gold transition-colors font-medium text-left text-sm"
                     >
                       Dock & Boat Lift Accessories
                     </button>
@@ -219,7 +219,7 @@ export default function Header() {
                       onClick={() =>
                         goToService('new-boat-lift-design-installation')
                       }
-                      className="text-slate-700 hover:text-[#800020] transition-colors font-medium text-left text-sm"
+                      className="text-burgundy hover:text-gold transition-colors font-medium text-left text-sm"
                     >
                       New Boat Lift Design & Installation
                     </button>
@@ -227,13 +227,13 @@ export default function Header() {
                       onClick={() =>
                         goToService('boat-lift-repair-maintenance')
                       }
-                      className="text-slate-700 hover:text-[#800020] transition-colors font-medium text-left text-sm"
+                      className="text-burgundy hover:text-gold transition-colors font-medium text-left text-sm"
                     >
                       Boat Lift Repair & Maintenance
                     </button>
                     <button
                       onClick={() => goToService('dock-boat-lift-inspections')}
-                      className="text-slate-700 hover:text-[#800020] transition-colors font-medium text-left text-sm"
+                      className="text-burgundy hover:text-gold transition-colors font-medium text-left text-sm"
                     >
                       Dock & Boat Lift Inspections
                     </button>
@@ -243,19 +243,19 @@ export default function Header() {
 
               <button
                 onClick={() => scrollToSection('contact')}
-                className="text-slate-700 hover:text-[#800020] transition-colors font-medium text-left"
+                className="text-burgundy hover:text-gold transition-colors font-medium text-left"
               >
                 CONTACT
               </button>
               <button
                 onClick={() => scrollToSection('testimonials')}
-                className="text-slate-700 hover:text-[#800020] transition-colors font-medium text-left"
+                className="text-burgundy hover:text-gold transition-colors font-medium text-left"
               >
                 REVIEWS
               </button>
               <a
                 href="tel:727-954-0041"
-                className="flex items-center justify-center gap-2 bg-gradient-to-r from-[#800020] to-[#A0522D] text-white px-6 py-3 rounded-lg hover:shadow-lg transition-all mt-2"
+                className="flex items-center justify-center gap-2 bg-burgundy text-cream px-6 py-3 rounded-lg hover:shadow-lg transition-all mt-2"
               >
                 <Phone className="w-4 h-4" />
                 <span className="font-semibold">727-954-0041</span>
