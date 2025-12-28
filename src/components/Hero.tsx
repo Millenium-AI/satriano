@@ -1,5 +1,5 @@
 import { ArrowRight, Anchor } from 'lucide-react';
-import logo from '../assets/SMClogo.svg';
+import logo from '../assets/SMClogoNO.svg';
 
 export default function Hero() {
   const scrollToContact = () => {
