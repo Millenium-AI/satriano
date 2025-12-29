@@ -28,11 +28,14 @@ export default function About() {
     };
   }, []);
 
-  const services = [
+  const dockServices = [
     { name: 'New Dock Construction', slug: 'new-dock-design-construction' },
     { name: 'Dock & Piling Repair & Maintenance', slug: 'dock-repair-maintenance' },
     { name: 'Dock & Piling Accessories', slug: 'dock-boat-lift-accessories' },
     { name: 'Dock & Piling Inspection', slug: 'dock-boat-lift-inspections' },
+  ];
+
+  const boatLiftServices = [
     { name: 'New Boat Lift Construction', slug: 'new-boat-lift-design-installation' },
     { name: 'Boat Lift Repair & Maintenance', slug: 'boat-lift-repair-maintenance' },
     { name: 'Boat Lift & Dock Accessories', slug: 'dock-boat-lift-accessories' },
@@ -84,30 +87,57 @@ export default function About() {
               <h4 className="text-xl font-bold text-burgundy mb-4">
                 Our Services Include:
               </h4>
-              <div className="grid sm:grid-cols-2 gap-3">
-                {services.map((service, index) => (
-                  <div
-                    key={index}
-                    className={`transition-all duration-500 ${
-                      isVisible
-                        ? 'opacity-100 translate-x-0'
-                        : 'opacity-0 -translate-x-5'
-                    }`}
-                    style={{ transitionDelay: `${300 + index * 50}ms` }}
-                  >
-                    <div className="hidden lg:flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-burgundy flex-shrink-0 mt-0.5" />
-                      <span className="text-burgundy">{service.name}</span>
-                    </div>
-                    <Link
-                      to={`/services/${service.slug}`}
-                      className="lg:hidden flex items-start gap-3 hover:text-gold transition-colors"
+              <div className="grid grid-cols-2 gap-3">
+                <div className="space-y-3">
+                  {dockServices.map((service, index) => (
+                    <div
+                      key={index}
+                      className={`transition-all duration-500 ${
+                        isVisible
+                          ? 'opacity-100 translate-x-0'
+                          : 'opacity-0 -translate-x-5'
+                      }`}
+                      style={{ transitionDelay: `${300 + index * 50}ms` }}
                     >
-                      <CheckCircle2 className="w-5 h-5 text-burgundy flex-shrink-0 mt-0.5" />
-                      <span className="text-burgundy hover:text-gold">{service.name}</span>
-                    </Link>
-                  </div>
-                ))}
+                      <div className="hidden lg:flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-burgundy flex-shrink-0 mt-0.5" />
+                        <span className="text-burgundy">{service.name}</span>
+                      </div>
+                      <Link
+                        to={`/services/${service.slug}`}
+                        className="lg:hidden flex items-start gap-3 hover:text-gold transition-colors"
+                      >
+                        <CheckCircle2 className="w-5 h-5 text-burgundy flex-shrink-0 mt-0.5" />
+                        <span className="text-burgundy hover:text-gold">{service.name}</span>
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+                <div className="space-y-3">
+                  {boatLiftServices.map((service, index) => (
+                    <div
+                      key={index}
+                      className={`transition-all duration-500 ${
+                        isVisible
+                          ? 'opacity-100 translate-x-0'
+                          : 'opacity-0 -translate-x-5'
+                      }`}
+                      style={{ transitionDelay: `${400 + index * 50}ms` }}
+                    >
+                      <div className="hidden lg:flex items-start gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-burgundy flex-shrink-0 mt-0.5" />
+                        <span className="text-burgundy">{service.name}</span>
+                      </div>
+                      <Link
+                        to={`/services/${service.slug}`}
+                        className="lg:hidden flex items-start gap-3 hover:text-gold transition-colors"
+                      >
+                        <CheckCircle2 className="w-5 h-5 text-burgundy flex-shrink-0 mt-0.5" />
+                        <span className="text-burgundy hover:text-gold">{service.name}</span>
+                      </Link>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
