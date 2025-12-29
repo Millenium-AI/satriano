@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
-import { Star, MapPin } from 'lucide-react';
 
 export default function Testimonials() {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLElement>(null);
+  const scriptLoaded = useRef(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -26,26 +26,17 @@ export default function Testimonials() {
     };
   }, []);
 
-  const testimonials = [
-    {
-      name: 'John Smith',
-      location: 'Treasure Island, FL',
-      text: 'Satriano Marine did an outstanding job on our new dock. Professional, timely, and the quality is exceptional. Highly recommend!',
-      rating: 5,
-    },
-    {
-      name: 'Mary Johnson',
-      location: 'St. Petersburg, FL',
-      text: 'We hired Satriano Marine for a boat lift installation and could not be happier. The team was knowledgeable and the work was flawless.',
-      rating: 5,
-    },
-    {
-      name: 'Robert Williams',
-      location: 'Clearwater, FL',
-      text: 'Best marine construction company in Pinellas County! They repaired our dock quickly and at a fair price. True professionals.',
-      rating: 5,
-    },
-  ];
+  // Load Featurable script
+  useEffect(() => {
+    if (!scriptLoaded.current) {
+      const script = document.createElement('script');
+      script.src = 'https://featurable.com/assets/bundle.js';
+      script.defer = true;
+      script.charset = 'UTF-8';
+      document.body.appendChild(script);
+      scriptLoaded.current = true;
+    }
+  }, []);
 
   return (
     <section id="testimonials" ref={ref} className="py-16 md:py-24 lg:py-32 bg-cream">
@@ -65,38 +56,16 @@ export default function Testimonials() {
           <div className="w-24 h-1 bg-gradient-to-r from-burgundy to-gold mx-auto mt-6" />
         </div>
 
-        {/* Testimonial Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-16 md:mb-20 lg:mb-24">
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className={`bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 p-6 md:p-8 border border-gold transform hover:scale-105 flex flex-col ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
-              style={{ transitionDelay: `${index * 150}ms` }}
-            >
-              {/* Star Rating */}
-              <div className="flex gap-1 mb-4 md:mb-6">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 md:w-6 md:h-6 fill-gold text-gold" />
-                ))}
-              </div>
-
-              {/* Testimonial Text */}
-              <p className="text-sm md:text-base lg:text-lg text-burgundy/80 leading-relaxed mb-6 md:mb-8 italic flex-grow">
-                &quot;{testimonial.text}&quot;
-              </p>
-
-              {/* Author Info */}
-              <div className="border-t border-gold/30 pt-4">
-                <p className="font-semibold text-burgundy text-base md:text-lg">{testimonial.name}</p>
-                <p className="text-sm md:text-base text-burgundy/60 flex items-center gap-1 mt-1">
-                  <MapPin className="w-3 h-3 md:w-4 md:h-4" />
-                  {testimonial.location}
-                </p>
-              </div>
-            </div>
-          ))}
+        {/* Featurable Google Reviews Widget */}
+        <div
+          className={`mb-16 md:mb-20 lg:mb-24 transition-all duration-1000 delay-300 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <div 
+            id="featurable-1d0aacbb-c0bb-488b-8ce7-f7a7dd99ac80" 
+            data-featurable-async
+          ></div>
         </div>
 
         {/* Google Reviews Section */}
@@ -114,7 +83,7 @@ export default function Testimonials() {
             </p>
           </div>
 
-          {/* Google Maps Embed - FIXED WITH EXPLICIT CLOSING TAG */}
+          {/* Google Maps Embed */}
           <div className="max-w-2xl mx-auto rounded-2xl overflow-hidden shadow-2xl border-2 border-gold bg-white">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3528.583700119941!2d-82.819318!3d27.822582299999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c2fd78750437c7%3A0xa1c03e39f5b066d6!2sSatriano%20Marine%20Construction%2C%20LLC.!5e0!3m2!1sen!2sus!4v1766973561487!5m2!1sen!2sus"
@@ -135,12 +104,104 @@ export default function Testimonials() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-8 md:px-10 lg:px-12 py-4 md:py-5 bg-gold text-burgundy rounded-lg font-semibold text-base md:text-lg lg:text-xl hover:bg-gold/90 hover:shadow-xl hover:scale-105 transition-all min-h-touch"
             >
-              <Star className="w-5 h-5 md:w-6 md:h-6 fill-burgundy text-burgundy" />
+              <svg 
+                className="w-5 h-5 md:w-6 md:h-6 fill-burgundy text-burgundy" 
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
               <span>Write a Review</span>
             </a>
           </div>
         </div>
       </div>
+
+      {/* Custom Styles for Featurable Widget */}
+      <style>{`
+        /* Override Featurable widget styles to match your theme */
+        #featurable-1d0aacbb-c0bb-488b-8ce7-f7a7dd99ac80 {
+          /* Card backgrounds */
+          --featurable-card-bg: #ffffff;
+          --featurable-card-border: rgba(206, 151, 61, 0.2);
+
+          /* Text colors */
+          --featurable-text-primary: #5B191B;
+          --featurable-text-secondary: rgba(91, 25, 27, 0.7);
+
+          /* Star rating colors */
+          --featurable-star-filled: #CE973D;
+          --featurable-star-empty: rgba(206, 151, 61, 0.3);
+
+          /* Button/Link colors */
+          --featurable-accent: #5B191B;
+          --featurable-accent-hover: rgba(91, 25, 27, 0.9);
+        }
+
+        /* Style review cards */
+        #featurable-1d0aacbb-c0bb-488b-8ce7-f7a7dd99ac80 [class*="ReviewCard"] {
+          border-color: rgba(206, 151, 61, 0.5) !important;
+          background: white !important;
+          box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+        }
+
+        #featurable-1d0aacbb-c0bb-488b-8ce7-f7a7dd99ac80 [class*="ReviewCard"]:hover {
+          box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1) !important;
+          transform: scale(1.02);
+        }
+
+        /* Style reviewer names */
+        #featurable-1d0aacbb-c0bb-488b-8ce7-f7a7dd99ac80 [class*="reviewerName"] {
+          color: #5B191B !important;
+          font-weight: 600 !important;
+        }
+
+        /* Style review text */
+        #featurable-1d0aacbb-c0bb-488b-8ce7-f7a7dd99ac80 [class*="reviewBody"] {
+          color: rgba(91, 25, 27, 0.8) !important;
+        }
+
+        /* Style dates */
+        #featurable-1d0aacbb-c0bb-488b-8ce7-f7a7dd99ac80 [class*="reviewerDate"] {
+          color: rgba(91, 25, 27, 0.6) !important;
+        }
+
+        /* Style star ratings to gold */
+        #featurable-1d0aacbb-c0bb-488b-8ce7-f7a7dd99ac80 svg[fill*="rgb"] path,
+        #featurable-1d0aacbb-c0bb-488b-8ce7-f7a7dd99ac80 svg path[fill] {
+          fill: #CE973D !important;
+        }
+
+        /* Style navigation arrows */
+        #featurable-1d0aacbb-c0bb-488b-8ce7-f7a7dd99ac80 button[class*="btn"] {
+          background: white !important;
+          border: 1px solid rgba(206, 151, 61, 0.5) !important;
+          color: #5B191B !important;
+        }
+
+        #featurable-1d0aacbb-c0bb-488b-8ce7-f7a7dd99ac80 button[class*="btn"]:hover {
+          background: #FCF1DF !important;
+          border-color: #CE973D !important;
+          box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1) !important;
+          transform: scale(1.05);
+        }
+
+        /* Style carousel dots */
+        #featurable-1d0aacbb-c0bb-488b-8ce7-f7a7dd99ac80 .slick-dots li button:before {
+          color: rgba(206, 151, 61, 0.4) !important;
+        }
+
+        #featurable-1d0aacbb-c0bb-488b-8ce7-f7a7dd99ac80 .slick-dots li.slick-active button:before {
+          color: #CE973D !important;
+        }
+
+        /* Ensure mobile responsiveness */
+        @media (max-width: 640px) {
+          #featurable-1d0aacbb-c0bb-488b-8ce7-f7a7dd99ac80 [class*="ReviewCard"] {
+            padding: 16px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
