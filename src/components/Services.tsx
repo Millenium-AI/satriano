@@ -88,7 +88,7 @@ export default function Services() {
   ];
 
   return (
-    <section id="services" ref={ref} className="py-20 bg-cream">
+    <section id="services" ref={ref} className="hidden lg:block py-20 bg-cream">
       <div className="container mx-auto px-4">
         <div
           className={`text-center mb-16 transition-all duration-1000 ${

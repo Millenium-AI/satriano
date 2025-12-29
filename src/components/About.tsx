@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { CheckCircle2 } from 'lucide-react';
 import side from '../assets/Side.jpg';
 
@@ -28,14 +29,14 @@ export default function About() {
   }, []);
 
   const services = [
-    'New Dock Construction',
-    'Dock & Piling Repair',
-    'Dock & Piling Maintenance',
-    'Dock & Piling Inspection',
-    'New Boat Lift Construction',
-    'Boat Lift Repair & Maintenance',
-    'Boat Lift & Dock Accessories',
-    'Boat Lift Inspection'
+    { name: 'New Dock Construction', slug: 'new-dock-design-construction' },
+    { name: 'Dock & Piling Repair', slug: 'dock-repair-maintenance' },
+    { name: 'Dock & Piling Maintenance', slug: 'dock-repair-maintenance' },
+    { name: 'Dock & Piling Inspection', slug: 'dock-boat-lift-inspections' },
+    { name: 'New Boat Lift Construction', slug: 'new-boat-lift-design-installation' },
+    { name: 'Boat Lift Repair & Maintenance', slug: 'boat-lift-repair-maintenance' },
+    { name: 'Boat Lift & Dock Accessories', slug: 'dock-boat-lift-accessories' },
+    { name: 'Boat Lift Inspection', slug: 'dock-boat-lift-inspections' }
   ];
 
   return (
@@ -87,15 +88,24 @@ export default function About() {
                 {services.map((service, index) => (
                   <div
                     key={index}
-                    className={`flex items-start gap-3 transition-all duration-500 ${
+                    className={`transition-all duration-500 ${
                       isVisible
                         ? 'opacity-100 translate-x-0'
                         : 'opacity-0 -translate-x-5'
                     }`}
                     style={{ transitionDelay: `${300 + index * 50}ms` }}
                   >
-                    <CheckCircle2 className="w-5 h-5 text-burgundy flex-shrink-0 mt-0.5" />
-                    <span className="text-burgundy">{service}</span>
+                    <div className="hidden lg:flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-burgundy flex-shrink-0 mt-0.5" />
+                      <span className="text-burgundy">{service.name}</span>
+                    </div>
+                    <Link
+                      to={`/services/${service.slug}`}
+                      className="lg:hidden flex items-start gap-3 hover:text-gold transition-colors"
+                    >
+                      <CheckCircle2 className="w-5 h-5 text-burgundy flex-shrink-0 mt-0.5" />
+                      <span className="text-burgundy hover:text-gold">{service.name}</span>
+                    </Link>
                   </div>
                 ))}
               </div>
