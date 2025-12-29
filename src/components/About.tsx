@@ -33,8 +33,8 @@ export default function About() {
     'Dock & Piling Maintenance',
     'Dock & Piling Inspection',
     'New Boat Lift Construction',
-    'Boat Lift Repair',
-    'Boat Lift Maintenance',
+    'Boat Lift Repair & Maintenance',
+    'Boat Lift & Dock Accessories',
     'Boat Lift Inspection'
   ];
 
