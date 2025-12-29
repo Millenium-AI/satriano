@@ -38,7 +38,7 @@ export default function About() {
   const boatLiftServices = [
     { name: 'New Boat Lift Construction', slug: 'new-boat-lift-design-installation' },
     { name: 'Boat Lift Repair & Maintenance', slug: 'boat-lift-repair-maintenance' },
-    { name: 'Boat Lift & Dock Accessories', slug: 'dock-boat-lift-accessories' },
+    { name: 'Boat Lift Accessories', slug: 'dock-boat-lift-accessories' },
     { name: 'Boat Lift Inspection', slug: 'dock-boat-lift-inspections' }
   ];
 
