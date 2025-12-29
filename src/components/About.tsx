@@ -30,8 +30,8 @@ export default function About() {
 
   const services = [
     { name: 'New Dock Construction', slug: 'new-dock-design-construction' },
-    { name: 'Dock & Piling Repair', slug: 'dock-repair-maintenance' },
-    { name: 'Dock & Piling Maintenance', slug: 'dock-repair-maintenance' },
+    { name: 'Dock & Piling Repair & Maintenance', slug: 'dock-repair-maintenance' },
+    { name: 'Dock & Piling Accessories', slug: 'dock-boat-lift-accessories' },
     { name: 'Dock & Piling Inspection', slug: 'dock-boat-lift-inspections' },
     { name: 'New Boat Lift Construction', slug: 'new-boat-lift-design-installation' },
     { name: 'Boat Lift Repair & Maintenance', slug: 'boat-lift-repair-maintenance' },
