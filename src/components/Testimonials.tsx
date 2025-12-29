@@ -60,7 +60,7 @@ export default function Testimonials() {
             What Our <span className="text-gold">Clients Say</span>
           </h2>
           <p className="text-base md:text-lg lg:text-xl text-burgundy max-w-3xl mx-auto leading-relaxed">
-            Don&apos;t just take our word for it - hear from our satisfied customers
+            Don&apos;t just take our word for it - hear from our Satisfied Customers
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-burgundy to-gold mx-auto mt-6" />
         </div>
