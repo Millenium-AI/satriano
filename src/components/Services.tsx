@@ -96,13 +96,17 @@ export default function Services() {
           }`}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-burgundy mb-4 leading-tight">
-            Providing Expert Dock &amp; Boat Lift Solutions
+            Providing <span className="text-gold">Expert</span> Dock & Boat Lift{' '}
+            <span className="text-gold">Solutions</span>
           </h2>
 
-          <p className="text-xl text-burgundy max-w-2xl mx-auto">
-            From design to installation to maintenance, we&apos;re your one-stop shop
-            for all dock and boat lift needs.
+          <p className="text-xl text-burgundy max-w-3xl mx-auto mt-6">
+            From design to installation to maintenance;
+            <br />
+            we&apos;re your one-stop shop for all dock and boat lift needs.
           </p>
+
+          <div className="w-24 h-1 bg-gradient-to-r from-burgundy to-gold mx-auto mt-6"></div>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

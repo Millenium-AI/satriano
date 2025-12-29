@@ -171,7 +171,7 @@ export default function About() {
             </div>
 
             <div className="mt-8 grid grid-cols-2 gap-4">
-              <div className="bg-cream p-6 rounded-xl shadow-lg border border-gold hover:shadow-xl transition-shadow">
+              <div className="bg-cream p-6 rounded-xl shadow-lg border border-gold hover:shadow-xl transition-shadow text-center">
                 <div className="text-3xl font-bold text-burgundy mb-2">
                   CGC 1531210
                 </div>
@@ -179,7 +179,7 @@ export default function About() {
                   State Certified General Contractor
                 </div>
               </div>
-              <div className="bg-cream p-6 rounded-xl shadow-lg border border-gold hover:shadow-xl transition-shadow">
+              <div className="bg-cream p-6 rounded-xl shadow-lg border border-gold hover:shadow-xl transition-shadow text-center">
                 <div className="text-3xl font-bold text-gold mb-2">
                   Family
                 </div>
