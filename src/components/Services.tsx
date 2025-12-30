@@ -95,16 +95,16 @@ export default function Services() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-burgundy mb-4 leading-tight">
+          <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-burgundy mb-4 leading-tight">
             Providing <span className="text-gold">Expert</span> Dock & Boat Lift{' '}
             <span className="text-gold">Solutions</span>
           </h2>
 
-          <p className="text-xl text-burgundy max-w-3xl mx-auto mt-6">
+          <h3 className="text-xl font-lato text-burgundy max-w-3xl mx-auto mt-6">
             From design to installation to maintenance;
             <br />
             we&apos;re your one-stop shop for all dock and boat lift needs.
-          </p>
+          </h3>
 
           <div className="w-24 h-1 bg-gradient-to-r from-burgundy to-gold mx-auto mt-6"></div>
         </div>
@@ -127,7 +127,7 @@ export default function Services() {
                 >
                   <Icon className="w-8 h-8 text-cream" />
                 </div>
-                <h3 className="text-xl font-bold text-burgundy mb-4">
+                <h3 className="text-xl font-lato font-bold text-burgundy mb-4">
                   {service.title}
                 </h3>
                 <p className="text-burgundy mb-6">{service.description}</p>

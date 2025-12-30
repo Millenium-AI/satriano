@@ -14,13 +14,13 @@ export default function Inspections() {
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           Back to Services
         </a>
-        <h1 className="text-4xl md:text-5xl font-bold text-burgundy mb-6">Dock & Boat Lift Inspections</h1>
+        <h1 className="text-4xl md:text-5xl font-montserrat font-bold text-burgundy mb-6">Dock & Boat Lift Inspections</h1>
         <p className="text-lg text-burgundy mb-8">
           Thorough inspections for buyers, sellers, and owners. Detailed reports on dock and boat lift integrity and safety.
         </p>
         
         <div className="bg-white p-8 rounded-2xl shadow-lg border border-gold mb-8">
-          <h2 className="text-2xl font-bold text-burgundy mb-4">What We Inspect</h2>
+          <h2 className="text-2xl font-lato font-bold text-burgundy mb-4">What We Inspect</h2>
           <ul className="space-y-3 text-burgundy">
             <li>• Structural integrity of pilings and beams</li>
             <li>• Decking condition</li>
@@ -32,7 +32,7 @@ export default function Inspections() {
         </div>
 
         <div className="bg-white p-8 rounded-2xl shadow-lg border border-gold">
-          <h2 className="text-2xl font-bold text-burgundy mb-4">Inspection Reports</h2>
+          <h2 className="text-2xl font-lato font-bold text-burgundy mb-4">Inspection Reports</h2>
           <p className="text-burgundy">
             Receive a comprehensive written report with photos, safety concerns, repair recommendations, and estimated costs within 48 hours.
           </p>

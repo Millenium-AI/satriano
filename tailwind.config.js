@@ -10,7 +10,9 @@ export default {
       },
       // Added fontFamily configuration for Special Elite font
       fontFamily: {
-        'special-elite': ['"Special Elite"', 'system-ui'],
+        'special-elite': ['Special Elite', 'system-ui'],
+        'montserrat': ['Montserrat', 'sans-serif'],
+        'lato': ['Lato', 'sans-serif']
       },
       // Mobile-optimized spacing
       spacing: {

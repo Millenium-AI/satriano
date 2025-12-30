@@ -14,14 +14,14 @@ export default function Accessories() {
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           Back to Services
         </a>
-        <h1 className="text-4xl md:text-5xl font-bold text-burgundy mb-6">Dock & Boat Lift Accessories</h1>
+        <h1 className="text-4xl md:text-5xl font-montserrat font-bold text-burgundy mb-6">Dock & Boat Lift Accessories</h1>
         <p className="text-lg text-burgundy mb-8">
           Wide selection of premium accessories to enhance your dock and boat lift including bumpers, cleats, ladders, and more.
         </p>
         
         <div className="grid md:grid-cols-2 gap-8">
           <div className="bg-white p-8 rounded-2xl shadow-lg border border-gold">
-            <h2 className="text-2xl font-bold text-burgundy mb-4">Dock Accessories</h2>
+            <h2 className="text-2xl font-lato font-bold text-burgundy mb-4">Dock Accessories</h2>
             <ul className="space-y-3 text-burgundy">
               <li>• Cleats and bumpers</li>
               <li>• Dock ladders</li>
@@ -32,7 +32,7 @@ export default function Accessories() {
           </div>
 
           <div className="bg-white p-8 rounded-2xl shadow-lg border border-gold">
-            <h2 className="text-2xl font-bold text-burgundy mb-4">Boat Lift Accessories</h2>
+            <h2 className="text-2xl font-lato font-bold text-burgundy mb-4">Boat Lift Accessories</h2>
             <ul className="space-y-3 text-burgundy">
               <li>• Remote control systems</li>
               <li>• Canopy covers</li>

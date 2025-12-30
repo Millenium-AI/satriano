@@ -75,7 +75,7 @@ export default function Contact() {
     >
       <div className="container mx-auto px-4">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-4xl md:text-5xl font-bold text-burgundy mb-4">
+          <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-burgundy mb-4">
             Get Your
             <span className="block text-gold">
               Free Estimate
@@ -91,7 +91,7 @@ export default function Contact() {
           <div className={`transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
             <div className="space-y-8">
               <div>
-                <h3 className="text-2xl font-bold text-burgundy mb-4">Why Choose Satriano Marine?</h3>
+                <h3 className="text-2xl font-lato font-bold text-burgundy mb-4">Why Choose Satriano Marine?</h3>
                 <p className="text-lg text-burgundy leading-relaxed mb-4">
                   We provide free estimates with no obligation. Our team delivers unmatched customer service for all your dock and boat lift needs.
                 </p>

@@ -16,13 +16,13 @@ export default function BoatLiftInstallation() {
         </a>
 
 
-        <h1 className="text-4xl md:text-5xl font-bold text-burgundy mb-6">New Boat Lift Design & Installation</h1>
+        <h1 className="text-4xl md:text-5xl font-montserrat font-bold text-burgundy mb-6">New Boat Lift Design & Installation</h1>
         <p className="text-lg text-burgundy mb-8">
           Professional boat lift design and installation for vessels of all sizes. Quality motors, cables, and remote controls.
         </p>
         
         <div className="bg-white p-8 rounded-2xl shadow-lg border border-gold mb-8">
-          <h2 className="text-2xl font-bold text-burgundy mb-4">Boat Lift Types</h2>
+          <h2 className="text-2xl font-lato font-bold text-burgundy mb-4">Boat Lift Types</h2>
           <ul className="space-y-3 text-burgundy">
             <li>• 4-post lifts (up to 30,000 lbs)</li>
             <li>• PWC lifts</li>
@@ -33,7 +33,7 @@ export default function BoatLiftInstallation() {
         </div>
 
         <div className="bg-white p-8 rounded-2xl shadow-lg border border-gold">
-          <h2 className="text-2xl font-bold text-burgundy mb-4">Why Choose a Boat Lift?</h2>
+          <h2 className="text-2xl font-lato font-bold text-burgundy mb-4">Why Choose a Boat Lift?</h2>
           <p className="text-burgundy mb-4">
             Protect your investment from marine growth, hull damage, and constant water exposure. Boat lifts extend the life of your vessel and make launching effortless.
           </p>
