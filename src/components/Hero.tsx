@@ -58,13 +58,12 @@ export default function Hero() {
             Satriano Marine Construction
           </h1>
 
-          <div className="flex items-center gap-3 bg-gold/30 backdrop-blur-md px-8 py-4 rounded-lg mb-8 shadow-xl border border-gold/50 max-w-fit">
-            <Anchor className="w-6 h-6 md:w-8 md:h-8 text-gold flex-shrink-0" />
-            <h3 className="text-xl md:text-2xl text-white font-semibold">
+          <div className="flex items-center 🟢gap-2 xs:gap-3🟢 bg-gold/30 backdrop-blur-md 🟢px-3 xs:px-4🟢 md:px-8 🟢py-2 xs:py-3🟢 md:py-4 rounded-lg 🟢mb-6 xs:mb-8🟢 shadow-xl border border-gold/50 max-w-fit 🔵mx-auto md:mx-0🔵">
+            <Anchor className="🟢w-4 h-4 xs:w-5 xs:h-5🟢 md:w-8 md:h-8 text-gold flex-shrink-0" />
+            <h3 className="🟡text-sm xs:text-base🟡 md:text-xl lg:text-2xl text-white font-semibold">
               Florida's Premier Dock & Boat Lift Solutions
             </h3>
           </div>
-
           <p className="text-xl text-white/90 mb-8 leading-relaxed drop-shadow-lg">
             With over 40 years in the construction business;
             <br />

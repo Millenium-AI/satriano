@@ -59,9 +59,9 @@ export default function About() {
         >
           <div className="flex items-center justify-center gap-8 max-w-4xl mx-auto">
             <div>
-              <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-burgundy mb-4">
+              <h2 className="🟡text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-5xl🟡 font-montserrat font-bold text-burgundy mb-4">
                 Pinellas County&apos;s Leading
-                <span className="block text-gold">
+                <span className="block text-gold mt-1 xs:mt-2">
                   Dock &amp; Boat Lift Company
                 </span>
               </h2>
@@ -79,7 +79,7 @@ export default function About() {
                 : 'opacity-0 -translate-x-10'
             }`}
           >
-            <h3 className="text-2xl md:text-3xl font-bold text-burgundy mb-6">
+            <h3 className="🟡text-lg xs:text-xl sm:text-2xl md:text-3xl🟡 font-bold text-burgundy 🟢mb-4 xs:mb-6🟢">
               Experienced in New Dock Design, Construction &amp; Boat Lifts
             </h3>
 
