@@ -59,6 +59,14 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <button
+                  onClick={() => scrollToSection('home')}
+                  className="text-cream/80 hover:text-cream transition-colors"
+                >
+                  Home
+                </button>
+              </li>
+              <li>
+                <button
                   onClick={() => scrollToSection('about')}
                   className="text-cream/80 hover:text-cream transition-colors"
                 >
