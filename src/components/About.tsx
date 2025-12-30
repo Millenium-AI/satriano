@@ -90,7 +90,7 @@ export default function About() {
             </p>
 
             <div className="bg-gold/20 p-8 rounded-2xl border border-gold shadow-lg mb-6">
-              <h4 className="text-xl font-lato font-bold text-burgundy mb-4">
+              <h4 className="text-2xl font-lato font-bold text-burgundy mb-4">
                 Our Services Include:
               </h4>
               <div className="grid grid-cols-2 gap-3">

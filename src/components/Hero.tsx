@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { ArrowRight, Anchor, ChevronLeft, ChevronRight } from 'lucide-react';
-import logo from '../assets/SMClogoNO.svg';
 import image1 from '../assets/ElevatorAngleShot.jpg';
 import image2 from '../assets/Areial.jpg';
 import image3 from '../assets/Dock.jpg';
@@ -61,9 +60,9 @@ export default function Hero() {
 
           <div className="flex items-center gap-3 bg-gold/30 backdrop-blur-md px-8 py-4 rounded-lg mb-8 shadow-xl border border-gold/50 max-w-fit">
             <Anchor className="w-6 h-6 md:w-8 md:h-8 text-gold flex-shrink-0" />
-            <h2 className="text-2xl md:text-3xl text-white font-semibold">
+            <h3 className="text-xl md:text-2xl text-white font-semibold">
               Florida's Premier Dock & Boat Lift Solutions
-            </h2>
+            </h3>
           </div>
 
           <p className="text-xl text-white/90 mb-8 leading-relaxed drop-shadow-lg">
