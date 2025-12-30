@@ -8,11 +8,12 @@ export default {
         burgundy: '#5B191B',
         gold: '#CE973D',
       },
-      // Added fontFamily configuration for Special Elite font
+      // Added fontFamily for custom fonts
       fontFamily: {
         'special-elite': ['Special Elite', 'system-ui'],
         'montserrat': ['Montserrat', 'sans-serif'],
-        'lato': ['Lato', 'sans-serif']
+        'lato': ['Lato', 'sans-serif'],
+        'zalando': ['Zalando Sans Expanded', 'sans-serif'],
       },
       // Mobile-optimized spacing
       spacing: {
