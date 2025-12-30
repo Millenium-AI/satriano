@@ -55,7 +55,7 @@ export default function Hero() {
       {/* Content - Left-side, vertically centered, left-aligned text */}
       <div className="relative z-10 container mx-auto px-8 py-20">
         <div className="max-w-4xl text-left">
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-2xl">
+          <h1 className="font-special-elite text-5xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-2xl">
             Satriano Marine Construction
           </h1>
 

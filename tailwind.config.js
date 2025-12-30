@@ -8,6 +8,10 @@ export default {
         burgundy: '#5B191B',
         gold: '#CE973D',
       },
+      // Added fontFamily configuration for Special Elite font
+      fontFamily: {
+        'special-elite': ['"Special Elite"', 'system-ui'],
+      },
       // Mobile-optimized spacing
       spacing: {
         'safe-top': 'env(safe-area-inset-top)',
