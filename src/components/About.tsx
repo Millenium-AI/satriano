@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle2 } from 'lucide-react';
 import side from '../assets/Side.jpg';
+import logo from '../assets/SMClogoNO.svg';
 
 export default function About() {
   const [isVisible, setIsVisible] = useState(false);
@@ -56,13 +57,18 @@ export default function About() {
               : 'opacity-0 translate-y-10'
           }`}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-burgundy mb-4">
-            Pinellas County&apos;s Leading
-            <span className="block text-gold">
-              Dock &amp; Boat Lift Company
-            </span>
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-burgundy to-gold mx-auto mt-6" />
+          <div className="flex items-center justify-center gap-8 max-w-4xl mx-auto">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold text-burgundy mb-4">
+                Pinellas County&apos;s Leading
+                <span className="block text-gold">
+                  Dock &amp; Boat Lift Company
+                </span>
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-burgundy to-gold mx-auto mt-6" />
+            </div>
+            <img src={logo} alt="Satriano Marine Construction Logo" className="w-32 h-32 md:w-40 md:h-40" />
+          </div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
