@@ -1,8 +1,11 @@
 import { ArrowLeft } from 'lucide-react';
+import TopStrip from '../components/TopStrip';
 
 export default function DockDesign() {
   return (
-    <div className="min-h-screen bg-slate-50">
+    <>
+      <TopStrip />
+      <div className="min-h-screen bg-slate-50">
       <div className="container mx-auto px-4 py-20">
       <a
           href="/#services"
@@ -34,6 +37,7 @@ export default function DockDesign() {
           </p>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
