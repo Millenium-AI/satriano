@@ -64,12 +64,9 @@ export default function Hero() {
               Florida's Premier Dock & Boat Lift Solutions
             </h3>
           </div>
-          <p className="text-base xs:text-lg md:text-xl text-white/90 mb-8 leading-relaxed drop-shadow-lg text-balance">
-            With over 40 years in the construction business;
-            <br className="hidden md:block" />
-            you can count on us to complete any job large or small.
+          <p className="text-base xs:text-lg md:text-xl text-white/90 mb-8 leading-relaxed drop-shadow-lg text-balance max-w-2xl mx-auto">
+            With over 40 years in the construction business, You can count on us to complete any job large or small.
           </p>
-
           <div className="flex flex-wrap gap-4 mb-12">
             <button
               onClick={scrollToContact}
