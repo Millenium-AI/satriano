@@ -1,49 +1,28 @@
-import { ArrowLeft } from 'lucide-react';
-import TopStrip from '../components/TopStrip';
+import ServicePageLayout from '../components/ServicePageLayout';
 
-export default function Accessories() {
+export default function DockAccessories() {
   return (
-    <>
-      <TopStrip />
-      <div className="min-h-screen bg-cream">
-      <div className="container mx-auto px-4 py-10">
-      <a
-          href="/#services"
-          className="inline-flex items-center gap-2 bg-white text-burgundy px-4 py-2 rounded-lg text-sm font-semibold border-2 border-burgundy hover:bg-burgundy hover:text-cream transition-all group mb-6"
-        >
-          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-          Back to Services
-        </a>
-        <h1 className="text-4xl md:text-5xl font-montserrat font-bold text-burgundy mb-6">Dock & Boat Lift Accessories</h1>
-        <p className="text-lg text-burgundy mb-8">
-          Wide selection of premium accessories to enhance your dock and boat lift including bumpers, cleats, ladders, and more.
-        </p>
-        
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="bg-white p-8 rounded-2xl shadow-lg border border-gold">
-            <h2 className="text-2xl font-lato font-bold text-burgundy mb-4">Dock Accessories</h2>
-            <ul className="space-y-3 text-burgundy">
-              <li>• Cleats and bumpers</li>
-              <li>• Dock ladders</li>
-              <li>• Solar lighting</li>
-              <li>• Kayak racks</li>
-              <li>• Fish cleaning stations</li>
-            </ul>
-          </div>
+    <ServicePageLayout
+      title="Dock & Boat Lift Accessories"
+      description="Enhance your dock and boat lift with quality accessories designed for functionality, safety, and convenience."
+    >
+      <div className="bg-white p-8 rounded-2xl shadow-lg border border-gold mb-8">
+        <h2 className="text-2xl font-lato font-bold text-burgundy mb-4">Popular Accessories</h2>
+        <ul className="space-y-3 text-burgundy">
+          <li>• Dock ladders and steps</li>
+          <li>• Cleats, bumpers, and fenders</li>
+          <li>• Lighting systems</li>
+          <li>• Kayak and PWC lifts</li>
+          <li>• Dock boxes and storage solutions</li>
+        </ul>
+      </div>
 
-          <div className="bg-white p-8 rounded-2xl shadow-lg border border-gold">
-            <h2 className="text-2xl font-lato font-bold text-burgundy mb-4">Boat Lift Accessories</h2>
-            <ul className="space-y-3 text-burgundy">
-              <li>• Remote control systems</li>
-              <li>• Canopy covers</li>
-              <li>• Bunk boards and carpet</li>
-              <li>• Guide poles</li>
-              <li>• Lift levelers</li>
-            </ul>
-          </div>
-        </div>
+      <div className="bg-white p-8 rounded-2xl shadow-lg border border-gold">
+        <h2 className="text-2xl font-lato font-bold text-burgundy mb-4">Custom Solutions</h2>
+        <p className="text-burgundy">
+          We can source and install virtually any dock or boat lift accessory to meet your specific needs and enhance your waterfront experience.
+        </p>
       </div>
-      </div>
-    </>
+    </ServicePageLayout>
   );
 }

@@ -1,5 +1,4 @@
 // src/pages/Home.tsx
-import TopStrip from '../components/TopStrip';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import About from '../components/About';
@@ -11,7 +10,6 @@ import Footer from '../components/Footer';
 export default function Home() {
   return (
     <>
-      <TopStrip />
       <Header />
       <Hero />
       <About />
