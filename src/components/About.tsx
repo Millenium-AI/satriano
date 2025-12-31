@@ -1,33 +1,13 @@
-import { useState, useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle2 } from 'lucide-react';
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import side from '../assets/Side.jpg';
 import logo from '../assets/SMClogoNO.svg';
 
 export default function About() {
-  const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
-    };
-  }, []);
+  const isVisible = useIntersectionObserver(ref, 0.1);
 
   const dockServices = [
     { name: 'New Dock Construction', slug: 'new-dock-design-construction' },
@@ -58,8 +38,8 @@ export default function About() {
           <div className="flex items-center justify-center md:gap-4 max-w-4xl mx-auto">
             <div className="text-center md:text-left md:flex-1">
               <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-montserrat font-bold text-burgundy mb-4 text-balance">
-                Pinellas County&apos;s Leading
-                <span className="text-gold"> Dock &amp; Boat Lift Company</span>
+                Pinellas County's Leading
+                <span className="text-gold"> Dock & Boat Lift Company</span>
               </h2>
               <div className="w-24 h-1 bg-gradient-to-r from-burgundy to-gold mx-auto md:mx-0 mt-6" />
             </div>
@@ -79,9 +59,8 @@ export default function About() {
             }`}
           >
             <h3 className="text-xl xs:text-2xl sm:text-3xl md:text-2xl lg:text-3xl font-bold text-burgundy mb-4 xs:mb-6">
-              Experienced in New Dock Design, Construction &amp; Boat Lifts
+              Experienced in New Dock Design, Construction & Boat Lifts
             </h3>
-
             <p className="text-base md:text-lg text-burgundy mb-4 leading-relaxed">
               Satriano Marine Construction, a family-owned and operated business
               dedicated to providing a high-quality marine construction service. 
@@ -116,6 +95,7 @@ export default function About() {
                     </div>
                   ))}
                 </div>
+
                 <div className="space-y-3">
                   {boatLiftServices.map((service, index) => (
                     <div
@@ -146,7 +126,6 @@ export default function About() {
               We serve all of Pinellas County with expert craftsmanship and
               unmatched customer service.
             </p>
-
             <p className="text-lg text-burgundy mb-6 leading-relaxed">
               If you have waterfront property and are in need of dock or boat
               lift services, please contact us today to see how we can offer
@@ -168,7 +147,6 @@ export default function About() {
                 className="relative rounded-2xl shadow-2xl w-full h-[500px] object-cover"
               />
             </div>
-
             <div className="mt-8 grid grid-cols-2 gap-4">
               <div className="bg-cream p-6 rounded-xl shadow-lg border border-gold hover:shadow-xl transition-shadow text-center">
                 <div className="text-3xl font-bold text-burgundy mb-2">
@@ -183,7 +161,7 @@ export default function About() {
                   Family
                 </div>
                 <div className="text-sm text-burgundy">
-                  Owned &amp; Operated
+                  Owned & Operated
                 </div>
               </div>
             </div>
