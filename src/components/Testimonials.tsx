@@ -1,30 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 export default function Testimonials() {
-  const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLElement>(null);
+  const isVisible = useIntersectionObserver(ref, 0.1);
   const scriptLoaded = useRef(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
-    };
-  }, []);
 
   // Load Featurable script
   useEffect(() => {
@@ -34,6 +14,7 @@ export default function Testimonials() {
       script.defer = true;
       script.charset = 'UTF-8';
       document.body.appendChild(script);
+
       scriptLoaded.current = true;
     }
   }, []);
@@ -51,7 +32,7 @@ export default function Testimonials() {
             What Our <span className="text-gold">Clients Say</span>
           </h2>
           <p className="text-base md:text-lg lg:text-xl text-burgundy max-w-3xl mx-auto leading-relaxed">
-            Don&apos;t just take our word for it - hear from our Satisfied Customers
+            Don't just take our word for it - hear from our Satisfied Customers
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-burgundy to-gold mx-auto mt-6" />
         </div>
@@ -124,15 +105,15 @@ export default function Testimonials() {
           /* Card backgrounds */
           --featurable-card-bg: #ffffff;
           --featurable-card-border: rgba(206, 151, 61, 0.2);
-
+          
           /* Text colors */
           --featurable-text-primary: #5B191B;
           --featurable-text-secondary: rgba(91, 25, 27, 0.7);
-
+          
           /* Star rating colors */
           --featurable-star-filled: #CE973D;
           --featurable-star-empty: rgba(206, 151, 61, 0.3);
-
+          
           /* Button/Link colors */
           --featurable-accent: #5B191B;
           --featurable-accent-hover: rgba(91, 25, 27, 0.9);

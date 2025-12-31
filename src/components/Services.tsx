@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Anchor,
@@ -9,32 +9,12 @@ import {
   ArrowRight,
   ClipboardCheck,
 } from 'lucide-react';
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 export default function Services() {
-  const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLElement>(null);
+  const isVisible = useIntersectionObserver(ref, 0.1);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
-    };
-  }, []);
 
   const services = [
     {
@@ -99,13 +79,11 @@ export default function Services() {
             Providing <span className="text-gold">Expert</span> Dock & Boat Lift{' '}
             <span className="text-gold">Solutions</span>
           </h2>
-
           <h3 className="text-xl font-lato text-burgundy max-w-3xl mx-auto mt-6">
             From design to installation to maintenance;
             <br />
-            we&apos;re your one-stop shop for all dock and boat lift needs.
+            we're your one-stop shop for all dock and boat lift needs.
           </h3>
-
           <div className="w-24 h-1 bg-gradient-to-r from-burgundy to-gold mx-auto mt-6"></div>
         </div>
 
@@ -131,7 +109,6 @@ export default function Services() {
                   {service.title}
                 </h3>
                 <p className="text-burgundy mb-6">{service.description}</p>
-
                 <button
                   onClick={() => navigate(`/services/${service.slug}`)}
                   className="text-burgundy font-semibold flex items-center gap-2 group-hover:gap-3 transition-all hover:text-gold"

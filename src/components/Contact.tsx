@@ -1,8 +1,10 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { Send, Phone, Mail, MapPin } from 'lucide-react';
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 export default function Contact() {
-  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLElement>(null);
+  const isVisible = useIntersectionObserver(ref, 0.1);
   const [result, setResult] = useState("");
   const [formData, setFormData] = useState({
     name: '',
@@ -11,29 +13,6 @@ export default function Contact() {
     message: '',
     source: ''
   });
-  const ref = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    const currentRef = ref.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-    };
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
