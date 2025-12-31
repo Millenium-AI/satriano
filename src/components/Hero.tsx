@@ -54,13 +54,13 @@ export default function Hero() {
       {/* Content - Left-side, vertically centered, left-aligned text */}
       <div className="relative z-10 container mx-auto px-8 py-20">
         <div className="max-w-4xl text-left">
-          <h1 className="font-zalando text-5xl md:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-2xl">
+          <h1 className="font-zalando text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-2xl">
             Satriano Marine Construction
           </h1>
 
-          <div className="flex items-center gap-2 xs:gap-3 bg-gold/30 backdrop-blur-md px-3 xs:px-4 md:px-8 py-2 xs:py-3 md:py-4 rounded-lg mb-6 xs:mb-8 shadow-xl border border-gold/50 max-w-fit mx-auto md:mx-0">
+          <div className="flex items-center gap-2 xs:gap-3 bg-gold/30 backdrop-blur-md px-3 xs:px-4 md:px-6 lg:px-8 py-2 xs:py-3 md:py-3 lg:py-4 rounded-lg mb-6 xs:mb-8 shadow-xl border border-gold/50 max-w-fit mx-auto md:mx-0">
             <Anchor className="w-4 h-4 xs:w-5 xs:h-5 md:w-8 md:h-8 text-gold flex-shrink-0" />
-            <h3 className="text-base xs:text-lg md:text-2xl lg:text-3xl text-white font-semibold">
+            <h3 className="text-base xs:text-lg md:text-xl lg:text-2xl xl:text-3xl text-white font-semibold">
               Florida's Premier Dock & Boat Lift Solutions
             </h3>
           </div>

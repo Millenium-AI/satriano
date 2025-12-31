@@ -57,7 +57,7 @@ export default function About() {
         >
           <div className="flex items-center justify-center md:gap-4 max-w-4xl mx-auto">
             <div className="text-center md:text-left md:flex-1">
-              <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-montserrat font-bold text-burgundy mb-4 text-balance">
+              <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-montserrat font-bold text-burgundy mb-4 text-balance">
                 Pinellas County&apos;s Leading
                 <span className="text-gold"> Dock &amp; Boat Lift Company</span>
               </h2>
@@ -78,11 +78,11 @@ export default function About() {
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
             }`}
           >
-            <h3 className="text-xl xs:text-2xl sm:text-3xl md:text-3xl font-bold text-burgundy mb-4 xs:mb-6">
+            <h3 className="text-xl xs:text-2xl sm:text-3xl md:text-2xl lg:text-3xl font-bold text-burgundy mb-4 xs:mb-6">
               Experienced in New Dock Design, Construction &amp; Boat Lifts
             </h3>
 
-            <p className="text-lg text-burgundy mb-4 leading-relaxed">
+            <p className="text-base md:text-lg text-burgundy mb-4 leading-relaxed">
               Satriano Marine Construction, a family-owned and operated business
               dedicated to providing a high-quality marine construction service. 
               We take pride in our work and are personal in our service.
@@ -142,7 +142,7 @@ export default function About() {
               </div>
             </div>
 
-            <p className="text-lg text-burgundy mb-4 leading-relaxed">
+            <p className="text-base md:text-lg text-burgundy mb-4 leading-relaxed">
               We serve all of Pinellas County with expert craftsmanship and
               unmatched customer service.
             </p>

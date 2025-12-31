@@ -75,7 +75,7 @@ export default function Contact() {
     >
       <div className="container mx-auto px-4">
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-burgundy mb-4">
+          <h2 className="text-4xl md:text-4xl lg:text-5xl font-montserrat font-bold text-burgundy mb-4">
             Get Your
             <span className="block text-gold">
               Free Estimate
