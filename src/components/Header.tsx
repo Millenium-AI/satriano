@@ -41,18 +41,18 @@ export default function Header() {
       style={{ backgroundColor: '#FEF7EB' }}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-20 lg:h-16">
           <div
             className="flex items-center gap-3 cursor-pointer"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <img src={logo} alt="Satriano Marine Construction" className="h-12 w-12" />
-            <div className="text-2xl font-bold">
+            <img src={logo} alt="Satriano Marine Construction" className="h-12 w-12 lg:h-10 lg:w-10" />
+            <div className="text-2xl lg:text-xl font-bold">
               <span className="text-burgundy">
                 Satriano Marine
               </span>
             </div>
-            <div className="hidden md:block text-sm text-burgundy border-l-2 border-gold pl-3">
+            <div className="hidden md:block text-sm lg:text-xs text-burgundy border-l-2 border-gold pl-3">
               Construction Excellence
             </div>
           </div>
@@ -146,7 +146,7 @@ export default function Header() {
 
           <a
             href="tel:727-954-0041"
-            className="hidden lg:flex items-center gap-2 bg-burgundy text-cream px-6 py-3 rounded-lg hover:shadow-lg transition-all"
+            className="hidden lg:flex items-center gap-2 bg-burgundy text-cream px-6 py-2.5 rounded-lg hover:shadow-lg transition-all"
           >
             <Phone className="w-4 h-4" />
             <span className="font-semibold">727-954-0041</span>
