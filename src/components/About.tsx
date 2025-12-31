@@ -52,34 +52,33 @@ export default function About() {
       <div className="container mx-auto px-4">
         <div
           className={`text-center mb-16 transition-all duration-1000 ${
-            isVisible
-              ? 'opacity-100 translate-y-0'
-              : 'opacity-0 translate-y-10'
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <div className="flex items-center justify-center gap-8 max-w-4xl mx-auto">
-            <div>
-              <h2 className="🟡text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-5xl🟡 font-montserrat font-bold text-burgundy mb-4">
+          <div className="flex items-center justify-center md:gap-4 max-w-4xl mx-auto">
+            <div className="text-center md:text-left md:flex-1">
+              <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-montserrat font-bold text-burgundy mb-4 text-balance">
                 Pinellas County&apos;s Leading
-                <span className="block text-gold mt-1 xs:mt-2">
-                  Dock &amp; Boat Lift Company
-                </span>
+                <span className="text-gold"> Dock &amp; Boat Lift Company</span>
               </h2>
-              <div className="w-24 h-1 bg-gradient-to-r from-burgundy to-gold mx-auto mt-6" />
+              <div className="w-24 h-1 bg-gradient-to-r from-burgundy to-gold mx-auto md:mx-0 mt-6" />
             </div>
-            <img src={logo} alt="Satriano Marine Construction Logo" className="w-32 h-32 md:w-40 md:h-40" />
+            
+            <img 
+              src={logo} 
+              alt="Satriano Marine Construction Logo" 
+              className="hidden md:block w-48 h-48 lg:w-56 lg:h-56 flex-shrink-0" 
+            />
           </div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div
             className={`transition-all duration-1000 delay-200 ${
-              isVisible
-                ? 'opacity-100 translate-x-0'
-                : 'opacity-0 -translate-x-10'
+              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
             }`}
           >
-            <h3 className="🟡text-lg xs:text-xl sm:text-2xl md:text-3xl🟡 font-bold text-burgundy 🟢mb-4 xs:mb-6🟢">
+            <h3 className="text-xl xs:text-2xl sm:text-3xl md:text-3xl font-bold text-burgundy mb-4 xs:mb-6">
               Experienced in New Dock Design, Construction &amp; Boat Lifts
             </h3>
 
@@ -99,9 +98,7 @@ export default function About() {
                     <div
                       key={index}
                       className={`transition-all duration-500 ${
-                        isVisible
-                          ? 'opacity-100 translate-x-0'
-                          : 'opacity-0 -translate-x-5'
+                        isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-5'
                       }`}
                       style={{ transitionDelay: `${300 + index * 50}ms` }}
                     >
@@ -124,9 +121,7 @@ export default function About() {
                     <div
                       key={index}
                       className={`transition-all duration-500 ${
-                        isVisible
-                          ? 'opacity-100 translate-x-0'
-                          : 'opacity-0 -translate-x-5'
+                        isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-5'
                       }`}
                       style={{ transitionDelay: `${400 + index * 50}ms` }}
                     >
@@ -162,9 +157,7 @@ export default function About() {
 
           <div
             className={`transition-all duration-1000 delay-400 ${
-              isVisible
-                ? 'opacity-100 translate-x-0'
-                : 'opacity-0 translate-x-10'
+              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
             }`}
           >
             <div className="relative">
