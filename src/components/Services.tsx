@@ -11,10 +11,14 @@ import {
 } from 'lucide-react';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
+
+
 export default function Services() {
   const ref = useRef<HTMLElement>(null);
   const isVisible = useIntersectionObserver(ref, 0.1);
   const navigate = useNavigate();
+
+
 
   const services = [
     {
@@ -67,54 +71,59 @@ export default function Services() {
     },
   ];
 
+
+
   return (
-    <section id="services" ref={ref} className="hidden lg:block py-20 bg-cream">
-      <div className="container mx-auto px-4">
+    <section id="services" ref={ref} className="hidden lg:flex lg:flex-col lg:h-screen bg-cream py-8">
+      <div className="container mx-auto px-4 flex flex-col h-full max-h-screen">
         <div
-          className={`text-center mb-16 transition-all duration-1000 ${
+          className={`text-center mb-8 flex-shrink-0 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <h2 className="text-4xl md:text-5xl font-montserrat font-bold text-burgundy mb-4 leading-tight">
+          <h2 className="text-4xl xl:text-5xl font-montserrat font-bold text-burgundy mb-3 leading-tight">
             Providing <span className="text-gold">Expert</span> Dock & Boat Lift{' '}
             <span className="text-gold">Solutions</span>
           </h2>
-          <h3 className="text-xl font-lato text-burgundy max-w-3xl mx-auto mt-6">
+          <h3 className="text-xl xl:text-2xl font-lato text-burgundy max-w-3xl mx-auto mt-3">
             From design to installation to maintenance;
             <br />
             we're your one-stop shop for all dock and boat lift needs.
           </h3>
-          <div className="w-24 h-1 bg-gradient-to-r from-burgundy to-gold mx-auto mt-6"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-burgundy to-gold mx-auto mt-4"></div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => {
+
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 flex-1 min-h-0 max-w-5xl mx-auto">          {services.map((service, index) => {
             const Icon = service.icon;
             return (
               <div
                 key={service.slug}
-                className={`group bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gold hover:border-burgundy ${
+                className={`group bg-white p-3 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gold hover:border-burgundy flex flex-col max-h-64 ${
                   isVisible
                     ? 'opacity-100 translate-y-0'
                     : 'opacity-0 translate-y-10'
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div
-                  className={`w-16 h-16 bg-gradient-to-br ${service.color} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}
-                >
-                  <Icon className="w-8 h-8 text-cream" />
+                <div className="flex items-center gap-2 mb-2">
+                  <div
+                    className={`w-12 h-12 bg-gradient-to-br ${service.color} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0`}
+                  >
+                    <Icon className="w-6 h-6 text-cream" />
+                  </div>
+                  <h3 className="text-sm xl:text-base font-lato font-bold text-burgundy leading-tight flex-1 text-center">
+                    {service.title}
+                  </h3>
                 </div>
-                <h3 className="text-xl font-lato font-bold text-burgundy mb-4">
-                  {service.title}
-                </h3>
-                <p className="text-burgundy mb-6">{service.description}</p>
+                <p className="text-xs xl:text-sm text-burgundy mb-2 flex-grow">{service.description}</p>
                 <button
                   onClick={() => navigate(`/services/${service.slug}`)}
-                  className="text-burgundy font-semibold flex items-center gap-2 group-hover:gap-3 transition-all hover:text-gold"
+                  className="text-burgundy text-xs xl:text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all hover:text-gold mt-auto"
                 >
                   Learn More
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-3 h-3" />
                 </button>
               </div>
             );
