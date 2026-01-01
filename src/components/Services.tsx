@@ -1,72 +1,14 @@
 import { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-  Anchor,
-  Wrench,
-  Search,
-  Sparkles,
-  Settings,
-  ArrowRight,
-  ClipboardCheck,
-} from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import SectionHeader from './SectionHeader';
+import { services } from '../data/services';
 
 export default function Services() {
   const ref = useRef<HTMLElement>(null);
   const isVisible = useIntersectionObserver(ref, 0.1);
   const navigate = useNavigate();
-
-  const services = [
-    {
-      icon: Anchor,
-      title: 'New Dock Design & Construction',
-      description:
-        'Custom dock design and construction tailored to your waterfront property. We handle everything from permits to completion.',
-      color: 'from-burgundy to-burgundy',
-      slug: 'new-dock-design-construction',
-    },
-    {
-      icon: Wrench,
-      title: 'Dock Repair & Maintenance',
-      description:
-        'Expert repair and maintenance services to keep your dock safe and functional. We fix damage from storms, age, and wear.',
-      color: 'from-burgundy to-burgundy',
-      slug: 'dock-repair-maintenance',
-    },
-    {
-      icon: Sparkles,
-      title: 'Dock & Boat Lift Accessories',
-      description:
-        'Wide selection of premium accessories to enhance your dock and boat lift including bumpers, cleats, ladders, and more.',
-      color: 'from-gold to-gold',
-      slug: 'dock-boat-lift-accessories',
-    },
-    {
-      icon: Settings,
-      title: 'New Boat Lift Design & Installation',
-      description:
-        'Professional boat lift design and installation for vessels of all sizes. Quality motors, cables, and remote controls.',
-      color: 'from-burgundy to-gold',
-      slug: 'new-boat-lift-design-installation',
-    },
-    {
-      icon: Search,
-      title: 'Boat Lift Repair & Maintenance',
-      description:
-        'Complete boat lift service including motor replacement, cable repair, adjustments, and preventative maintenance.',
-      color: 'from-burgundy to-burgundy',
-      slug: 'boat-lift-repair-maintenance',
-    },
-    {
-      icon: ClipboardCheck,
-      title: 'Dock & Boat Lift Inspections',
-      description:
-        'Thorough inspections for buyers, sellers, and owners. Detailed reports on dock and boat lift integrity and safety.',
-      color: 'from-gold to-gold',
-      slug: 'dock-boat-lift-inspections',
-    },
-  ];
 
   return (
     <section id="services" ref={ref} className="hidden lg:flex lg:flex-col bg-cream section-default">
