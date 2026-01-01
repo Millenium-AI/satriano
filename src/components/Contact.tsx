@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { Send, Phone, Mail, MapPin } from 'lucide-react';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
+import SectionHeader from './SectionHeader';
 
 export default function Contact() {
   const ref = useRef<HTMLElement>(null);
@@ -53,17 +54,12 @@ export default function Contact() {
       className="py-20 bg-transparent"
     >
       <div className="container mx-auto px-4">
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h1 className="text-4xl md:text-4xl lg:text-5xl font-montserrat font-bold text-burgundy mb-4">
-            Get Your
-            <span className="block text-gold">
-              Free Estimate
-            </span>
-          </h1>
-          <h2 className="text-xl text-burgundy max-w-3xl mx-auto mt-6">
-            Contact us today for a no-cost, no-obligation consultation!
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-burgundy to-gold mx-auto mt-6"></div>
+        <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <SectionHeader 
+            title="Get Your"
+            highlightedText="Free Estimate"
+            subtitle="Contact us today for a no-cost, no-obligation consultation!"
+          />
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">

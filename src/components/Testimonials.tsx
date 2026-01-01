@@ -1,5 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
+import SectionHeader from './SectionHeader';
 
 export default function Testimonials() {
   const ref = useRef<HTMLElement>(null);
@@ -24,17 +25,16 @@ export default function Testimonials() {
       <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-7xl">
         {/* Header */}
         <div
-          className={`text-center mb-12 md:mb-16 lg:mb-20 transition-all duration-1000 ${
+          className={`transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <h1 className="text-3xl xs:text-4xl md:text-5xl lg:text-6xl font-bold text-burgundy mb-4 md:mb-6">
-            What Our <span className="text-gold">Clients Say</span>
-          </h1>
-          <h2 className="text-base md:text-lg lg:text-xl text-burgundy max-w-3xl mx-auto leading-relaxed">
-            Don't just take our word for it - hear from our Satisfied Customers
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-burgundy to-gold mx-auto mt-6" />
+          <SectionHeader 
+            title="What Our"
+            highlightedText="Clients Say"
+            subtitle="Don't just take our word for it - hear from our Satisfied Customers"
+            className="mb-12 md:mb-16 lg:mb-20"
+          />
         </div>
 
         {/* Featurable Google Reviews Widget */}
