@@ -7,16 +7,30 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [lastY, setLastY] = useState(0);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const y = window.scrollY;
+      setIsScrolled(y > 50);
+
+      const goingDown = y > lastY;
+
+      if (goingDown && y > 50) {
+        setHidden(true);
+      } else {
+        setHidden(false);
+      }
+
+      setLastY(y);
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastY]);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -36,8 +50,8 @@ export default function Header() {
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'shadow-lg' : 'backdrop-blur-sm'
-      }`}
+        hidden ? '-translate-y-full' : 'translate-y-0'
+      } ${isScrolled ? 'shadow-lg' : 'backdrop-blur-sm'}`}
       style={{ backgroundColor: '#FEF7EB' }}
     >
       <div className="container mx-auto px-4">
@@ -46,11 +60,13 @@ export default function Header() {
             className="flex items-center gap-3 cursor-pointer"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <img src={logo} alt="Satriano Marine Construction" className="h-12 w-12 lg:h-10 lg:w-10" />
+            <img
+              src={logo}
+              alt="Satriano Marine Construction"
+              className="h-12 w-12 lg:h-10 lg:w-10"
+            />
             <div className="text-2xl lg:text-xl font-bold">
-              <span className="text-burgundy">
-                Satriano Marine
-              </span>
+              <span className="text-burgundy">Satriano Marine</span>
             </div>
             <div className="hidden md:block text-sm lg:text-xs text-burgundy border-l-2 border-gold pl-3">
               Construction Excellence
@@ -72,7 +88,7 @@ export default function Header() {
               ABOUT
             </button>
 
-            {/* SERVICES DROPDOWN (DESKTOP) - FIXED */}
+            {/* SERVICES DROPDOWN (DESKTOP) */}
             <div
               className="relative"
               onMouseEnter={() => setIsServicesOpen(true)}
@@ -84,8 +100,8 @@ export default function Header() {
               </button>
 
               {isServicesOpen && (
-                <div 
-                  className="absolute left-0 top-full w-80 shadow-lg rounded-lg border border-gold py-2 text-left" 
+                <div
+                  className="absolute left-0 top-full w-80 shadow-lg rounded-lg border border-gold py-2 text-left"
                   style={{ backgroundColor: '#FEF7EB' }}
                 >
                   <button

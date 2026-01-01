@@ -18,12 +18,24 @@ export default function ServicePageLayout({
 
   const handleBackToServices = () => {
     navigate('/', { replace: true });
+
     setTimeout(() => {
       const servicesSection = document.getElementById('services');
       if (servicesSection) {
-        servicesSection.scrollIntoView({ behavior: 'smooth' });
+        const html = document.documentElement;
+        const previousBehavior = html.style.scrollBehavior;
+
+        html.style.scrollBehavior = 'auto';
+
+        const top = servicesSection.offsetTop;
+        window.scrollTo({
+          top,
+          behavior: 'auto',
+        });
+
+        html.style.scrollBehavior = previousBehavior;
       }
-    }, 100);
+    }, 150);
   };
 
   return (
@@ -42,7 +54,7 @@ export default function ServicePageLayout({
             {title}
           </h1>
           <p className="text-lg text-burgundy mb-8">{description}</p>
-          
+
           {children}
         </div>
       </div>
