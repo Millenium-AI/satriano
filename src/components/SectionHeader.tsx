@@ -18,7 +18,7 @@ export default function SectionHeader({
         {highlightedText && <span className="text-gold">{highlightedText}</span>}
       </h2>
       {subtitle && (
-        <p className="text-xl text-burgundy max-w-3xl mx-auto mt-6">
+        <p className="text-xl text-burgundy mx-auto mt-6">
           {subtitle}
         </p>
       )}

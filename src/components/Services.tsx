@@ -26,7 +26,7 @@ export default function Services() {
           />
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 flex-1 min-h-0 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 flex-1 min-h-0 max-w-5xl mx-auto">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
