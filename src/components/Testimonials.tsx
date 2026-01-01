@@ -28,12 +28,12 @@ export default function Testimonials() {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <h2 className="text-3xl xs:text-4xl md:text-5xl lg:text-6xl font-bold text-burgundy mb-4 md:mb-6">
+          <h1 className="text-3xl xs:text-4xl md:text-5xl lg:text-6xl font-bold text-burgundy mb-4 md:mb-6">
             What Our <span className="text-gold">Clients Say</span>
-          </h2>
-          <p className="text-base md:text-lg lg:text-xl text-burgundy max-w-3xl mx-auto leading-relaxed">
+          </h1>
+          <h2 className="text-base md:text-lg lg:text-xl text-burgundy max-w-3xl mx-auto leading-relaxed">
             Don't just take our word for it - hear from our Satisfied Customers
-          </p>
+          </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-burgundy to-gold mx-auto mt-6" />
         </div>
 
@@ -56,12 +56,12 @@ export default function Testimonials() {
           }`}
         >
           <div className="text-center mb-8 md:mb-12">
-            <h3 className="text-2xl xs:text-3xl md:text-4xl lg:text-5xl font-bold text-burgundy mb-4 md:mb-6">
+            <h1 className="text-2xl xs:text-3xl md:text-4xl lg:text-5xl font-bold text-burgundy mb-4 md:mb-6">
               Find Us on <span className="text-gold">Google</span>
-            </h3>
-            <p className="text-base md:text-lg lg:text-xl text-burgundy/80 max-w-2xl mx-auto leading-relaxed">
+            </h1>
+            <h2 className="text-base md:text-lg lg:text-xl text-burgundy/80 max-w-2xl mx-auto leading-relaxed">
               Visit our Google Business page to see more Reviews and Ratings
-            </p>
+            </h2>
           </div>
 
           {/* Google Maps Embed */}

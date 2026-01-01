@@ -42,10 +42,10 @@ export default function About() {
           <div className="flex items-center justify-center md:gap-4 max-w-full lg:max-w-7xl mx-auto px-4 lg:px-8">
             <div className="text-center md:text-left md:flex-1">
               <div className="inline-block">
-                <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-montserrat font-bold text-burgundy mb-4">
+                <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-montserrat font-bold text-burgundy mb-4">
                   Pinellas County's Leading
                   <span className="text-gold block"> Dock & Boat Lift Company</span>
-                </h2>
+                </h1>
                 <div className="w-24 h-1 bg-gradient-to-r from-burgundy to-gold mx-auto mt-2" />
               </div>
             </div>
@@ -65,9 +65,9 @@ export default function About() {
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
             }`}
           >
-            <h3 className="text-xl xs:text-2xl sm:text-3xl md:text-2xl lg:text-3xl font-bold text-burgundy mb-4 xs:mb-6 text-center">
+            <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-2xl lg:text-3xl font-bold text-burgundy mb-4 xs:mb-6 text-center">
               Experienced in New Dock Design, Construction & Boat Lifts
-            </h3>
+            </h2>
             <p className="text-base md:text-lg text-burgundy mb-4 leading-relaxed">
               Satriano Marine Construction, a family-owned and operated business
               dedicated to providing a high-quality marine construction service. 
@@ -76,9 +76,9 @@ export default function About() {
 
 
             <div className="bg-gold/20 p-8 rounded-2xl border border-gold shadow-lg mb-6">
-              <h4 className="text-2xl font-lato font-bold text-burgundy mb-4">
+              <h2 className="text-2xl font-lato font-bold text-burgundy mb-4">
                 Our Services Include:
-              </h4>
+              </h2>
               <div className="grid grid-cols-2 gap-3">
                 <div className="space-y-3">
                   {dockServices.map((service, index) => (

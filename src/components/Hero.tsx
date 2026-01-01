@@ -60,9 +60,9 @@ export default function Hero() {
 
           <div className="flex items-center gap-2 xs:gap-3 bg-gold/30 backdrop-blur-md px-3 xs:px-4 md:px-6 lg:px-8 py-2 xs:py-3 md:py-3 lg:py-4 rounded-lg mb-6 xs:mb-8 shadow-xl border border-gold/50 max-w-fit mx-auto md:mx-0">
             <Anchor className="w-4 h-4 xs:w-5 xs:h-5 md:w-8 md:h-8 text-gold flex-shrink-0" />
-            <h3 className="text-base xs:text-lg md:text-xl lg:text-2xl xl:text-3xl text-white font-semibold">
+            <h2 className="text-base xs:text-lg md:text-xl lg:text-2xl xl:text-3xl text-white font-semibold">
               Florida's Premier Dock & Boat Lift Solutions
-            </h3>
+            </h2>
           </div>
           <p className="text-base xs:text-lg md:text-xl text-white/90 mb-8 leading-relaxed drop-shadow-lg text-balance max-w-2xl mx-auto">
             With over 40 years in the construction business, You can count on us to complete any job large or small.
