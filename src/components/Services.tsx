@@ -11,7 +11,7 @@ export default function Services() {
   const navigate = useNavigate();
 
   return (
-    <section id="services" ref={ref} className="hidden lg:flex lg:flex-col bg-cream section-default">
+    <section id="services" ref={ref} className="hidden lg:flex lg:flex-col bg-white section-default">
       <div className="container mx-auto px-4 flex flex-col h-full max-h-screen">
         <div
           className={`flex-shrink-0 transition-all duration-1000 ${
@@ -33,7 +33,7 @@ export default function Services() {
               <button
                 key={service.slug}
                 onClick={() => navigate(`/services/${service.slug}`)}
-                className={`group bg-white p-7 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gold hover:border-burgundy flex flex-col cursor-pointer hover:scale-105 active:scale-95 max-h-64 ${
+                className={`group bg-cream p-7 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gold hover:border-burgundy flex flex-col cursor-pointer hover:scale-105 active:scale-95 max-h-64 ${
                   isVisible
                     ? 'opacity-100 translate-y-0'
                     : 'opacity-0 translate-y-10'
