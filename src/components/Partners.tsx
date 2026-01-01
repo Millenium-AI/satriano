@@ -29,7 +29,7 @@ export default function Partners() {
   const isVisible = useIntersectionObserver(ref, 0.1);
 
   return (
-    <section id="partners" ref={ref} className="hidden lg:flex lg:flex-col bg-cream section-default">
+    <section id="partners" ref={ref} className="flex flex-col bg-cream section-default">
       <div className="container mx-auto px-4 flex flex-col h-full max-h-screen">
         <div
           className={`flex-shrink-0 transition-all duration-1000 ${

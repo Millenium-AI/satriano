@@ -17,25 +17,51 @@ export default function ServicePageLayout({
   const navigate = useNavigate();
 
   const handleBackToServices = () => {
-    navigate('/', { replace: true });
+    const isMobile = window.innerWidth < 1024; // Tailwind lg breakpoint
 
-    setTimeout(() => {
-      const servicesSection = document.getElementById('services');
-      if (servicesSection) {
-        const html = document.documentElement;
-        const previousBehavior = html.style.scrollBehavior;
+    if (isMobile) {
+      // MOBILE: go to ABOUT section
+      navigate('/', { replace: true });
 
-        html.style.scrollBehavior = 'auto';
+      setTimeout(() => {
+        const aboutSection = document.getElementById('about');
+        if (aboutSection) {
+          const html = document.documentElement;
+          const previousBehavior = html.style.scrollBehavior;
 
-        const top = servicesSection.offsetTop;
-        window.scrollTo({
-          top,
-          behavior: 'auto',
-        });
+          html.style.scrollBehavior = 'auto';
 
-        html.style.scrollBehavior = previousBehavior;
-      }
-    }, 150);
+          const top = aboutSection.offsetTop;
+          window.scrollTo({
+            top,
+            behavior: 'auto',
+          });
+
+          html.style.scrollBehavior = previousBehavior;
+        }
+      }, 150);
+    } else {
+      // DESKTOP: keep existing SERVICES behavior
+      navigate('/', { replace: true });
+
+      setTimeout(() => {
+        const servicesSection = document.getElementById('services');
+        if (servicesSection) {
+          const html = document.documentElement;
+          const previousBehavior = html.style.scrollBehavior;
+
+          html.style.scrollBehavior = 'auto';
+
+          const top = servicesSection.offsetTop;
+          window.scrollTo({
+            top,
+            behavior: 'auto',
+          });
+
+          html.style.scrollBehavior = previousBehavior;
+        }
+      }, 150);
+    }
   };
 
   return (
