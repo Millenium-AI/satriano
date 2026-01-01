@@ -27,7 +27,7 @@ export default function About() {
     <section
       id="about"
       ref={ref}
-      className="py-20 bg-gradient-to-b from-cream to-cream/80"
+      className="section-default bg-gradient-to-b from-cream to-cream/80"
     >
       <div className="container mx-auto px-4">
         <div

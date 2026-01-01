@@ -51,7 +51,7 @@ export default function Contact() {
     <section
       id="contact"
       ref={ref}
-      className="py-20 bg-transparent"
+      className="section-default bg-transparent"
     >
       <div className="container mx-auto px-4">
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>

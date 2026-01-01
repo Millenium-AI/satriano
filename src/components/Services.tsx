@@ -69,7 +69,7 @@ export default function Services() {
   ];
 
   return (
-    <section id="services" ref={ref} className="hidden lg:flex lg:flex-col lg:h-screen bg-cream py-8">
+    <section id="services" ref={ref} className="hidden lg:flex lg:flex-col bg-cream section-default">
       <div className="container mx-auto px-4 flex flex-col h-full max-h-screen">
         <div
           className={`flex-shrink-0 transition-all duration-1000 ${

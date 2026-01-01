@@ -21,7 +21,7 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <section id="testimonials" ref={ref} className="py-16 md:py-24 lg:py-32 bg-cream">
+    <section id="testimonials" ref={ref} className="section-default bg-cream">
       <div className="container mx-auto px-4 md:px-6 lg:px-8 max-w-7xl">
         {/* Header */}
         <div
