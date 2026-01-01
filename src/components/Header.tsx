@@ -263,16 +263,16 @@ export default function Header() {
               </div>
 
               <button
-                onClick={() => scrollToSection('partners')}
-                className="text-burgundy hover:text-gold transition-colors font-medium text-left"
-              >
-                PARTNERS
-              </button>
-              <button
                 onClick={() => scrollToSection('contact')}
                 className="text-burgundy hover:text-gold transition-colors font-medium text-left"
               >
                 CONTACT
+              </button>
+              <button
+                onClick={() => scrollToSection('partners')}
+                className="text-burgundy hover:text-gold transition-colors font-medium text-left"
+              >
+                PARTNERS
               </button>
               <button
                 onClick={() => scrollToSection('testimonials')}
