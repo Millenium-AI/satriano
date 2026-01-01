@@ -5,7 +5,23 @@
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
 
     <!-- Viewport Configuration for Mobile & Desktop -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" />
+
+    <!-- Scaling Detection Script -->
+    <script>
+      (function() {
+        function setScaleRatio() {
+          const dpr = window.devicePixelRatio || 1;
+          const width = window.innerWidth;
+          const scaleFactor = Math.max(0.5, Math.min(2, dpr));
+          document.documentElement.style.setProperty('--scale-ratio', scaleFactor);
+          document.documentElement.style.setProperty('--viewport-width', width + 'px');
+        }
+        setScaleRatio();
+        window.addEventListener('resize', setScaleRatio);
+        window.addEventListener('orientationchange', setScaleRatio);
+      })();
+    </script>
 
     <!-- Primary Meta Tags -->
     <title>Satriano Marine Construction - Dock & Boat Lift Services | Pinellas County, FL</title>

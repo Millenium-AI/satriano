@@ -31,55 +31,55 @@ export default function About() {
     <section
       id="about"
       ref={ref}
-      className="py-20 bg-gradient-to-b from-cream to-cream/80"
+      className="py-xl lg:py-2xl bg-gradient-to-b from-cream to-cream/80"
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto">
         <div
-          className={`text-center mb-16 transition-all duration-1000 ${
+          className={`text-center mb-xl transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <div className="flex items-center justify-center md:gap-4 max-w-full lg:max-w-7xl mx-auto px-4 lg:px-8">
+          <div className="flex items-center justify-center md:gap-m max-w-full lg:max-w-7xl mx-auto">
             <div className="text-center md:text-left md:flex-1">
               <div className="inline-block">
-                <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-montserrat font-bold text-burgundy mb-4">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-montserrat font-bold text-burgundy mb-s">
                   Pinellas County's Leading
                   <span className="text-gold block"> Dock & Boat Lift Company</span>
                 </h2>
-                <div className="w-24 h-1 bg-gradient-to-r from-burgundy to-gold mx-auto mt-2" />
+                <div className="w-24 h-1 bg-gradient-to-r from-burgundy to-gold mx-auto mt-xs" />
               </div>
             </div>
-            
-            <img 
-              src={logo} 
-              alt="Satriano Marine Construction Logo" 
-              className="hidden md:block w-48 h-48 lg:w-56 lg:h-56 flex-shrink-0" 
+
+            <img
+              src={logo}
+              alt="Satriano Marine Construction Logo"
+              className="hidden md:block w-[clamp(12rem,15vw,14rem)] h-[clamp(12rem,15vw,14rem)] flex-shrink-0"
             />
           </div>
         </div>
 
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-xl items-center">
           <div
             className={`transition-all duration-1000 delay-200 ${
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
             }`}
           >
-            <h3 className="text-xl xs:text-2xl sm:text-3xl md:text-2xl lg:text-3xl font-bold text-burgundy mb-4 xs:mb-6 text-center">
+            <h3 className="text-2xl lg:text-3xl font-bold text-burgundy mb-m text-center">
               Experienced in New Dock Design, Construction & Boat Lifts
             </h3>
-            <p className="text-base md:text-lg text-burgundy mb-4 leading-relaxed">
+            <p className="text-base md:text-lg text-burgundy mb-s leading-relaxed">
               Satriano Marine Construction, a family-owned and operated business
-              dedicated to providing a high-quality marine construction service. 
+              dedicated to providing a high-quality marine construction service.
               We take pride in our work and are personal in our service.
             </p>
 
 
-            <div className="bg-gold/20 p-8 rounded-2xl border border-gold shadow-lg mb-6">
-              <h4 className="text-2xl font-lato font-bold text-burgundy mb-4">
+            <div className="bg-gold/20 p-m lg:p-l rounded-2xl border border-gold shadow-lg mb-m">
+              <h4 className="text-2xl font-lato font-bold text-burgundy mb-s">
                 Our Services Include:
               </h4>
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-2 gap-xs md:gap-s">
                 <div className="space-y-3">
                   {dockServices.map((service, index) => (
                     <div
@@ -132,11 +132,11 @@ export default function About() {
             </div>
 
 
-            <p className="text-base md:text-lg text-burgundy mb-4 leading-relaxed">
+            <p className="text-base md:text-lg text-burgundy mb-s leading-relaxed">
               We serve all of Pinellas County with expert craftsmanship and
               unmatched customer service.
             </p>
-            <p className="text-lg text-burgundy mb-6 leading-relaxed">
+            <p className="text-lg text-burgundy mb-m leading-relaxed">
               If you have waterfront property and are in need of dock or boat
               lift services, please contact us today to see how we can offer
               professional, quality dock and boat lift solutions that set us
@@ -155,20 +155,20 @@ export default function About() {
               <img
                 src={side}
                 alt="Dock and Boat Lift"
-                className="relative rounded-2xl shadow-2xl w-full h-[500px] object-cover"
+                className="relative rounded-2xl shadow-2xl w-full aspect-[4/3] object-cover"
               />
             </div>
-            <div className="mt-8 grid grid-cols-2 gap-4">
-              <div className="bg-cream p-6 rounded-xl shadow-lg border border-gold hover:shadow-xl transition-shadow text-center">
-                <div className="text-3xl font-bold text-burgundy mb-2">
+            <div className="mt-l grid grid-cols-2 gap-s">
+              <div className="bg-cream p-m rounded-xl shadow-lg border border-gold hover:shadow-xl transition-shadow text-center">
+                <div className="text-3xl font-bold text-burgundy mb-2xs">
                   CGC 1531210
                 </div>
                 <div className="text-sm text-burgundy">
                   State Certified General Contractor
                 </div>
               </div>
-              <div className="bg-cream p-6 rounded-xl shadow-lg border border-gold hover:shadow-xl transition-shadow text-center">
-                <div className="text-3xl font-bold text-gold mb-2">
+              <div className="bg-cream p-m rounded-xl shadow-lg border border-gold hover:shadow-xl transition-shadow text-center">
+                <div className="text-3xl font-bold text-gold mb-2xs">
                   Family
                 </div>
                 <div className="text-sm text-burgundy">

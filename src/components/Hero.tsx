@@ -52,52 +52,52 @@ export default function Hero() {
       <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent" />
 
       {/* Content - Left-side, vertically centered, left-aligned text */}
-      <div className="relative z-10 container mx-auto px-8 py-20">
+      <div className="relative z-10 container mx-auto py-l md:py-xl lg:py-2xl">
         <div className="max-w-4xl text-left">
-          <h1 className="font-zalando text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight drop-shadow-2xl">
+          <h1 className="font-zalando text-5xl lg:text-6xl font-bold text-white mb-m lg:mb-l leading-tight drop-shadow-2xl">
             Satriano Marine Construction
           </h1>
 
-          <div className="flex items-center gap-2 xs:gap-3 bg-gold/30 backdrop-blur-md px-3 xs:px-4 md:px-6 lg:px-8 py-2 xs:py-3 md:py-3 lg:py-4 rounded-lg mb-6 xs:mb-8 shadow-xl border border-gold/50 max-w-fit mx-auto md:mx-0">
-            <Anchor className="w-4 h-4 xs:w-5 xs:h-5 md:w-8 md:h-8 text-gold flex-shrink-0" />
-            <h3 className="text-base xs:text-lg md:text-xl lg:text-2xl xl:text-3xl text-white font-semibold">
+          <div className="flex items-center gap-xs bg-gold/30 backdrop-blur-md px-s md:px-m lg:px-l py-xs md:py-s rounded-lg mb-m lg:mb-l shadow-xl border border-gold/50 max-w-fit mx-auto md:mx-0">
+            <Anchor className="w-[clamp(1rem,4vw,2rem)] h-[clamp(1rem,4vw,2rem)] text-gold flex-shrink-0" />
+            <h3 className="text-lg md:text-xl lg:text-2xl text-white font-semibold">
               Florida's Premier Dock & Boat Lift Solutions
             </h3>
           </div>
-          <p className="text-base xs:text-lg md:text-xl text-white/90 mb-8 leading-relaxed drop-shadow-lg text-balance max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-white/90 mb-l leading-relaxed drop-shadow-lg text-balance max-w-2xl mx-auto">
             With over 40 years in the construction business, You can count on us to complete any job large or small.
           </p>
-          <div className="flex flex-wrap gap-4 mb-12">
+          <div className="flex flex-wrap gap-s mb-xl">
             <button
               onClick={scrollToContact}
-              className="bg-gold text-burgundy px-8 py-4 rounded-lg font-semibold hover:bg-gold/90 transition-all flex items-center gap-2 shadow-2xl hover:scale-105"
+              className="bg-gold text-burgundy px-l py-s rounded-lg font-semibold hover:bg-gold/90 transition-all flex items-center gap-xs shadow-2xl hover:scale-105 text-base md:text-lg"
             >
               Get Your Free Quote
               <ArrowRight className="w-5 h-5" />
             </button>
             <a
               href="tel:727-954-0041"
-              className="bg-white/10 backdrop-blur-md text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/20 transition-all border-2 border-white shadow-xl hover:scale-105"
+              className="bg-white/10 backdrop-blur-md text-white px-l py-s rounded-lg font-semibold hover:bg-white/20 transition-all border-2 border-white shadow-xl hover:scale-105 text-base md:text-lg"
             >
               Call 727-954-0041
             </a>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="bg-white/10 backdrop-blur-md p-4 rounded-lg text-center shadow-lg">
-              <div className="text-3xl font-bold text-gold mb-1">40+</div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-s md:gap-m">
+            <div className="bg-white/10 backdrop-blur-md p-s rounded-lg text-center shadow-lg">
+              <div className="text-3xl font-bold text-gold mb-2xs">40+</div>
               <div className="text-white text-sm">Years Experience</div>
             </div>
-            <div className="bg-white/10 backdrop-blur-md p-4 rounded-lg text-center shadow-lg">
-              <div className="text-3xl font-bold text-gold mb-1">100%</div>
+            <div className="bg-white/10 backdrop-blur-md p-s rounded-lg text-center shadow-lg">
+              <div className="text-3xl font-bold text-gold mb-2xs">100%</div>
               <div className="text-white text-sm">Licensed & Insured</div>
             </div>
-            <div className="bg-white/10 backdrop-blur-md p-4 rounded-lg text-center shadow-lg">
-              <div className="text-3xl font-bold text-gold mb-1">500+</div>
+            <div className="bg-white/10 backdrop-blur-md p-s rounded-lg text-center shadow-lg">
+              <div className="text-3xl font-bold text-gold mb-2xs">500+</div>
               <div className="text-white text-sm">Projects Completed</div>
             </div>
-            <div className="bg-white/10 backdrop-blur-md p-4 rounded-lg text-center shadow-lg">
-              <div className="text-3xl font-bold text-gold mb-1">5★</div>
+            <div className="bg-white/10 backdrop-blur-md p-s rounded-lg text-center shadow-lg">
+              <div className="text-3xl font-bold text-gold mb-2xs">5★</div>
               <div className="text-white text-sm">Customer Rated</div>
             </div>
           </div>

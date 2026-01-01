@@ -50,36 +50,36 @@ export default function Contact() {
     <section
       id="contact"
       ref={ref}
-      className="py-20 bg-transparent"
+      className="py-xl lg:py-2xl bg-transparent"
     >
-      <div className="container mx-auto px-4">
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h2 className="text-4xl md:text-4xl lg:text-5xl font-montserrat font-bold text-burgundy mb-4">
+      <div className="container mx-auto">
+        <div className={`text-center mb-xl transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h2 className="text-4xl md:text-4xl lg:text-5xl font-montserrat font-bold text-burgundy mb-s">
             Get Your
             <span className="block text-gold">
               Free Estimate
             </span>
           </h2>
-          <p className="text-xl text-burgundy max-w-3xl mx-auto mt-6">
+          <p className="text-xl text-burgundy max-w-3xl mx-auto mt-m">
             Contact us today for a no-cost, no-obligation consultation!
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-burgundy to-gold mx-auto mt-6"></div>
+          <div className="w-24 h-1 bg-gradient-to-r from-burgundy to-gold mx-auto mt-m"></div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-xl max-w-6xl mx-auto">
           <div className={`transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
-            <div className="space-y-8">
+            <div className="space-y-l">
               <div>
-                <h3 className="text-2xl font-lato font-bold text-burgundy mb-4">Why Choose Satriano Marine?</h3>
-                <p className="text-lg text-burgundy leading-relaxed mb-4">
+                <h3 className="text-2xl font-lato font-bold text-burgundy mb-s">Why Choose Satriano Marine?</h3>
+                <p className="text-lg text-burgundy leading-relaxed mb-s">
                   We provide free estimates with no obligation. Our team delivers unmatched customer service for all your dock and boat lift needs.
                 </p>
-                <p className="text-lg text-burgundy leading-relaxed mb-4">
+                <p className="text-lg text-burgundy leading-relaxed mb-s">
                   Whether you're looking for a new dock or boat lift, or need advice, repair, or maintenance on existing structures, we're here to help.
                 </p>
               </div>
 
-              <div className="space-y-6">
+              <div className="space-y-m">
                 <a 
                   href="tel:727-954-0041" 
                   className="flex items-start gap-4 p-6 bg-cream rounded-xl shadow-lg hover:shadow-xl transition-shadow border border-gold active:scale-95 touch-manipulation"

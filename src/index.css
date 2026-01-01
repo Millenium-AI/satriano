@@ -7,12 +7,57 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --scale-ratio: 1;
+    --min-viewport: 320;
+    --max-viewport: 1920;
+
+    --fluid-min-width: 320;
+    --fluid-max-width: 1920;
+    --fluid-screen: 100vw;
+    --fluid-bp: calc(
+      (var(--fluid-screen) - var(--fluid-min-width) / 16 * 1rem) /
+      (var(--fluid-max-width) - var(--fluid-min-width))
+    );
+
+    --space-3xs: clamp(0.25rem, 0.23rem + 0.11vw, 0.31rem);
+    --space-2xs: clamp(0.5rem, 0.46rem + 0.22vw, 0.63rem);
+    --space-xs: clamp(0.75rem, 0.68rem + 0.33vw, 0.94rem);
+    --space-s: clamp(1rem, 0.91rem + 0.43vw, 1.25rem);
+    --space-m: clamp(1.5rem, 1.37rem + 0.65vw, 1.88rem);
+    --space-l: clamp(2rem, 1.83rem + 0.87vw, 2.5rem);
+    --space-xl: clamp(3rem, 2.74rem + 1.3vw, 3.75rem);
+    --space-2xl: clamp(4rem, 3.65rem + 1.74vw, 5rem);
+    --space-3xl: clamp(6rem, 5.48rem + 2.61vw, 7.5rem);
+
+    --text-xs: clamp(0.75rem, 0.71rem + 0.22vw, 0.88rem);
+    --text-sm: clamp(0.88rem, 0.83rem + 0.22vw, 1rem);
+    --text-base: clamp(1rem, 0.96rem + 0.22vw, 1.13rem);
+    --text-lg: clamp(1.13rem, 1.08rem + 0.22vw, 1.25rem);
+    --text-xl: clamp(1.25rem, 1.18rem + 0.33vw, 1.44rem);
+    --text-2xl: clamp(1.5rem, 1.39rem + 0.54vw, 1.81rem);
+    --text-3xl: clamp(1.88rem, 1.71rem + 0.87vw, 2.38rem);
+    --text-4xl: clamp(2.25rem, 2.03rem + 1.09vw, 2.88rem);
+    --text-5xl: clamp(3rem, 2.65rem + 1.74vw, 4rem);
+    --text-6xl: clamp(3.75rem, 3.18rem + 2.83vw, 5.5rem);
+  }
+
   html {
     scroll-behavior: smooth;
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
   body {
     @apply antialiased;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+
+  * {
+    box-sizing: border-box;
   }
 }
 
