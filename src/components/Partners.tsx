@@ -5,22 +5,19 @@ import SectionHeader from './SectionHeader';
 
 const partners = [
   {
-    name: 'Partner Name 1',
-    description: 'Brief description of partner',
-    image: '/path-to-image-1.jpg',
-    url: 'https://partner1.com'
+    name: 'Decks & Docks',
+    image: 'src/assets/decksndocks.svg',
+    url: 'https://www.decks-docks.com/'
   },
   {
-    name: 'Partner Name 2',
-    description: 'Brief description of partner',
-    image: '/path-to-image-2.jpg',
-    url: 'https://partner2.com'
+    name: 'Boatlift US',
+    image: 'src/assets/boatliftus.png',
+    url: 'https://boatliftuscarolinas.com/'
   },
   {
-    name: 'Partner Name 3',
-    description: 'Brief description of partner',
-    image: '/path-to-image-3.jpg',
-    url: 'https://partner3.com'
+    name: 'Slide Moor',
+    image: 'src/assets/slidemoor.png',
+    url: 'https://slidemoor.com/'
   }
 ];
 
@@ -28,7 +25,7 @@ export default function Partners() {
   const ref = useRef<HTMLElement>(null);
   const isVisible = useIntersectionObserver(ref, 0.1);
 
-    return (
+  return (
     <section
       id="partners"
       ref={ref}
@@ -72,15 +69,12 @@ export default function Partners() {
                 <h3 className="font-semibold text-burgundy mb-1">
                   {partner.name}
                 </h3>
-                <p className="text-sm text-burgundy line-clamp-2">
-                  {partner.description}
-                </p>
               </div>
             </a>
           ))}
         </div>
 
-        {/* DESKTOP layout: keep original grid */}
+        {/* DESKTOP layout: grid */}
         <div className="hidden md:grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {partners.map((partner, index) => (
             <a
@@ -96,14 +90,11 @@ export default function Partners() {
               <img
                 src={partner.image}
                 alt={partner.name}
-                className="w-full h-40 object-cover rounded-lg mb-4"
+                className="w-full h-40 max-h-40 object-contain rounded-lg mb-4 bg-cream"
               />
               <h3 className="text-xl font-bold text-burgundy mb-2 text-center">
                 {partner.name}
               </h3>
-              <p className="text-sm text-burgundy text-center flex-grow">
-                {partner.description}
-              </p>
               <div className="text-burgundy text-sm font-semibold flex items-center justify-center gap-1 group-hover:gap-2 transition-all group-hover:text-gold mt-4">
                 Visit Site
                 <ExternalLink className="w-4 h-4" />
