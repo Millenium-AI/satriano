@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
-import { Menu, X, Phone } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import logo from '../assets/SMClogo.svg';
+import { useState, useEffect } from "react";
+import { Menu, X, Phone } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import logo from "../assets/SMClogo.pdf";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -28,14 +28,14 @@ export default function Header() {
       setLastY(y);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [lastY]);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
       setIsMobileMenuOpen(false);
       setIsServicesOpen(false);
     }
@@ -50,15 +50,15 @@ export default function Header() {
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
-        hidden ? '-translate-y-full' : 'translate-y-0'
-      } ${isScrolled ? 'shadow-lg' : 'backdrop-blur-sm'}`}
-      style={{ backgroundColor: '#FEF7EB' }}
+        hidden ? "-translate-y-full" : "translate-y-0"
+      } ${isScrolled ? "shadow-lg" : "backdrop-blur-sm"}`}
+      style={{ backgroundColor: "#FEF7EB" }}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20 lg:h-16">
           <div
             className="flex items-center gap-3 cursor-pointer"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
             <img
               src={logo}
@@ -76,13 +76,13 @@ export default function Header() {
           {/* DESKTOP NAV */}
           <nav className="hidden lg:flex items-center gap-8">
             <button
-              onClick={() => scrollToSection('home')}
+              onClick={() => scrollToSection("home")}
               className="text-burgundy hover:text-gold transition-colors font-medium"
             >
               HOME
             </button>
             <button
-              onClick={() => scrollToSection('about')}
+              onClick={() => scrollToSection("about")}
               className="text-burgundy hover:text-gold transition-colors font-medium"
             >
               ABOUT
@@ -102,42 +102,42 @@ export default function Header() {
               {isServicesOpen && (
                 <div
                   className="absolute left-0 top-full w-80 shadow-lg rounded-lg border border-gold py-2 text-left"
-                  style={{ backgroundColor: '#FEF7EB' }}
+                  style={{ backgroundColor: "#FEF7EB" }}
                 >
                   <button
-                    onClick={() => goToService('new-dock-design-construction')}
+                    onClick={() => goToService("new-dock-design-construction")}
                     className="block w-full text-left px-4 py-2 text-sm text-burgundy hover:bg-gold/10"
                   >
                     New Dock Design & Construction
                   </button>
                   <button
-                    onClick={() => goToService('dock-repair-maintenance')}
+                    onClick={() => goToService("dock-repair-maintenance")}
                     className="block w-full text-left px-4 py-2 text-sm text-burgundy hover:bg-gold/10"
                   >
                     Dock Repair & Maintenance
                   </button>
                   <button
-                    onClick={() => goToService('dock-boat-lift-accessories')}
+                    onClick={() => goToService("dock-boat-lift-accessories")}
                     className="block w-full text-left px-4 py-2 text-sm text-burgundy hover:bg-gold/10"
                   >
                     Dock & Boat Lift Accessories
                   </button>
                   <button
                     onClick={() =>
-                      goToService('new-boat-lift-design-installation')
+                      goToService("new-boat-lift-design-installation")
                     }
                     className="block w-full text-left px-4 py-2 text-sm text-burgundy hover:bg-gold/10"
                   >
                     New Boat Lift Design & Installation
                   </button>
                   <button
-                    onClick={() => goToService('boat-lift-repair-maintenance')}
+                    onClick={() => goToService("boat-lift-repair-maintenance")}
                     className="block w-full text-left px-4 py-2 text-sm text-burgundy hover:bg-gold/10"
                   >
                     Boat Lift Repair & Maintenance
                   </button>
                   <button
-                    onClick={() => goToService('dock-boat-lift-inspections')}
+                    onClick={() => goToService("dock-boat-lift-inspections")}
                     className="block w-full text-left px-4 py-2 text-sm text-burgundy hover:bg-gold/10"
                   >
                     Dock & Boat Lift Inspections
@@ -147,19 +147,19 @@ export default function Header() {
             </div>
 
             <button
-              onClick={() => scrollToSection('contact')}
+              onClick={() => scrollToSection("contact")}
               className="text-burgundy hover:text-gold transition-colors font-medium"
             >
               CONTACT
             </button>
-             <button
-              onClick={() => scrollToSection('partners')}
+            <button
+              onClick={() => scrollToSection("partners")}
               className="text-burgundy hover:text-gold transition-colors font-medium"
             >
               PARTNERS
             </button>
             <button
-              onClick={() => scrollToSection('testimonials')}
+              onClick={() => scrollToSection("testimonials")}
               className="text-burgundy hover:text-gold transition-colors font-medium"
             >
               REVIEWS
@@ -192,13 +192,13 @@ export default function Header() {
           <div className="lg:hidden py-4 border-t border-gold">
             <nav className="flex flex-col gap-4">
               <button
-                onClick={() => scrollToSection('home')}
+                onClick={() => scrollToSection("home")}
                 className="text-burgundy hover:text-gold transition-colors font-medium text-left"
               >
                 HOME
               </button>
               <button
-                onClick={() => scrollToSection('about')}
+                onClick={() => scrollToSection("about")}
                 className="text-burgundy hover:text-gold transition-colors font-medium text-left"
               >
                 ABOUT
@@ -211,34 +211,34 @@ export default function Header() {
                   className="text-burgundy hover:text-gold transition-colors font-medium text-left flex justify-between items-center"
                 >
                   <span>SERVICES</span>
-                  <span className="text-xs">{isServicesOpen ? '▲' : '▼'}</span>
+                  <span className="text-xs">{isServicesOpen ? "▲" : "▼"}</span>
                 </button>
 
                 {isServicesOpen && (
                   <div className="pl-4 flex flex-col gap-2">
                     <button
                       onClick={() =>
-                        goToService('new-dock-design-construction')
+                        goToService("new-dock-design-construction")
                       }
                       className="text-burgundy hover:text-gold transition-colors font-medium text-left text-sm"
                     >
                       New Dock Design & Construction
                     </button>
                     <button
-                      onClick={() => goToService('dock-repair-maintenance')}
+                      onClick={() => goToService("dock-repair-maintenance")}
                       className="text-burgundy hover:text-gold transition-colors font-medium text-left text-sm"
                     >
                       Dock Repair & Maintenance
                     </button>
                     <button
-                      onClick={() => goToService('dock-boat-lift-accessories')}
+                      onClick={() => goToService("dock-boat-lift-accessories")}
                       className="text-burgundy hover:text-gold transition-colors font-medium text-left text-sm"
                     >
                       Dock & Boat Lift Accessories
                     </button>
                     <button
                       onClick={() =>
-                        goToService('new-boat-lift-design-installation')
+                        goToService("new-boat-lift-design-installation")
                       }
                       className="text-burgundy hover:text-gold transition-colors font-medium text-left text-sm"
                     >
@@ -246,14 +246,14 @@ export default function Header() {
                     </button>
                     <button
                       onClick={() =>
-                        goToService('boat-lift-repair-maintenance')
+                        goToService("boat-lift-repair-maintenance")
                       }
                       className="text-burgundy hover:text-gold transition-colors font-medium text-left text-sm"
                     >
                       Boat Lift Repair & Maintenance
                     </button>
                     <button
-                      onClick={() => goToService('dock-boat-lift-inspections')}
+                      onClick={() => goToService("dock-boat-lift-inspections")}
                       className="text-burgundy hover:text-gold transition-colors font-medium text-left text-sm"
                     >
                       Dock & Boat Lift Inspections
@@ -263,19 +263,19 @@ export default function Header() {
               </div>
 
               <button
-                onClick={() => scrollToSection('contact')}
+                onClick={() => scrollToSection("contact")}
                 className="text-burgundy hover:text-gold transition-colors font-medium text-left"
               >
                 CONTACT
               </button>
               <button
-                onClick={() => scrollToSection('partners')}
+                onClick={() => scrollToSection("partners")}
                 className="text-burgundy hover:text-gold transition-colors font-medium text-left"
               >
                 PARTNERS
               </button>
               <button
-                onClick={() => scrollToSection('testimonials')}
+                onClick={() => scrollToSection("testimonials")}
                 className="text-burgundy hover:text-gold transition-colors font-medium text-left"
               >
                 REVIEWS
