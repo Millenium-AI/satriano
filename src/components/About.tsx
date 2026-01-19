@@ -1,26 +1,35 @@
-import { useRef } from 'react';
-import { Link } from 'react-router-dom';
-import { CheckCircle2 } from 'lucide-react';
-import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
-import side from '../assets/Side.jpg';
-import logo from '../assets/SMClogoNO.svg';
+import { useRef } from "react";
+import { Link } from "react-router-dom";
+import { CheckCircle2 } from "lucide-react";
+import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
+import side from "../assets/Side.jpg";
+import logo from "../assets/SMClogoNO.png";
 
 export default function About() {
   const ref = useRef<HTMLElement>(null);
   const isVisible = useIntersectionObserver(ref, 0.1);
 
   const dockServices = [
-    { name: 'New Dock Construction', slug: 'new-dock-design-construction' },
-    { name: 'Dock & Piling Repair & Maintenance', slug: 'dock-repair-maintenance' },
-    { name: 'Dock & Piling Accessories', slug: 'dock-boat-lift-accessories' },
-    { name: 'Dock & Piling Inspection', slug: 'dock-boat-lift-inspections' },
+    { name: "New Dock Construction", slug: "new-dock-design-construction" },
+    {
+      name: "Dock & Piling Repair & Maintenance",
+      slug: "dock-repair-maintenance",
+    },
+    { name: "Dock & Piling Accessories", slug: "dock-boat-lift-accessories" },
+    { name: "Dock & Piling Inspection", slug: "dock-boat-lift-inspections" },
   ];
 
   const boatLiftServices = [
-    { name: 'New Boat Lift Construction', slug: 'new-boat-lift-design-installation' },
-    { name: 'Boat Lift Repair & Maintenance', slug: 'boat-lift-repair-maintenance' },
-    { name: 'Boat Lift Accessories', slug: 'dock-boat-lift-accessories' },
-    { name: 'Boat Lift Inspection', slug: 'dock-boat-lift-inspections' }
+    {
+      name: "New Boat Lift Construction",
+      slug: "new-boat-lift-design-installation",
+    },
+    {
+      name: "Boat Lift Repair & Maintenance",
+      slug: "boat-lift-repair-maintenance",
+    },
+    { name: "Boat Lift Accessories", slug: "dock-boat-lift-accessories" },
+    { name: "Boat Lift Inspection", slug: "dock-boat-lift-inspections" },
   ];
 
   return (
@@ -32,7 +41,7 @@ export default function About() {
       <div className="container mx-auto px-4">
         <div
           className={`text-center mb-16 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
           <div className="flex items-center justify-center md:gap-4 max-w-full lg:max-w-7xl mx-auto px-4 lg:px-8">
@@ -40,16 +49,19 @@ export default function About() {
               <div className="inline-block">
                 <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-montserrat font-bold text-burgundy mb-4">
                   Pinellas County's Leading
-                  <span className="text-gold block"> Dock & Boat Lift Company</span>
+                  <span className="text-gold block">
+                    {" "}
+                    Dock & Boat Lift Company
+                  </span>
                 </h1>
                 <div className="w-24 h-1 bg-gradient-to-r from-burgundy to-gold mx-auto mt-2" />
               </div>
             </div>
-            
-            <img 
-              src={logo} 
-              alt="Satriano Marine Construction Logo" 
-              className="hidden md:block w-48 h-48 lg:w-56 lg:h-56 flex-shrink-0" 
+
+            <img
+              src={logo}
+              alt="Satriano Marine Construction Logo"
+              className="hidden md:block w-48 h-48 lg:w-56 lg:h-56 flex-shrink-0"
             />
           </div>
         </div>
@@ -57,7 +69,9 @@ export default function About() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div
             className={`transition-all duration-1000 delay-200 ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+              isVisible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 -translate-x-10"
             }`}
           >
             <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-2xl lg:text-3xl font-bold text-burgundy mb-4 xs:mb-6 text-center">
@@ -66,7 +80,7 @@ export default function About() {
 
             <p className="text-base md:text-lg text-burgundy mb-4 leading-relaxed">
               Satriano Marine Construction, a family-owned and operated business
-              dedicated to providing a high-quality marine construction service. 
+              dedicated to providing a high-quality marine construction service.
               We take pride in our work and are personal in our service.
             </p>
 
@@ -81,7 +95,9 @@ export default function About() {
                     <div
                       key={index}
                       className={`transition-all duration-500 ${
-                        isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-5'
+                        isVisible
+                          ? "opacity-100 translate-x-0"
+                          : "opacity-0 -translate-x-5"
                       }`}
                       style={{ transitionDelay: `${300 + index * 50}ms` }}
                     >
@@ -95,7 +111,9 @@ export default function About() {
                         className="lg:hidden flex items-start gap-3 hover:text-gold transition-colors"
                       >
                         <CheckCircle2 className="w-5 h-5 text-burgundy flex-shrink-0 mt-0.5" />
-                        <span className="text-burgundy hover:text-gold">{service.name}</span>
+                        <span className="text-burgundy hover:text-gold">
+                          {service.name}
+                        </span>
                       </Link>
                     </div>
                   ))}
@@ -106,7 +124,9 @@ export default function About() {
                     <div
                       key={index}
                       className={`transition-all duration-500 ${
-                        isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-5'
+                        isVisible
+                          ? "opacity-100 translate-x-0"
+                          : "opacity-0 -translate-x-5"
                       }`}
                       style={{ transitionDelay: `${400 + index * 50}ms` }}
                     >
@@ -120,7 +140,9 @@ export default function About() {
                         className="lg:hidden flex items-start gap-3 hover:text-gold transition-colors"
                       >
                         <CheckCircle2 className="w-5 h-5 text-burgundy flex-shrink-0 mt-0.5" />
-                        <span className="text-burgundy hover:text-gold">{service.name}</span>
+                        <span className="text-burgundy hover:text-gold">
+                          {service.name}
+                        </span>
                       </Link>
                     </div>
                   ))}
@@ -143,7 +165,9 @@ export default function About() {
 
           <div
             className={`transition-all duration-1000 delay-400 ${
-              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+              isVisible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 translate-x-10"
             }`}
           >
             <div className="relative">
@@ -166,12 +190,8 @@ export default function About() {
               </div>
 
               <div className="bg-cream p-6 rounded-xl shadow-lg border border-gold hover:shadow-xl transition-shadow text-center">
-                <div className="text-3xl font-bold text-gold mb-2">
-                  Family
-                </div>
-                <div className="text-sm text-burgundy">
-                  Owned & Operated
-                </div>
+                <div className="text-3xl font-bold text-gold mb-2">Family</div>
+                <div className="text-sm text-burgundy">Owned & Operated</div>
               </div>
             </div>
           </div>
