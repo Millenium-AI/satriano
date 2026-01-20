@@ -14,7 +14,7 @@ export default function Services() {
 
   return (
     <section id="services" ref={ref} className="hidden lg:flex lg:flex-col bg-white section-default">
-      <div className="container mx-auto px-4 flex flex-col h-full max-h-screen">
+      <div className="container mx-auto px-4 flex flex-col">
         <div
           className={`flex-shrink-0 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
@@ -29,7 +29,7 @@ export default function Services() {
         </div>
 
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 flex-1 min-h-0 max-w-9xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-9xl mx-auto pb-8">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
@@ -47,7 +47,7 @@ export default function Services() {
                 <img 
                   src={service.image} 
                   alt={service.title}
-                  className="w-full h-32 object-cover rounded-lg mb-3 flex-shrink-0"
+                  className="w-full h-64 object-cover rounded-lg mb-3 flex-shrink-0"
                 />
 
                 {/* Icon + Title Row */}
