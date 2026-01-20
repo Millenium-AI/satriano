@@ -8,6 +8,14 @@ import {
   ClipboardCheck,
 } from 'lucide-react';
 
+// Import your images
+import dockConstruction from '../assets/dock-construction.jpg';
+import dockRepair from '../assets/dock-repair.jpg';
+import accessories from '../assets/accessories.jpg';
+import boatLiftInstall from '../assets/boat-lift-install.jpg';
+import boatLiftRepair from '../assets/boat-lift-repair.jpg';
+import inspections from '../assets/inspections.jpg';
+
 export type ServiceSlug =
   | 'new-dock-design-construction'
   | 'dock-repair-maintenance'
@@ -22,6 +30,7 @@ export interface ServiceItem {
   description: string;
   color: string;
   slug: ServiceSlug;
+  image: string;
 }
 
 export const services: ServiceItem[] = [
@@ -32,6 +41,7 @@ export const services: ServiceItem[] = [
       'Custom dock design and construction tailored to your waterfront property. We handle everything from permits to completion.',
     color: 'from-burgundy to-burgundy',
     slug: 'new-dock-design-construction',
+    image: dockConstruction,
   },
   {
     icon: Wrench,
@@ -40,6 +50,7 @@ export const services: ServiceItem[] = [
       'Expert repair and maintenance services to keep your dock safe and functional. We fix damage from storms, age, and wear.',
     color: 'from-burgundy to-burgundy',
     slug: 'dock-repair-maintenance',
+    image: dockRepair,
   },
   {
     icon: Sparkles,
@@ -48,6 +59,7 @@ export const services: ServiceItem[] = [
       'Wide selection of premium accessories to enhance your dock and boat lift including bumpers, cleats, ladders, and more.',
     color: 'from-gold to-gold',
     slug: 'dock-boat-lift-accessories',
+    image: accessories,
   },
   {
     icon: Settings,
@@ -56,6 +68,7 @@ export const services: ServiceItem[] = [
       'Professional boat lift design and installation for vessels of all sizes. Quality motors, cables, and remote controls.',
     color: 'from-burgundy to-gold',
     slug: 'new-boat-lift-design-installation',
+    image: boatLiftInstall,
   },
   {
     icon: Search,
@@ -64,6 +77,7 @@ export const services: ServiceItem[] = [
       'Complete boat lift service including motor replacement, cable repair, adjustments, and preventative maintenance.',
     color: 'from-burgundy to-burgundy',
     slug: 'boat-lift-repair-maintenance',
+    image: boatLiftRepair,
   },
   {
     icon: ClipboardCheck,
@@ -72,5 +86,6 @@ export const services: ServiceItem[] = [
       'Thorough inspections for buyers, sellers, and owners. Detailed reports on dock and boat lift integrity and safety.',
     color: 'from-gold to-gold',
     slug: 'dock-boat-lift-inspections',
+    image: inspections,
   },
 ];

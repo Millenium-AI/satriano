@@ -5,10 +5,12 @@ import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import SectionHeader from './SectionHeader';
 import { services } from '../data/services';
 
+
 export default function Services() {
   const ref = useRef<HTMLElement>(null);
   const isVisible = useIntersectionObserver(ref, 0.1);
   const navigate = useNavigate();
+
 
   return (
     <section id="services" ref={ref} className="hidden lg:flex lg:flex-col bg-white section-default">
@@ -26,20 +28,28 @@ export default function Services() {
           />
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 flex-1 min-h-0 max-w-5xl mx-auto">
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 flex-1 min-h-0 max-w-9xl mx-auto">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
               <button
                 key={service.slug}
                 onClick={() => navigate(`/services/${service.slug}`)}
-                className={`group bg-cream p-7 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gold hover:border-burgundy flex flex-col cursor-pointer hover:scale-105 active:scale-95 max-h-64 ${
+                className={`group bg-cream p-7 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gold hover:border-burgundy flex flex-col cursor-pointer hover:scale-105 active:scale-95 max-h-fit ${
                   isVisible
                     ? 'opacity-100 translate-y-0'
                     : 'opacity-0 translate-y-10'
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
+                {/* Image - Now at the top */}
+                <img 
+                  src={service.image} 
+                  alt={service.title}
+                  className="w-full h-32 object-cover rounded-lg mb-3 flex-shrink-0"
+                />
+
                 {/* Icon + Title Row */}
                 <div className="flex items-center gap-2 mb-2 flex-shrink-0">
                   <div
@@ -58,6 +68,7 @@ export default function Services() {
                     {service.description}
                   </p>
                 </div>
+
 
                 {/* Learn More */}
                 <div className="text-burgundy text-xs xl:text-sm font-semibold flex items-center justify-center gap-1 group-hover:gap-2 transition-all group-hover:text-gold mt-auto">

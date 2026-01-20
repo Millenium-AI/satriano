@@ -5,9 +5,11 @@ import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
 import side from "../assets/Side.jpg";
 import logo from "../assets/SMClogoNO.png";
 
+
 export default function About() {
   const ref = useRef<HTMLElement>(null);
   const isVisible = useIntersectionObserver(ref, 0.1);
+
 
   const dockServices = [
     { name: "New Dock Construction", slug: "new-dock-design-construction" },
@@ -18,6 +20,7 @@ export default function About() {
     { name: "Dock & Piling Accessories", slug: "dock-boat-lift-accessories" },
     { name: "Dock & Piling Inspection", slug: "dock-boat-lift-inspections" },
   ];
+
 
   const boatLiftServices = [
     {
@@ -31,6 +34,7 @@ export default function About() {
     { name: "Boat Lift Accessories", slug: "dock-boat-lift-accessories" },
     { name: "Boat Lift Inspection", slug: "dock-boat-lift-inspections" },
   ];
+
 
   return (
     <section
@@ -58,13 +62,15 @@ export default function About() {
               </div>
             </div>
 
+
             <img
               src={logo}
               alt="Satriano Marine Construction Logo"
-              className="hidden md:block w-48 h-48 lg:w-56 lg:h-56 flex-shrink-0"
+              className="hidden md:block w-48 lg:w-56 h-auto object-contain flex-shrink-0"
             />
           </div>
         </div>
+
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div
@@ -78,16 +84,19 @@ export default function About() {
               Experienced in New Dock Design, Construction & Boat Lifts
             </h2>
 
+
             <p className="text-base md:text-lg text-burgundy mb-4 leading-relaxed">
               Satriano Marine Construction, a family-owned and operated business
               dedicated to providing a high-quality marine construction service.
               We take pride in our work and are personal in our service.
             </p>
 
+
             <div className="bg-gold/20 p-8 rounded-2xl border border-gold shadow-lg mb-6">
               <h2 className="text-2xl font-lato font-bold text-burgundy mb-4">
                 Our Services Include:
               </h2>
+
 
               <div className="grid grid-cols-2 gap-3">
                 <div className="space-y-3">
@@ -106,6 +115,7 @@ export default function About() {
                         <span className="text-burgundy">{service.name}</span>
                       </div>
 
+
                       <Link
                         to={`/services/${service.slug}`}
                         className="lg:hidden flex items-start gap-3 hover:text-gold transition-colors"
@@ -118,6 +128,7 @@ export default function About() {
                     </div>
                   ))}
                 </div>
+
 
                 <div className="space-y-3">
                   {boatLiftServices.map((service, index) => (
@@ -135,6 +146,7 @@ export default function About() {
                         <span className="text-burgundy">{service.name}</span>
                       </div>
 
+
                       <Link
                         to={`/services/${service.slug}`}
                         className="lg:hidden flex items-start gap-3 hover:text-gold transition-colors"
@@ -150,10 +162,12 @@ export default function About() {
               </div>
             </div>
 
+
             <p className="text-base md:text-lg text-burgundy mb-4 leading-relaxed">
               We serve all of Pinellas County with expert craftsmanship and
               unmatched customer service.
             </p>
+
 
             <p className="text-lg text-burgundy mb-6 leading-relaxed">
               If you have waterfront property and are in need of dock or boat
@@ -162,6 +176,7 @@ export default function About() {
               apart from our competitors!
             </p>
           </div>
+
 
           <div
             className={`transition-all duration-1000 delay-400 ${
@@ -179,6 +194,7 @@ export default function About() {
               />
             </div>
 
+
             <div className="mt-8 grid grid-cols-2 gap-4">
               <div className="bg-cream p-6 rounded-xl shadow-lg border border-gold hover:shadow-xl transition-shadow text-center">
                 <div className="text-3xl font-bold text-burgundy mb-2">
@@ -188,6 +204,7 @@ export default function About() {
                   State Certified General Contractor
                 </div>
               </div>
+
 
               <div className="bg-cream p-6 rounded-xl shadow-lg border border-gold hover:shadow-xl transition-shadow text-center">
                 <div className="text-3xl font-bold text-gold mb-2">Family</div>

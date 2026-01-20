@@ -3,20 +3,25 @@ import { ExternalLink } from 'lucide-react';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import SectionHeader from './SectionHeader';
 
+// Import images
+import decksNDocksLogo from '../assets/decksndocks.svg';
+import boatliftUsLogo from '../assets/boatliftus.png';
+import slideMoorLogo from '../assets/slidemoor.png';
+
 const partners = [
   {
     name: 'Decks & Docks',
-    image: 'src/assets/decksndocks.svg',
+    image: decksNDocksLogo,
     url: 'https://www.decks-docks.com/'
   },
   {
     name: 'Boatlift US',
-    image: 'src/assets/boatliftus.png',
+    image: boatliftUsLogo,
     url: 'https://boatliftuscarolinas.com/'
   },
   {
     name: 'Slide Moor',
-    image: 'src/assets/slidemoor.png',
+    image: slideMoorLogo,
     url: 'https://slidemoor.com/'
   }
 ];
