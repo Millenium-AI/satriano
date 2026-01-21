@@ -74,6 +74,14 @@ export default function Footer() {
                 </button>
               </li>
               <li>
+                <a
+                  href="/gallery"
+                  className="text-cream/80 hover:text-cream transition-colors"
+                >
+                  Gallery
+                </a>
+              </li>
+              <li>
                 <button
                   onClick={() => scrollToSection('services')}
                   className="text-cream/80 hover:text-cream transition-colors"
