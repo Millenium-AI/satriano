@@ -93,10 +93,6 @@ export default function Hero() {
               <div className="text-white text-sm">Licensed & Insured</div>
             </div>
             <div className="bg-white/10 backdrop-blur-md p-4 rounded-lg text-center shadow-lg">
-              <div className="text-3xl font-bold text-gold mb-1">500+</div>
-              <div className="text-white text-sm">Projects Completed</div>
-            </div>
-            <div className="bg-white/10 backdrop-blur-md p-4 rounded-lg text-center shadow-lg">
               <div className="text-3xl font-bold text-gold mb-1">5★</div>
               <div className="text-white text-sm">Customer Rated</div>
             </div>
