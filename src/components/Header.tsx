@@ -159,6 +159,12 @@ export default function Header() {
               PARTNERS
             </button>
             <button
+              onClick={() => navigate('/gallery')}
+              className="text-burgundy hover:text-gold transition-colors font-medium"
+            >
+              GALLERY
+            </button>
+            <button
               onClick={() => scrollToSection('testimonials')}
               className="text-burgundy hover:text-gold transition-colors font-medium"
             >
@@ -273,6 +279,15 @@ export default function Header() {
                 className="text-burgundy hover:text-gold transition-colors font-medium text-left"
               >
                 PARTNERS
+              </button>
+              <button
+                onClick={() => {
+                  navigate('/gallery');
+                  setIsMobileMenuOpen(false);
+                }}
+                className="text-burgundy hover:text-gold transition-colors font-medium text-left"
+              >
+                GALLERY
               </button>
               <button
                 onClick={() => scrollToSection('testimonials')}

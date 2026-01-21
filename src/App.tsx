@@ -7,8 +7,10 @@ import DockAccessories from './pages/DockAccessories';
 import BoatLiftInstallation from './pages/BoatLiftInstallation';
 import BoatLiftRepair from './pages/BoatLiftRepair';
 import Inspections from './pages/Inspections';
+import Gallery from './pages/Gallery';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
+
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
       <Routes>
         {/* Full one-page site */}
         <Route path="/" element={<Home />} />
+
 
         {/* Service detail pages */}
         <Route
@@ -43,6 +46,9 @@ function App() {
           element={<Inspections />}
         />
 
+        {/* Gallery page */}
+        <Route path="/gallery" element={<Gallery />} />
+
         {/* Legal pages */}
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
@@ -50,5 +56,6 @@ function App() {
     </BrowserRouter>
   );
 }
+
 
 export default App;
