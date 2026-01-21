@@ -4,9 +4,9 @@ import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import SectionHeader from './SectionHeader';
 
 // Import images
-import decksNDocksLogo from '../assets/decksndocks.svg';
-import boatliftUsLogo from '../assets/boatliftus.png';
-import slideMoorLogo from '../assets/slidemoor.png';
+import decksNDocksLogo from '../partners/decksndocks.svg;
+import boatliftUsLogo from '../partners/boatliftus.png';
+import slideMoorLogo from '../partners/slidemoor.png';
 
 const partners = [
   {
@@ -15,9 +15,9 @@ const partners = [
     url: 'https://www.decks-docks.com/'
   },
   {
-    name: 'Boatlift US',
+    name: 'Fix Marine Supply Boatlift US',
     image: boatliftUsLogo,
-    url: 'https://boatliftuscarolinas.com/'
+    url: 'https://www.fixmarinesupply.com/'
   },
   {
     name: 'Slide Moor',
