@@ -1,35 +1,25 @@
-// src/pages/Gallery.tsx
 import { useState } from 'react';
-import { X } from 'lucide-react';
-import image1 from '../assets/gallery/image-1.jpg';
-import image2 from '../assets/gallery/image-2.jpg';
-import image3 from '../assets/gallery/image-3.jpg';
-import image4 from '../assets/gallery/image-4.jpg';
-import image5 from '../assets/gallery/image-5.jpg';
-import image6 from '../assets/gallery/image-6.jpg';
-import image7 from '../assets/gallery/image-7.jpg';
-import image8 from '../assets/gallery/image-8.jpg';
-import image9 from '../assets/gallery/image-9.jpg';
-import image10 from '../assets/gallery/image-10.jpg';
-import image11 from '../assets/gallery/image-11.jpg';
-import image12 from '../assets/gallery/image-12.jpg';
-import image13 from '../assets/gallery/image-13.jpg';
-import image14 from '../assets/gallery/image-14.jpg';
-import image15 from '../assets/gallery/image-15.jpg';
-import image16 from '../assets/gallery/image-16.jpg';
-import image17 from '../assets/gallery/image-17.jpg';
-import image18 from '../assets/gallery/image-18.jpg';
-import image19 from '../assets/gallery/image-19.jpg';
-import image20 from '../assets/gallery/image-20.jpg';
-import image21 from '../assets/gallery/image-21.jpg';
-import image22 from '../assets/gallery/image-22.jpg';
-import image23 from '../assets/gallery/image-23.jpg';
-import image24 from '../assets/gallery/image-24.jpg';
-import image25 from '../assets/gallery/image-25.jpg';
-import image26 from '../assets/gallery/image-26.jpg';
-import image27 from '../assets/gallery/image-27.jpg';
-import image28 from '../assets/gallery/image-28.jpg';
+import { ArrowLeft, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import TopStrip from '../components/TopStrip';
 
+// Import all images dynamically
+const imageModules = import.meta.glob('../assets/gallery/image-*.jpg', { eager: true, query: '?url', import: 'default' });
+const images = Object.entries(imageModules)
+  .map(([path, url], index) => ({
+    id: index + 1,
+    src: url as string,
+    alt: `Marine construction project ${index + 1}`
+  }))
+  .sort((a, b) => {
+    // Extract number from filename for proper sorting
+    const getNum = (id: number) => {
+      const entry = Object.entries(imageModules)[id - 1];
+      const match = entry[0].match(/image-(\d+)\.jpg/);
+      return match ? parseInt(match[1]) : id;
+    };
+    return getNum(a.id) - getNum(b.id);
+  });
 
 interface GalleryImage {
   id: number;
@@ -37,210 +27,128 @@ interface GalleryImage {
   alt: string;
 }
 
-
 export default function Gallery() {
+  const navigate = useNavigate();
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
 
+  const handleBackToHome = () => {
+    navigate('/', { replace: true });
 
-  const images: GalleryImage[] = [
-    {
-      id: 1,
-      src: image1,
-      alt: 'Marine construction project 1'
-    },
-    {
-      id: 2,
-      src: image2,
-      alt: 'Marine construction project 2'
-    },
-    {
-      id: 3,
-      src: image3,
-      alt: 'Marine construction project 3'
-    },
-    {
-      id: 4,
-      src: image4,
-      alt: 'Marine construction project 4'
-    },
-    {
-      id: 5,
-      src: image5,
-      alt: 'Marine construction project 5'
-    },
-    {
-      id: 6,
-      src: image6,
-      alt: 'Marine construction project 6'
-    },
-    {
-      id: 7,
-      src: image7,
-      alt: 'Marine construction project 7'
-    },
-    {
-      id: 8,
-      src: image8,
-      alt: 'Marine construction project 8'
-    },
-    {
-      id: 9,
-      src: image9,
-      alt: 'Marine construction project 9'
-    },
-    {
-      id: 10,
-      src: image10,
-      alt: 'Marine construction project 10'
-    },
-    {
-      id: 11,
-      src: image11,
-      alt: 'Marine construction project 11'
-    },
-    {
-      id: 12,
-      src: image12,
-      alt: 'Marine construction project 12'
-    },
-    {
-      id: 13,
-      src: image13,
-      alt: 'Marine construction project 13'
-    },
-    {
-      id: 14,
-      src: image14,
-      alt: 'Marine construction project 14'
-    },
-    {
-      id: 15,
-      src: image15,
-      alt: 'Marine construction project 15'
-    },
-    {
-      id: 16,
-      src: image16,
-      alt: 'Marine construction project 16'
-    },
-    {
-      id: 17,
-      src: image17,
-      alt: 'Marine construction project 17'
-    },
-    {
-      id: 18,
-      src: image18,
-      alt: 'Marine construction project 18'
-    },
-    {
-      id: 19,
-      src: image19,
-      alt: 'Marine construction project 19'
-    },
-    {
-      id: 20,
-      src: image20,
-      alt: 'Marine construction project 20'
-    },
-    {
-      id: 21,
-      src: image21,
-      alt: 'Marine construction project 21'
-    },
-    {
-      id: 22,
-      src: image22,
-      alt: 'Marine construction project 22'
-    },
-    {
-      id: 23,
-      src: image23,
-      alt: 'Marine construction project 23'
-    },
-    {
-      id: 24,
-      src: image24,
-      alt: 'Marine construction project 24'
-    },
-    {
-      id: 25,
-      src: image25,
-      alt: 'Marine construction project 25'
-    },
-    {
-      id: 26,
-      src: image26,
-      alt: 'Marine construction project 26'
-    },
-    {
-      id: 27,
-      src: image27,
-      alt: 'Marine construction project 27'
-    },
-    {
-      id: 28,
-      src: image28,
-      alt: 'Marine construction project 28'
-    },
-  ];
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }, 100);
+  };
 
+  const handlePrevImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!selectedImage) return;
+    
+    const currentIndex = images.findIndex(img => img.id === selectedImage.id);
+    const prevIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
+    setSelectedImage(images[prevIndex]);
+  };
+
+  const handleNextImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!selectedImage) return;
+    
+    const currentIndex = images.findIndex(img => img.id === selectedImage.id);
+    const nextIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
+    setSelectedImage(images[nextIndex]);
+  };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#FEF7EB' }}>
-      {/* Header Section */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl lg:text-5xl font-bold text-burgundy mb-4">
-            Project Gallery
-          </h1>
-          <p className="text-lg text-burgundy/80 max-w-2xl mx-auto">
-            Explore our completed marine construction projects showcasing quality craftsmanship and attention to detail.
-          </p>
-        </div>
-
-
-        {/* Image Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {images.map((image) => (
-            <div
-              key={image.id}
-              className="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
-              onClick={() => setSelectedImage(image)}
-            >
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="w-full h-64 object-cover"
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-
-
-      {/* Lightbox Modal */}
-      {selectedImage && (
-        <div
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
-        >
+    <>
+      <TopStrip />
+      <div className="min-h-screen" style={{ backgroundColor: '#FEF7EB' }}>
+        {/* Header Section */}
+        <div className="container mx-auto px-4 py-10">
           <button
-            onClick={() => setSelectedImage(null)}
-            className="absolute top-4 right-4 text-white hover:text-gold transition-colors"
+            onClick={handleBackToHome}
+            className="inline-flex items-center gap-2 bg-white text-burgundy px-4 py-2 rounded-lg text-sm font-semibold border-2 border-burgundy hover:bg-burgundy hover:text-cream transition-all group mb-6"
           >
-            <X className="w-8 h-8" />
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            Back to Home
           </button>
-          <div className="max-w-5xl max-h-[90vh] relative">
-            <img
-              src={selectedImage.src}
-              alt={selectedImage.alt}
-              className="max-w-full max-h-[90vh] object-contain rounded-lg"
-              onClick={(e) => e.stopPropagation()}
-            />
+
+          <div className="text-center mb-12">
+            <h1 className="text-4xl lg:text-5xl font-bold text-burgundy mb-4">
+              Project Gallery
+            </h1>
+            <p className="text-lg text-burgundy/80 max-w-2xl mx-auto">
+              Explore our completed marine construction projects showcasing quality craftsmanship and attention to detail.
+            </p>
+          </div>
+
+          {/* Image Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {images.map((image) => (
+              <div
+                key={image.id}
+                className="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                onClick={() => setSelectedImage(image)}
+              >
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full h-64 object-cover"
+                />
+              </div>
+            ))}
           </div>
         </div>
-      )}
-    </div>
+
+        {/* Lightbox Modal */}
+        {selectedImage && (
+          <div
+            className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center overflow-auto"
+            onClick={() => setSelectedImage(null)}
+          >
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="fixed top-4 right-4 text-white hover:text-gold transition-colors z-10"
+            >
+              <X className="w-8 h-8" />
+            </button>
+
+            {/* Previous Button */}
+            <button
+              onClick={handlePrevImage}
+              className="fixed left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-all z-10"
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="w-8 h-8" />
+            </button>
+
+            {/* Next Button */}
+            <button
+              onClick={handleNextImage}
+              className="fixed right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-all z-10"
+              aria-label="Next image"
+            >
+              <ChevronRight className="w-8 h-8" />
+            </button>
+
+            {/* Image Counter */}
+            <div className="fixed bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full text-sm z-10">
+              {images.findIndex(img => img.id === selectedImage.id) + 1} / {images.length}
+            </div>
+
+            {/* Full Size Image Container */}
+            <div className="p-4 md:p-8">
+              <img
+                src={selectedImage.src}
+                alt={selectedImage.alt}
+                className="max-w-full h-auto rounded-lg"
+                onClick={(e) => e.stopPropagation()}
+              />
+            </div>
+          </div>
+        )}
+      </div>
+    </>
   );
 }
