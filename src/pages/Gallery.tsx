@@ -30,186 +30,161 @@ import image26 from '../assets/gallery/image-26.jpg';
 import image27 from '../assets/gallery/image-27.jpg';
 import image28 from '../assets/gallery/image-28.jpg';
 
+
 interface GalleryImage {
   id: number;
   src: string;
   alt: string;
-  title?: string;
 }
+
 
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
+
 
   const images: GalleryImage[] = [
     {
       id: 1,
       src: image1,
-      alt: 'Marine construction project 1',
-      title: 'Project 1'
+      alt: 'Marine construction project 1'
     },
     {
       id: 2,
       src: image2,
-      alt: 'Marine construction project 2',
-      title: 'Project 2'
+      alt: 'Marine construction project 2'
     },
     {
       id: 3,
       src: image3,
-      alt: 'Marine construction project 3',
-      title: 'Project 3'
+      alt: 'Marine construction project 3'
     },
     {
       id: 4,
       src: image4,
-      alt: 'Marine construction project 4',
-      title: 'Project 4'
+      alt: 'Marine construction project 4'
     },
     {
       id: 5,
       src: image5,
-      alt: 'Marine construction project 5',
-      title: 'Project 5'
+      alt: 'Marine construction project 5'
     },
     {
       id: 6,
       src: image6,
-      alt: 'Marine construction project 6',
-      title: 'Project 6'
+      alt: 'Marine construction project 6'
     },
     {
       id: 7,
       src: image7,
-      alt: 'Marine construction project 7',
-      title: 'Project 7'
+      alt: 'Marine construction project 7'
     },
     {
       id: 8,
       src: image8,
-      alt: 'Marine construction project 8',
-      title: 'Project 8'
+      alt: 'Marine construction project 8'
     },
     {
       id: 9,
       src: image9,
-      alt: 'Marine construction project 9',
-      title: 'Project 9'
+      alt: 'Marine construction project 9'
     },
     {
       id: 10,
       src: image10,
-      alt: 'Marine construction project 10',
-      title: 'Project 10'
+      alt: 'Marine construction project 10'
     },
     {
       id: 11,
       src: image11,
-      alt: 'Marine construction project 11',
-      title: 'Project 11'
+      alt: 'Marine construction project 11'
     },
     {
       id: 12,
       src: image12,
-      alt: 'Marine construction project 12',
-      title: 'Project 12'
+      alt: 'Marine construction project 12'
     },
     {
       id: 13,
       src: image13,
-      alt: 'Marine construction project 13',
-      title: 'Project 13'
+      alt: 'Marine construction project 13'
     },
     {
       id: 14,
       src: image14,
-      alt: 'Marine construction project 14',
-      title: 'Project 14'
+      alt: 'Marine construction project 14'
     },
     {
       id: 15,
       src: image15,
-      alt: 'Marine construction project 15',
-      title: 'Project 15'
+      alt: 'Marine construction project 15'
     },
     {
       id: 16,
       src: image16,
-      alt: 'Marine construction project 16',
-      title: 'Project 16'
+      alt: 'Marine construction project 16'
     },
     {
       id: 17,
       src: image17,
-      alt: 'Marine construction project 17',
-      title: 'Project 17'
+      alt: 'Marine construction project 17'
     },
     {
       id: 18,
       src: image18,
-      alt: 'Marine construction project 18',
-      title: 'Project 18'
+      alt: 'Marine construction project 18'
     },
     {
       id: 19,
       src: image19,
-      alt: 'Marine construction project 19',
-      title: 'Project 19'
+      alt: 'Marine construction project 19'
     },
     {
       id: 20,
       src: image20,
-      alt: 'Marine construction project 20',
-      title: 'Project 20'
+      alt: 'Marine construction project 20'
     },
     {
       id: 21,
       src: image21,
-      alt: 'Marine construction project 21',
-      title: 'Project 21'
+      alt: 'Marine construction project 21'
     },
     {
       id: 22,
       src: image22,
-      alt: 'Marine construction project 22',
-      title: 'Project 22'
+      alt: 'Marine construction project 22'
     },
     {
       id: 23,
       src: image23,
-      alt: 'Marine construction project 23',
-      title: 'Project 23'
+      alt: 'Marine construction project 23'
     },
     {
       id: 24,
       src: image24,
-      alt: 'Marine construction project 24',
-      title: 'Project 24'
+      alt: 'Marine construction project 24'
     },
     {
       id: 25,
       src: image25,
-      alt: 'Marine construction project 25',
-      title: 'Project 25'
+      alt: 'Marine construction project 25'
     },
     {
       id: 26,
       src: image26,
-      alt: 'Marine construction project 26',
-      title: 'Project 26'
+      alt: 'Marine construction project 26'
     },
     {
       id: 27,
       src: image27,
-      alt: 'Marine construction project 27',
-      title: 'Project 27'
+      alt: 'Marine construction project 27'
     },
     {
       id: 28,
       src: image28,
-      alt: 'Marine construction project 28',
-      title: 'Project 28'
+      alt: 'Marine construction project 28'
     },
   ];
+
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#FEF7EB' }}>
@@ -224,6 +199,7 @@ export default function Gallery() {
           </p>
         </div>
 
+
         {/* Image Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {images.map((image) => (
@@ -237,15 +213,11 @@ export default function Gallery() {
                 alt={image.alt}
                 className="w-full h-64 object-cover"
               />
-              <div className="absolute inset-0 bg-burgundy/0 group-hover:bg-burgundy/70 transition-all duration-300 flex items-end p-4">
-                <p className="text-cream font-semibold text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  {image.title}
-                </p>
-              </div>
             </div>
           ))}
         </div>
       </div>
+
 
       {/* Lightbox Modal */}
       {selectedImage && (
@@ -266,11 +238,6 @@ export default function Gallery() {
               className="max-w-full max-h-[90vh] object-contain rounded-lg"
               onClick={(e) => e.stopPropagation()}
             />
-            {selectedImage.title && (
-              <p className="text-white text-center mt-4 text-xl font-semibold">
-                {selectedImage.title}
-              </p>
-            )}
           </div>
         </div>
       )}
