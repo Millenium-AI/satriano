@@ -6,7 +6,7 @@ import TopStrip from '../components/TopStrip';
 // Import all images dynamically
 const imageModules = import.meta.glob('../assets/gallery/image-*.jpg', { eager: true, query: '?url', import: 'default' });
 const images = Object.entries(imageModules)
-  .map(([path, url], index) => ({
+  .map(([, url], index) => ({
     id: index + 1,
     src: url as string,
     alt: `Marine construction project ${index + 1}`
