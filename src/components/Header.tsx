@@ -44,7 +44,15 @@ export default function Header() {
     const handleScroll = () => {
       const y = window.scrollY;
       setIsScrolled(y > 50);
-      setHidden(y > lastY && y > 50);
+      
+      const shouldHide = y > lastY && y > 50;
+      setHidden(shouldHide);
+      
+      // Auto-close menus when header hides
+      if (shouldHide) {
+        closeMenus();
+      }
+      
       setLastY(y);
     };
 
