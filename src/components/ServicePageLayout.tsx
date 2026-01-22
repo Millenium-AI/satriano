@@ -18,10 +18,22 @@ export default function ServicePageLayout({
 }: ServicePageLayoutProps) {
   const navigate = useNavigate();
 
-  // Scroll to top when component mounts
+  // Aggressive scroll to top for iPad compatibility
   useEffect(() => {
+    // Force immediate scroll to top
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
     window.scrollTo(0, 0);
-  }, []);
+    
+    // Double-check after a brief delay for iPad
+    const timer = setTimeout(() => {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      window.scrollTo(0, 0);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [title]);
 
   const handleBackToServices = () => {
     const isDesktop = window.innerWidth >= DESKTOP_BREAKPOINT;
