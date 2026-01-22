@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import TopStrip from './TopStrip';
@@ -9,7 +9,7 @@ interface ServicePageLayoutProps {
   children: ReactNode;
 }
 
-const DESKTOP_BREAKPOINT = 1400; // Matches your new desktop: breakpoint
+const DESKTOP_BREAKPOINT = 1400;
 
 export default function ServicePageLayout({
   title,
@@ -18,13 +18,17 @@ export default function ServicePageLayout({
 }: ServicePageLayoutProps) {
   const navigate = useNavigate();
 
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleBackToServices = () => {
     const isDesktop = window.innerWidth >= DESKTOP_BREAKPOINT;
 
     navigate('/', { replace: true });
 
     setTimeout(() => {
-      // Desktop goes to services section, mobile/tablet goes to about section
       const targetSection = isDesktop ? 'services' : 'about';
       const section = document.getElementById(targetSection);
 
@@ -45,52 +49,44 @@ export default function ServicePageLayout({
   return (
     <>
       <TopStrip />
-      <div className="min-h-screen bg-gradient-to-b from-cream to-white">
-        <div
+      <div className="min-h-screen bg-cream">
+        <div 
           className="container mx-auto px-4"
-          style={{ padding: 'clamp(2rem, 4vw, 3rem) 1rem' }}
+          style={{ padding: 'clamp(2rem, 3vw, 2.5rem) 1rem' }}
         >
-          {/* Back Button */}
           <button
             onClick={handleBackToServices}
-            className="flex items-center text-burgundy hover:text-gold transition-colors mb-fluid-xl font-medium"
+            className="inline-flex items-center bg-white text-burgundy rounded-lg font-semibold border-2 border-burgundy hover:bg-burgundy hover:text-cream transition-all group mb-fluid-lg"
             style={{
               gap: 'clamp(0.4rem, 0.8vw, 0.5rem)',
-              fontSize: 'clamp(0.9rem, 1vw + 0.5rem, 1.1rem)',
+              padding: 'clamp(0.4rem, 1vw, 0.5rem) clamp(0.75rem, 1.5vw, 1rem)',
+              fontSize: 'clamp(0.8rem, 1vw + 0.4rem, 0.95rem)',
             }}
           >
-            <ArrowLeft
+            <ArrowLeft 
+              className="group-hover:-translate-x-1 transition-transform"
               style={{
-                width: 'clamp(1rem, 1.5vw, 1.25rem)',
-                height: 'clamp(1rem, 1.5vw, 1.25rem)',
+                width: 'clamp(0.9rem, 1.2vw, 1rem)',
+                height: 'clamp(0.9rem, 1.2vw, 1rem)',
               }}
             />
             Back to Services
           </button>
 
-          {/* Page Title */}
-          <div className="text-center mb-fluid-2xl">
-            <h1
-              className="font-bold text-burgundy mb-fluid-md"
-              style={{ fontSize: 'clamp(1.875rem, 3vw + 1rem, 3rem)' }}
-            >
-              {title}
-            </h1>
-            <div
-              className="h-1 bg-gradient-to-r from-burgundy via-gold to-burgundy mx-auto"
-              style={{ width: 'clamp(4rem, 10vw, 6rem)' }}
-            />
-          </div>
+          <h1 
+            className="font-montserrat font-bold text-burgundy mb-fluid-lg"
+            style={{ fontSize: 'clamp(2rem, 4vw + 1rem, 3rem)' }}
+          >
+            {title}
+          </h1>
 
-          {/* Description */}
-          <p
-            className="text-burgundy/90 leading-relaxed text-center max-w-3xl mx-auto mb-fluid-2xl"
+          <p 
+            className="text-burgundy mb-fluid-xl"
             style={{ fontSize: 'clamp(1rem, 1.2vw + 0.6rem, 1.25rem)' }}
           >
             {description}
           </p>
 
-          {/* Service-specific content */}
           {children}
         </div>
       </div>

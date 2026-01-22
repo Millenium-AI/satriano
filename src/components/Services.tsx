@@ -11,25 +11,30 @@ export default function Services() {
   const navigate = useNavigate();
 
   return (
-    <section
-      id="services"
-      ref={ref}
-      className="section-default bg-gradient-to-b from-cream/50 to-white"
-    >
-      <div className="container mx-auto px-4">
-        <SectionHeader
-          title="Our Services"
-          subtitle="Complete Dock & Boat Lift Solutions"
-        />
-
+    <section id="services" ref={ref} className="hidden desktop:flex desktop:flex-col bg-white section-default">
+      <div className="container mx-auto px-4 flex flex-col">
+        {/* Section Header with Title & Subtitle */}
         <div
-          className="grid sm:grid-cols-2 desktop:grid-cols-3"
+          className={`flex-shrink-0 transition-all duration-1000 mb-fluid-xl ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          <SectionHeader 
+            title="Providing Expert Dock & Boat Lift"
+            highlightedText="Solutions"
+            subtitle="From design to installation to maintenance; we're your one-stop shop for all dock and boat lift needs."
+          />
+        </div>
+
+        {/* Service Cards Grid */}
+        <div 
+          className="grid md:grid-cols-2 desktop:grid-cols-3 max-w-9xl mx-auto pb-8"
           style={{ gap: 'clamp(1.5rem, 3vw, 2rem)' }}
         >
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <div
+              <button
                 key={service.slug}
                 onClick={() => navigate(`/services/${service.slug}`)}
                 className={`group bg-cream rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gold hover:border-burgundy flex flex-col cursor-pointer hover:scale-105 active:scale-95 ${
@@ -43,57 +48,58 @@ export default function Services() {
                 }}
               >
                 {/* Image */}
-                <div className="relative overflow-hidden rounded-lg mb-fluid-md">
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="w-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    style={{ height: 'clamp(10rem, 20vw, 12rem)' }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-burgundy/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
+                <img 
+                  src={service.image} 
+                  alt={service.title}
+                  className="w-full object-cover rounded-lg mb-fluid-sm flex-shrink-0"
+                  style={{ height: 'clamp(12rem, 20vw, 16rem)' }}
+                />
 
-                {/* Icon + Title */}
-                <div
-                  className="flex items-center mb-fluid-sm"
-                  style={{ gap: 'clamp(0.5rem, 1vw, 0.75rem)' }}
+                {/* Icon + Title Row */}
+                <div 
+                  className="flex items-center mb-fluid-sm flex-shrink-0"
+                  style={{ gap: 'clamp(0.4rem, 0.8vw, 0.5rem)' }}
                 >
                   <div
-                    className={`bg-gradient-to-br ${service.color} p-2 rounded-lg group-hover:scale-110 transition-transform`}
+                    className={`bg-gradient-to-br ${service.color} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform`}
+                    style={{ 
+                      width: 'clamp(2.5rem, 4vw, 3rem)',
+                      height: 'clamp(2.5rem, 4vw, 3rem)'
+                    }}
                   >
-                    <Icon
+                    <Icon 
                       className="text-cream"
                       style={{
                         width: 'clamp(1.25rem, 2vw, 1.5rem)',
-                        height: 'clamp(1.25rem, 2vw, 1.5rem)',
+                        height: 'clamp(1.25rem, 2vw, 1.5rem)'
                       }}
                     />
                   </div>
-                  <h3 className="text-fluid-lg font-bold text-burgundy group-hover:text-gold transition-colors">
+                  <h2 className="text-fluid-base desktop:text-fluid-lg font-lato font-bold text-burgundy leading-tight flex-1 text-center">
                     {service.title}
-                  </h3>
+                  </h2>
                 </div>
 
-                {/* Description */}
-                <p className="text-fluid-sm text-burgundy/80 mb-fluid-md leading-relaxed flex-grow">
-                  {service.description}
-                </p>
+                {/* Description - Centered */}
+                <div className="flex-grow flex items-center justify-center mb-fluid-sm">
+                  <p className="text-fluid-xs desktop:text-fluid-sm text-burgundy text-center">
+                    {service.description}
+                  </p>
+                </div>
 
-                {/* Learn More Link */}
-                <div
-                  className="flex items-center text-gold group-hover:text-burgundy transition-colors font-semibold text-fluid-sm"
-                  style={{ gap: 'clamp(0.4rem, 0.8vw, 0.5rem)' }}
+                {/* Learn More */}
+                <div 
+                  className="text-burgundy text-fluid-xs desktop:text-fluid-sm font-semibold flex items-center justify-center gap-1 group-hover:gap-2 transition-all group-hover:text-gold mt-auto"
                 >
                   Learn More
-                  <ArrowRight
-                    className="group-hover:translate-x-1 transition-transform"
+                  <ArrowRight 
                     style={{
-                      width: 'clamp(1rem, 1.5vw, 1.25rem)',
-                      height: 'clamp(1rem, 1.5vw, 1.25rem)',
+                      width: 'clamp(0.75rem, 1vw, 0.875rem)',
+                      height: 'clamp(0.75rem, 1vw, 0.875rem)'
                     }}
                   />
                 </div>
-              </div>
+              </button>
             );
           })}
         </div>
