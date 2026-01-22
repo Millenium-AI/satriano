@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ArrowLeft, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import TopStrip from '../components/TopStrip';
@@ -30,6 +30,13 @@ interface GalleryImage {
 export default function Gallery() {
   const navigate = useNavigate();
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
+
+  // Scroll to top on mount
+  useEffect(() => {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleBackToHome = () => {
     navigate('/', { replace: true });
@@ -65,26 +72,51 @@ export default function Gallery() {
       <TopStrip />
       <div className="min-h-screen" style={{ backgroundColor: '#FEF7EB' }}>
         {/* Header Section */}
-        <div className="container mx-auto px-4 py-10">
+        <div 
+          className="container mx-auto px-4"
+          style={{ padding: 'clamp(2rem, 3vw, 2.5rem) 1rem' }}
+        >
+          {/* Back Button */}
           <button
             onClick={handleBackToHome}
-            className="inline-flex items-center gap-2 bg-white text-burgundy px-4 py-2 rounded-lg text-sm font-semibold border-2 border-burgundy hover:bg-burgundy hover:text-cream transition-all group mb-6"
+            className="inline-flex items-center bg-white text-burgundy rounded-lg font-semibold border-2 border-burgundy hover:bg-burgundy hover:text-cream transition-all group mb-fluid-lg"
+            style={{
+              gap: 'clamp(0.4rem, 0.8vw, 0.5rem)',
+              padding: 'clamp(0.4rem, 1vw, 0.5rem) clamp(0.75rem, 1.5vw, 1rem)',
+              fontSize: 'clamp(0.8rem, 1vw + 0.4rem, 0.95rem)',
+            }}
           >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            <ArrowLeft 
+              className="group-hover:-translate-x-1 transition-transform"
+              style={{
+                width: 'clamp(0.9rem, 1.2vw, 1rem)',
+                height: 'clamp(0.9rem, 1.2vw, 1rem)',
+              }}
+            />
             Back to Home
           </button>
 
-          <div className="text-center mb-12">
-            <h1 className="text-4xl lg:text-5xl font-bold text-burgundy mb-4">
+          {/* Title Section */}
+          <div className="text-center mb-fluid-2xl">
+            <h1 
+              className="font-bold text-burgundy mb-fluid-md"
+              style={{ fontSize: 'clamp(2rem, 4vw + 1rem, 3rem)' }}
+            >
               Project Gallery
             </h1>
-            <p className="text-lg text-burgundy/80 max-w-2xl mx-auto">
+            <p 
+              className="text-burgundy/80 max-w-2xl mx-auto"
+              style={{ fontSize: 'clamp(1rem, 1.2vw + 0.6rem, 1.25rem)' }}
+            >
               Explore our completed marine construction projects showcasing quality craftsmanship and attention to detail.
             </p>
           </div>
 
           {/* Image Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div 
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 desktop:grid-cols-4"
+            style={{ gap: 'clamp(1rem, 2vw, 1.5rem)' }}
+          >
             {images.map((image) => (
               <div
                 key={image.id}
@@ -94,8 +126,10 @@ export default function Gallery() {
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-64 object-cover"
+                  className="w-full object-cover"
+                  style={{ height: 'clamp(12rem, 20vw, 16rem)' }}
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-burgundy/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             ))}
           </div>
@@ -107,38 +141,51 @@ export default function Gallery() {
             className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center overflow-auto"
             onClick={() => setSelectedImage(null)}
           >
+            {/* Close Button */}
             <button
               onClick={() => setSelectedImage(null)}
-              className="fixed top-4 right-4 text-white hover:text-gold transition-colors z-10"
+              className="fixed z-10 text-white hover:text-gold transition-colors"
+              style={{
+                top: 'clamp(0.75rem, 1.5vw, 1rem)',
+                right: 'clamp(0.75rem, 1.5vw, 1rem)',
+              }}
             >
-              <X className="w-8 h-8" />
+              <X style={{ width: 'clamp(1.5rem, 3vw, 2rem)', height: 'clamp(1.5rem, 3vw, 2rem)' }} />
             </button>
 
             {/* Previous Button */}
             <button
               onClick={handlePrevImage}
-              className="fixed left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-all z-10"
+              className="fixed left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all z-10"
+              style={{ padding: 'clamp(0.5rem, 1vw, 0.75rem)' }}
               aria-label="Previous image"
             >
-              <ChevronLeft className="w-8 h-8" />
+              <ChevronLeft style={{ width: 'clamp(1.5rem, 3vw, 2rem)', height: 'clamp(1.5rem, 3vw, 2rem)' }} />
             </button>
 
             {/* Next Button */}
             <button
               onClick={handleNextImage}
-              className="fixed right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-all z-10"
+              className="fixed right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white rounded-full transition-all z-10"
+              style={{ padding: 'clamp(0.5rem, 1vw, 0.75rem)' }}
               aria-label="Next image"
             >
-              <ChevronRight className="w-8 h-8" />
+              <ChevronRight style={{ width: 'clamp(1.5rem, 3vw, 2rem)', height: 'clamp(1.5rem, 3vw, 2rem)' }} />
             </button>
 
             {/* Image Counter */}
-            <div className="fixed bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full text-sm z-10">
+            <div 
+              className="fixed bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white rounded-full z-10"
+              style={{ 
+                padding: 'clamp(0.4rem, 1vw, 0.5rem) clamp(0.75rem, 1.5vw, 1rem)',
+                fontSize: 'clamp(0.8rem, 1vw + 0.4rem, 0.95rem)'
+              }}
+            >
               {images.findIndex(img => img.id === selectedImage.id) + 1} / {images.length}
             </div>
 
             {/* Full Size Image Container */}
-            <div className="p-4 md:p-8">
+            <div style={{ padding: 'clamp(1rem, 2vw, 2rem)' }}>
               <img
                 src={selectedImage.src}
                 alt={selectedImage.alt}
