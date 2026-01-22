@@ -3,6 +3,34 @@ import { Menu, X, Phone } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/SMClogo.svg';
 
+interface NavItem {
+  label: string;
+  action: string;
+}
+
+interface ServiceItem {
+  label: string;
+  slug: string;
+}
+
+const NAV_ITEMS: NavItem[] = [
+  { label: 'HOME', action: 'home' },
+  { label: 'ABOUT', action: 'about' },
+  { label: 'GALLERY', action: 'gallery' },
+  { label: 'CONTACT', action: 'contact' },
+  { label: 'PARTNERS', action: 'partners' },
+  { label: 'REVIEWS', action: 'testimonials' },
+];
+
+const SERVICE_ITEMS: ServiceItem[] = [
+  { label: 'New Dock Design & Construction', slug: 'new-dock-design-construction' },
+  { label: 'Dock Repair & Maintenance', slug: 'dock-repair-maintenance' },
+  { label: 'Dock & Boat Lift Accessories', slug: 'dock-boat-lift-accessories' },
+  { label: 'New Boat Lift Design & Installation', slug: 'new-boat-lift-design-installation' },
+  { label: 'Boat Lift Repair & Maintenance', slug: 'boat-lift-repair-maintenance' },
+  { label: 'Dock & Boat Lift Inspections', slug: 'dock-boat-lift-inspections' },
+];
+
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -16,15 +44,7 @@ export default function Header() {
     const handleScroll = () => {
       const y = window.scrollY;
       setIsScrolled(y > 50);
-
-      const goingDown = y > lastY;
-
-      if (goingDown && y > 50) {
-        setHidden(true);
-      } else {
-        setHidden(false);
-      }
-
+      setHidden(y > lastY && y > 50);
       setLastY(y);
     };
 
@@ -32,20 +52,29 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastY]);
 
+  const closeMenus = () => {
+    setIsMobileMenuOpen(false);
+    setIsServicesOpen(false);
+  };
+
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
-      setIsServicesOpen(false);
-    }
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    closeMenus();
   };
 
   const goToService = (slug: string) => {
     navigate(`/services/${slug}`);
-    setIsMobileMenuOpen(false);
-    setIsServicesOpen(false);
+    closeMenus();
   };
+
+  const handleNavClick = (action: string) => {
+    action === 'gallery' ? navigate('/gallery') : scrollToSection(action);
+    setIsMobileMenuOpen(false);
+  };
+
+  const navBtnClass = 'text-burgundy hover:text-gold transition-colors font-medium';
+  const desktopNavBtnClass = `${navBtnClass} text-sm xl:text-base`;
+  const serviceItemClass = 'block w-full text-left px-4 py-2 text-sm text-burgundy hover:bg-gold/10 transition-colors';
 
   return (
     <header
@@ -55,7 +84,8 @@ export default function Header() {
       style={{ backgroundColor: '#FEF7EB' }}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20 lg:h-16">
+        <div className="flex items-center justify-between h-20 min-[1100px]:h-16">
+          
           <div
             className="flex items-center gap-3 cursor-pointer"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -63,127 +93,67 @@ export default function Header() {
             <img
               src={logo}
               alt="Satriano Marine Construction"
-              className="h-12 w-12 lg:h-10 lg:w-10"
+              className="h-12 w-12 md:h-10 md:w-10 min-[1100px]:h-12 min-[1100px]:w-12"
             />
-            <div className="text-2xl lg:text-xl font-bold">
+            <div className="text-2xl md:text-xl min-[1100px]:text-2xl font-bold">
               <span className="text-burgundy">Satriano Marine</span>
             </div>
-            <div className="hidden md:block text-sm lg:text-xs text-burgundy border-l-2 border-gold pl-3">
-              Construction Excellence
+            <div className="hidden md:block text-sm min-[1100px]:text-base text-burgundy border-l-2 border-gold pl-3">
+              Construction
             </div>
           </div>
 
-          {/* DESKTOP NAV */}
-          <nav className="hidden lg:flex items-center gap-8">
-            <button
-              onClick={() => scrollToSection('home')}
-              className="text-burgundy hover:text-gold transition-colors font-medium"
-            >
-              HOME
-            </button>
-            <button
-              onClick={() => scrollToSection('about')}
-              className="text-burgundy hover:text-gold transition-colors font-medium"
-            >
-              ABOUT
-            </button>
-            <button
-              onClick={() => navigate('/gallery')}
-              className="text-burgundy hover:text-gold transition-colors font-medium"
-            >
-              GALLERY
-            </button>
+          <nav className="hidden min-[1100px]:flex items-center gap-6 xl:gap-8">
+            {NAV_ITEMS.map(({ label, action }) => (
+              <button
+                key={action}
+                onClick={() => handleNavClick(action)}
+                className={desktopNavBtnClass}
+              >
+                {label}
+              </button>
+            ))}
 
-            {/* SERVICES DROPDOWN (DESKTOP) */}
             <div
               className="relative"
               onMouseEnter={() => setIsServicesOpen(true)}
               onMouseLeave={() => setIsServicesOpen(false)}
             >
-              <button className="text-burgundy hover:text-gold transition-colors font-medium flex items-center gap-1">
+              <button className={`${desktopNavBtnClass} flex items-center gap-1`}>
                 SERVICES
                 <span className="text-xs">▼</span>
               </button>
 
               {isServicesOpen && (
                 <div
-                  className="absolute left-0 top-full w-80 shadow-lg rounded-lg border border-gold py-2 text-left"
+                  className="absolute left-0 top-full w-72 xl:w-80 shadow-lg rounded-lg border border-gold py-2 text-left"
                   style={{ backgroundColor: '#FEF7EB' }}
                 >
-                  <button
-                    onClick={() => goToService('new-dock-design-construction')}
-                    className="block w-full text-left px-4 py-2 text-sm text-burgundy hover:bg-gold/10"
-                  >
-                    New Dock Design & Construction
-                  </button>
-                  <button
-                    onClick={() => goToService('dock-repair-maintenance')}
-                    className="block w-full text-left px-4 py-2 text-sm text-burgundy hover:bg-gold/10"
-                  >
-                    Dock Repair & Maintenance
-                  </button>
-                  <button
-                    onClick={() => goToService('dock-boat-lift-accessories')}
-                    className="block w-full text-left px-4 py-2 text-sm text-burgundy hover:bg-gold/10"
-                  >
-                    Dock & Boat Lift Accessories
-                  </button>
-                  <button
-                    onClick={() =>
-                      goToService('new-boat-lift-design-installation')
-                    }
-                    className="block w-full text-left px-4 py-2 text-sm text-burgundy hover:bg-gold/10"
-                  >
-                    New Boat Lift Design & Installation
-                  </button>
-                  <button
-                    onClick={() => goToService('boat-lift-repair-maintenance')}
-                    className="block w-full text-left px-4 py-2 text-sm text-burgundy hover:bg-gold/10"
-                  >
-                    Boat Lift Repair & Maintenance
-                  </button>
-                  <button
-                    onClick={() => goToService('dock-boat-lift-inspections')}
-                    className="block w-full text-left px-4 py-2 text-sm text-burgundy hover:bg-gold/10"
-                  >
-                    Dock & Boat Lift Inspections
-                  </button>
+                  {SERVICE_ITEMS.map(({ label, slug }) => (
+                    <button
+                      key={slug}
+                      onClick={() => goToService(slug)}
+                      className={serviceItemClass}
+                    >
+                      {label}
+                    </button>
+                  ))}
                 </div>
               )}
             </div>
-
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="text-burgundy hover:text-gold transition-colors font-medium"
-            >
-              CONTACT
-            </button>
-             <button
-              onClick={() => scrollToSection('partners')}
-              className="text-burgundy hover:text-gold transition-colors font-medium"
-            >
-              PARTNERS
-            </button>
-            <button
-              onClick={() => scrollToSection('testimonials')}
-              className="text-burgundy hover:text-gold transition-colors font-medium"
-            >
-              REVIEWS
-            </button>
           </nav>
 
           <a
             href="tel:727-954-0041"
-            className="hidden lg:flex items-center gap-2 bg-burgundy text-cream px-6 py-2.5 rounded-lg hover:shadow-lg transition-all"
+            className="hidden min-[1100px]:flex items-center gap-2 bg-burgundy text-cream px-4 py-2 xl:px-6 xl:py-2.5 rounded-lg hover:shadow-lg transition-all"
           >
             <Phone className="w-4 h-4" />
-            <span className="font-semibold">727-954-0041</span>
+            <span className="font-semibold text-sm xl:text-base">727-954-0041</span>
           </a>
 
-          {/* MOBILE MENU BUTTON */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 hover:bg-gold/10 rounded-lg transition-colors"
+            className="min-[1100px]:hidden p-2 hover:bg-gold/10 rounded-lg transition-colors"
           >
             {isMobileMenuOpen ? (
               <X className="w-6 h-6 text-burgundy" />
@@ -193,37 +163,23 @@ export default function Header() {
           </button>
         </div>
 
-        {/* MOBILE MENU */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-gold">
+          <div className="min-[1100px]:hidden py-4 border-t border-gold">
             <nav className="flex flex-col gap-4">
-              <button
-                onClick={() => scrollToSection('home')}
-                className="text-burgundy hover:text-gold transition-colors font-medium text-left"
-              >
-                HOME
-              </button>
-              <button
-                onClick={() => scrollToSection('about')}
-                className="text-burgundy hover:text-gold transition-colors font-medium text-left"
-              >
-                ABOUT
-              </button>
-              <button
-                onClick={() => {
-                  navigate('/gallery');
-                  setIsMobileMenuOpen(false);
-                }}
-                className="text-burgundy hover:text-gold transition-colors font-medium text-left"
-              >
-                GALLERY
-              </button>
+              {NAV_ITEMS.map(({ label, action }) => (
+                <button
+                  key={action}
+                  onClick={() => handleNavClick(action)}
+                  className={`${navBtnClass} text-left`}
+                >
+                  {label}
+                </button>
+              ))}
 
-              {/* SERVICES DROPDOWN (MOBILE) */}
               <div className="flex flex-col gap-2">
                 <button
                   onClick={() => setIsServicesOpen((prev) => !prev)}
-                  className="text-burgundy hover:text-gold transition-colors font-medium text-left flex justify-between items-center"
+                  className={`${navBtnClass} text-left flex justify-between items-center`}
                 >
                   <span>SERVICES</span>
                   <span className="text-xs">{isServicesOpen ? '▲' : '▼'}</span>
@@ -231,70 +187,19 @@ export default function Header() {
 
                 {isServicesOpen && (
                   <div className="pl-4 flex flex-col gap-2">
-                    <button
-                      onClick={() =>
-                        goToService('new-dock-design-construction')
-                      }
-                      className="text-burgundy hover:text-gold transition-colors font-medium text-left text-sm"
-                    >
-                      New Dock Design & Construction
-                    </button>
-                    <button
-                      onClick={() => goToService('dock-repair-maintenance')}
-                      className="text-burgundy hover:text-gold transition-colors font-medium text-left text-sm"
-                    >
-                      Dock Repair & Maintenance
-                    </button>
-                    <button
-                      onClick={() => goToService('dock-boat-lift-accessories')}
-                      className="text-burgundy hover:text-gold transition-colors font-medium text-left text-sm"
-                    >
-                      Dock & Boat Lift Accessories
-                    </button>
-                    <button
-                      onClick={() =>
-                        goToService('new-boat-lift-design-installation')
-                      }
-                      className="text-burgundy hover:text-gold transition-colors font-medium text-left text-sm"
-                    >
-                      New Boat Lift Design & Installation
-                    </button>
-                    <button
-                      onClick={() =>
-                        goToService('boat-lift-repair-maintenance')
-                      }
-                      className="text-burgundy hover:text-gold transition-colors font-medium text-left text-sm"
-                    >
-                      Boat Lift Repair & Maintenance
-                    </button>
-                    <button
-                      onClick={() => goToService('dock-boat-lift-inspections')}
-                      className="text-burgundy hover:text-gold transition-colors font-medium text-left text-sm"
-                    >
-                      Dock & Boat Lift Inspections
-                    </button>
+                    {SERVICE_ITEMS.map(({ label, slug }) => (
+                      <button
+                        key={slug}
+                        onClick={() => goToService(slug)}
+                        className={`${navBtnClass} text-left text-sm`}
+                      >
+                        {label}
+                      </button>
+                    ))}
                   </div>
                 )}
               </div>
 
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="text-burgundy hover:text-gold transition-colors font-medium text-left"
-              >
-                CONTACT
-              </button>
-              <button
-                onClick={() => scrollToSection('partners')}
-                className="text-burgundy hover:text-gold transition-colors font-medium text-left"
-              >
-                PARTNERS
-              </button>
-              <button
-                onClick={() => scrollToSection('testimonials')}
-                className="text-burgundy hover:text-gold transition-colors font-medium text-left"
-              >
-                REVIEWS
-              </button>
               <a
                 href="tel:727-954-0041"
                 className="flex items-center justify-center gap-2 bg-burgundy text-cream px-6 py-3 rounded-lg hover:shadow-lg transition-all mt-2"
