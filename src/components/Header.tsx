@@ -72,10 +72,6 @@ export default function Header() {
     setIsMobileMenuOpen(false);
   };
 
-  const navBtnClass = 'text-burgundy hover:text-gold transition-colors font-medium';
-  const desktopNavBtnClass = `${navBtnClass} text-sm xl:text-base`;
-  const serviceItemClass = 'block w-full text-left px-4 py-2 text-sm text-burgundy hover:bg-gold/10 transition-colors';
-
   return (
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
@@ -84,56 +80,94 @@ export default function Header() {
       style={{ backgroundColor: '#FEF7EB' }}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20 min-[1100px]:h-16">
+        {/* Fluid header height using clamp */}
+        <div 
+          className="flex items-center justify-between"
+          style={{ height: 'clamp(4rem, 5vw + 2rem, 5rem)' }}
+        >
           
+          {/* LOGO & BRAND - Fluid sizing */}
           <div
-            className="flex items-center gap-3 cursor-pointer"
+            className="flex items-center cursor-pointer"
+            style={{ gap: 'clamp(0.5rem, 1vw, 0.75rem)' }}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             <img
               src={logo}
               alt="Satriano Marine Construction"
-              className="h-12 w-12 md:h-10 md:w-10 min-[1100px]:h-12 min-[1100px]:w-12"
+              className="flex-shrink-0"
+              style={{ 
+                width: 'clamp(2.5rem, 3vw + 1.5rem, 3.5rem)',
+                height: 'clamp(2.5rem, 3vw + 1.5rem, 3.5rem)'
+              }}
             />
-            <div className="text-2xl md:text-xl min-[1100px]:text-2xl font-bold">
-              <span className="text-burgundy">Satriano Marine</span>
+            <div 
+              className="font-bold text-burgundy whitespace-nowrap"
+              style={{ fontSize: 'clamp(1.25rem, 2vw + 0.5rem, 1.75rem)' }}
+            >
+              Satriano Marine
             </div>
-            <div className="hidden md:block text-sm min-[1100px]:text-base text-burgundy border-l-2 border-gold pl-3">
-              Construction
+            <div 
+              className="hidden md:block text-burgundy border-l-2 border-gold"
+              style={{ 
+                paddingLeft: 'clamp(0.5rem, 1vw, 0.75rem)',
+                fontSize: 'clamp(0.75rem, 1vw + 0.25rem, 1rem)'
+              }}
+            >
+              Construction LLC
             </div>
           </div>
 
-          <nav className="hidden min-[1100px]:flex items-center gap-6 xl:gap-8">
+          {/* DESKTOP NAV - Shows at 1400px+ with fluid gap spacing */}
+          <nav 
+            className="hidden min-[1400px]:flex items-center"
+            style={{ gap: 'clamp(1rem, 2vw, 2rem)' }}
+          >
             {NAV_ITEMS.map(({ label, action }) => (
               <button
                 key={action}
                 onClick={() => handleNavClick(action)}
-                className={desktopNavBtnClass}
+                className="text-burgundy hover:text-gold transition-colors font-medium whitespace-nowrap"
+                style={{ fontSize: 'clamp(0.75rem, 0.9vw, 1rem)' }}
               >
                 {label}
               </button>
             ))}
 
+            {/* SERVICES DROPDOWN - Fluid positioning */}
             <div
               className="relative"
               onMouseEnter={() => setIsServicesOpen(true)}
               onMouseLeave={() => setIsServicesOpen(false)}
             >
-              <button className={`${desktopNavBtnClass} flex items-center gap-1`}>
+              <button 
+                className="text-burgundy hover:text-gold transition-colors font-medium flex items-center whitespace-nowrap"
+                style={{ 
+                  fontSize: 'clamp(0.75rem, 0.9vw, 1rem)',
+                  gap: 'clamp(0.25rem, 0.5vw, 0.5rem)'
+                }}
+              >
                 SERVICES
                 <span className="text-xs">▼</span>
               </button>
 
               {isServicesOpen && (
                 <div
-                  className="absolute left-0 top-full w-72 xl:w-80 shadow-lg rounded-lg border border-gold py-2 text-left"
-                  style={{ backgroundColor: '#FEF7EB' }}
+                  className="absolute left-0 top-full shadow-lg rounded-lg border border-gold py-2"
+                  style={{ 
+                    backgroundColor: '#FEF7EB',
+                    width: 'clamp(18rem, 25vw, 22rem)'
+                  }}
                 >
                   {SERVICE_ITEMS.map(({ label, slug }) => (
                     <button
                       key={slug}
                       onClick={() => goToService(slug)}
-                      className={serviceItemClass}
+                      className="block w-full text-left text-burgundy hover:bg-gold/10 transition-colors"
+                      style={{ 
+                        padding: 'clamp(0.5rem, 1vw, 0.75rem) clamp(0.75rem, 1.5vw, 1rem)',
+                        fontSize: 'clamp(0.8rem, 0.9vw, 0.95rem)'
+                      }}
                     >
                       {label}
                     </button>
@@ -143,17 +177,24 @@ export default function Header() {
             </div>
           </nav>
 
+          {/* PHONE BUTTON - Fluid sizing, shows at 1400px+ */}
           <a
             href="tel:727-954-0041"
-            className="hidden min-[1100px]:flex items-center gap-2 bg-burgundy text-cream px-4 py-2 xl:px-6 xl:py-2.5 rounded-lg hover:shadow-lg transition-all"
+            className="hidden min-[1400px]:flex items-center bg-burgundy text-cream rounded-lg hover:shadow-lg transition-all whitespace-nowrap"
+            style={{ 
+              gap: 'clamp(0.4rem, 0.8vw, 0.6rem)',
+              padding: 'clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem)',
+              fontSize: 'clamp(0.8rem, 0.9vw, 1rem)'
+            }}
           >
-            <Phone className="w-4 h-4" />
-            <span className="font-semibold text-sm xl:text-base">727-954-0041</span>
+            <Phone style={{ width: 'clamp(0.9rem, 1.2vw, 1.1rem)', height: 'clamp(0.9rem, 1.2vw, 1.1rem)' }} />
+            <span className="font-semibold">727-954-0041</span>
           </a>
 
+          {/* MOBILE MENU BUTTON - Shows below 1400px */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="min-[1100px]:hidden p-2 hover:bg-gold/10 rounded-lg transition-colors"
+            className="min-[1400px]:hidden p-2 hover:bg-gold/10 rounded-lg transition-colors"
           >
             {isMobileMenuOpen ? (
               <X className="w-6 h-6 text-burgundy" />
@@ -163,14 +204,15 @@ export default function Header() {
           </button>
         </div>
 
+        {/* MOBILE MENU - Shows below 1400px */}
         {isMobileMenuOpen && (
-          <div className="min-[1100px]:hidden py-4 border-t border-gold">
+          <div className="min-[1400px]:hidden py-4 border-t border-gold">
             <nav className="flex flex-col gap-4">
               {NAV_ITEMS.map(({ label, action }) => (
                 <button
                   key={action}
                   onClick={() => handleNavClick(action)}
-                  className={`${navBtnClass} text-left`}
+                  className="text-burgundy hover:text-gold transition-colors font-medium text-left"
                 >
                   {label}
                 </button>
@@ -179,7 +221,7 @@ export default function Header() {
               <div className="flex flex-col gap-2">
                 <button
                   onClick={() => setIsServicesOpen((prev) => !prev)}
-                  className={`${navBtnClass} text-left flex justify-between items-center`}
+                  className="text-burgundy hover:text-gold transition-colors font-medium text-left flex justify-between items-center"
                 >
                   <span>SERVICES</span>
                   <span className="text-xs">{isServicesOpen ? '▲' : '▼'}</span>
@@ -191,7 +233,7 @@ export default function Header() {
                       <button
                         key={slug}
                         onClick={() => goToService(slug)}
-                        className={`${navBtnClass} text-left text-sm`}
+                        className="text-burgundy hover:text-gold transition-colors font-medium text-left text-sm"
                       >
                         {label}
                       </button>
