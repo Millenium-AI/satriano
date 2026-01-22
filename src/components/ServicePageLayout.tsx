@@ -9,6 +9,8 @@ interface ServicePageLayoutProps {
   children: ReactNode;
 }
 
+const DESKTOP_BREAKPOINT = 1400; // Matches your new desktop: breakpoint
+
 export default function ServicePageLayout({
   title,
   description,
@@ -17,70 +19,78 @@ export default function ServicePageLayout({
   const navigate = useNavigate();
 
   const handleBackToServices = () => {
-    const isMobile = window.innerWidth < 1024; // Tailwind lg breakpoint
+    const isDesktop = window.innerWidth >= DESKTOP_BREAKPOINT;
 
-    if (isMobile) {
-      // MOBILE: go to ABOUT section
-      navigate('/', { replace: true });
+    navigate('/', { replace: true });
 
-      setTimeout(() => {
-        const aboutSection = document.getElementById('about');
-        if (aboutSection) {
-          const html = document.documentElement;
-          const previousBehavior = html.style.scrollBehavior;
+    setTimeout(() => {
+      // Desktop goes to services section, mobile/tablet goes to about section
+      const targetSection = isDesktop ? 'services' : 'about';
+      const section = document.getElementById(targetSection);
 
-          html.style.scrollBehavior = 'auto';
+      if (section) {
+        const html = document.documentElement;
+        const previousBehavior = html.style.scrollBehavior;
 
-          const top = aboutSection.offsetTop;
-          window.scrollTo({
-            top,
-            behavior: 'auto',
-          });
-
-          html.style.scrollBehavior = previousBehavior;
-        }
-      }, 150);
-    } else {
-      // DESKTOP: keep existing SERVICES behavior
-      navigate('/', { replace: true });
-
-      setTimeout(() => {
-        const servicesSection = document.getElementById('services');
-        if (servicesSection) {
-          const html = document.documentElement;
-          const previousBehavior = html.style.scrollBehavior;
-
-          html.style.scrollBehavior = 'auto';
-
-          const top = servicesSection.offsetTop;
-          window.scrollTo({
-            top,
-            behavior: 'auto',
-          });
-
-          html.style.scrollBehavior = previousBehavior;
-        }
-      }, 150);
-    }
+        html.style.scrollBehavior = 'auto';
+        window.scrollTo({
+          top: section.offsetTop,
+          behavior: 'auto',
+        });
+        html.style.scrollBehavior = previousBehavior;
+      }
+    }, 150);
   };
 
   return (
     <>
       <TopStrip />
-      <div className="min-h-screen bg-cream">
-        <div className="container mx-auto px-4 py-10">
+      <div className="min-h-screen bg-gradient-to-b from-cream to-white">
+        <div
+          className="container mx-auto px-4"
+          style={{ padding: 'clamp(2rem, 4vw, 3rem) 1rem' }}
+        >
+          {/* Back Button */}
           <button
             onClick={handleBackToServices}
-            className="inline-flex items-center gap-2 bg-white text-burgundy px-4 py-2 rounded-lg text-sm font-semibold border-2 border-burgundy hover:bg-burgundy hover:text-cream transition-all group mb-6"
+            className="flex items-center text-burgundy hover:text-gold transition-colors mb-fluid-xl font-medium"
+            style={{
+              gap: 'clamp(0.4rem, 0.8vw, 0.5rem)',
+              fontSize: 'clamp(0.9rem, 1vw + 0.5rem, 1.1rem)',
+            }}
           >
-            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+            <ArrowLeft
+              style={{
+                width: 'clamp(1rem, 1.5vw, 1.25rem)',
+                height: 'clamp(1rem, 1.5vw, 1.25rem)',
+              }}
+            />
             Back to Services
           </button>
-          <h1 className="text-4xl md:text-5xl font-montserrat font-bold text-burgundy mb-6">
-            {title}
-          </h1>
-          <p className="text-lg text-burgundy mb-8">{description}</p>
 
+          {/* Page Title */}
+          <div className="text-center mb-fluid-2xl">
+            <h1
+              className="font-bold text-burgundy mb-fluid-md"
+              style={{ fontSize: 'clamp(1.875rem, 3vw + 1rem, 3rem)' }}
+            >
+              {title}
+            </h1>
+            <div
+              className="h-1 bg-gradient-to-r from-burgundy via-gold to-burgundy mx-auto"
+              style={{ width: 'clamp(4rem, 10vw, 6rem)' }}
+            />
+          </div>
+
+          {/* Description */}
+          <p
+            className="text-burgundy/90 leading-relaxed text-center max-w-3xl mx-auto mb-fluid-2xl"
+            style={{ fontSize: 'clamp(1rem, 1.2vw + 0.6rem, 1.25rem)' }}
+          >
+            {description}
+          </p>
+
+          {/* Service-specific content */}
           {children}
         </div>
       </div>

@@ -7,6 +7,7 @@ import {
   Settings,
   ClipboardCheck,
 } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 
 // Import your images
 import dockConstruction from '../assets/dock-construction.jpg';
@@ -25,7 +26,7 @@ export type ServiceSlug =
   | 'dock-boat-lift-inspections';
 
 export interface ServiceItem {
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  icon: LucideIcon;
   title: string;
   description: string;
   color: string;

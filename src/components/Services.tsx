@@ -5,77 +5,95 @@ import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import SectionHeader from './SectionHeader';
 import { services } from '../data/services';
 
-
 export default function Services() {
   const ref = useRef<HTMLElement>(null);
   const isVisible = useIntersectionObserver(ref, 0.1);
   const navigate = useNavigate();
 
-
   return (
-    <section id="services" ref={ref} className="hidden lg:flex lg:flex-col bg-white section-default">
-      <div className="container mx-auto px-4 flex flex-col">
+    <section
+      id="services"
+      ref={ref}
+      className="section-default bg-gradient-to-b from-cream/50 to-white"
+    >
+      <div className="container mx-auto px-4">
+        <SectionHeader
+          title="Our Services"
+          subtitle="Complete Dock & Boat Lift Solutions"
+        />
+
         <div
-          className={`flex-shrink-0 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
+          className="grid sm:grid-cols-2 desktop:grid-cols-3"
+          style={{ gap: 'clamp(1.5rem, 3vw, 2rem)' }}
         >
-          <SectionHeader 
-            title="Providing Expert Dock & Boat Lift"
-            highlightedText="Solutions"
-            subtitle="From design to installation to maintenance; we're your one-stop shop for all dock and boat lift needs."
-            className="mb-8"
-          />
-        </div>
-
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-9xl mx-auto pb-8">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <button
+              <div
                 key={service.slug}
                 onClick={() => navigate(`/services/${service.slug}`)}
-                className={`group bg-cream p-7 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gold hover:border-burgundy flex flex-col cursor-pointer hover:scale-105 active:scale-95 max-h-fit ${
+                className={`group bg-cream rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gold hover:border-burgundy flex flex-col cursor-pointer hover:scale-105 active:scale-95 ${
                   isVisible
                     ? 'opacity-100 translate-y-0'
                     : 'opacity-0 translate-y-10'
                 }`}
-                style={{ transitionDelay: `${index * 100}ms` }}
+                style={{
+                  transitionDelay: `${index * 100}ms`,
+                  padding: 'clamp(1.25rem, 2vw, 1.75rem)',
+                }}
               >
-                {/* Image - Now at the top */}
-                <img 
-                  src={service.image} 
-                  alt={service.title}
-                  className="w-full h-64 object-cover rounded-lg mb-3 flex-shrink-0"
-                />
+                {/* Image */}
+                <div className="relative overflow-hidden rounded-lg mb-fluid-md">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    style={{ height: 'clamp(10rem, 20vw, 12rem)' }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-burgundy/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
 
-                {/* Icon + Title Row */}
-                <div className="flex items-center gap-2 mb-2 flex-shrink-0">
+                {/* Icon + Title */}
+                <div
+                  className="flex items-center mb-fluid-sm"
+                  style={{ gap: 'clamp(0.5rem, 1vw, 0.75rem)' }}
+                >
                   <div
-                    className={`w-12 h-12 bg-gradient-to-br ${service.color} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform`}
+                    className={`bg-gradient-to-br ${service.color} p-2 rounded-lg group-hover:scale-110 transition-transform`}
                   >
-                    <Icon className="w-6 h-6 text-cream" />
+                    <Icon
+                      className="text-cream"
+                      style={{
+                        width: 'clamp(1.25rem, 2vw, 1.5rem)',
+                        height: 'clamp(1.25rem, 2vw, 1.5rem)',
+                      }}
+                    />
                   </div>
-                  <h2 className="text-base xl:text-xl font-lato font-bold text-burgundy leading-tight flex-1 text-center">
+                  <h3 className="text-fluid-lg font-bold text-burgundy group-hover:text-gold transition-colors">
                     {service.title}
-                  </h2>
+                  </h3>
                 </div>
 
-                {/* Description - Centered */}
-                <div className="flex-grow flex items-center justify-center mb-2">
-                  <p className="text-xs xl:text-sm text-burgundy text-center">
-                    {service.description}
-                  </p>
-                </div>
+                {/* Description */}
+                <p className="text-fluid-sm text-burgundy/80 mb-fluid-md leading-relaxed flex-grow">
+                  {service.description}
+                </p>
 
-
-                {/* Learn More */}
-                <div className="text-burgundy text-xs xl:text-sm font-semibold flex items-center justify-center gap-1 group-hover:gap-2 transition-all group-hover:text-gold mt-auto">
+                {/* Learn More Link */}
+                <div
+                  className="flex items-center text-gold group-hover:text-burgundy transition-colors font-semibold text-fluid-sm"
+                  style={{ gap: 'clamp(0.4rem, 0.8vw, 0.5rem)' }}
+                >
                   Learn More
-                  <ArrowRight className="w-3 h-3" />
+                  <ArrowRight
+                    className="group-hover:translate-x-1 transition-transform"
+                    style={{
+                      width: 'clamp(1rem, 1.5vw, 1.25rem)',
+                      height: 'clamp(1rem, 1.5vw, 1.25rem)',
+                    }}
+                  />
                 </div>
-              </button>
+              </div>
             );
           })}
         </div>
