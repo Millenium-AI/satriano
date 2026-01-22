@@ -137,7 +137,7 @@ export default function Contact() {
                 service for all your dock and boat lift needs.
               </p>
               <p className="text-lg text-burgundy leading-relaxed">
-                Whether you're looking for a new dock or boat lift, or need advice, repair, or
+                Whether you're looking for a new dock, boat lift, or need advice, repair, or
                 maintenance on existing structures, we're here to help.
               </p>
             </div>

@@ -81,14 +81,14 @@ export default function About() {
             }`}
           >
             <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-2xl lg:text-3xl font-bold text-burgundy mb-4 xs:mb-6 text-center">
-              Experienced in New Dock Design, Construction & Boat Lifts
+              Experienced in New Dock Design, Construction & Boat Lift Installation
             </h2>
 
 
             <p className="text-base md:text-lg text-burgundy mb-4 leading-relaxed">
               Satriano Marine Construction, a family-owned and operated business
               dedicated to providing a high-quality marine construction service.
-              We take pride in our work and are personal in our service.
+              We take pride in our work and personnel in our service.
             </p>
 
 

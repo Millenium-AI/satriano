@@ -31,7 +31,7 @@ export default function Testimonials() {
           <SectionHeader 
             title="What Our"
             highlightedText="Clients Say"
-            subtitle="Don't just take our word for it - hear from our Satisfied Customers"
+            subtitle="Don't just take our word for it - hear from our Satisfied Customers."
             className="mb-12 md:mb-16 lg:mb-20"
           />
         </div>

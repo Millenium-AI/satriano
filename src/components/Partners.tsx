@@ -46,7 +46,7 @@ export default function Partners() {
           <SectionHeader
             title="Our Trusted"
             highlightedText="Partners"
-            subtitle="We work with industry-leading suppliers to bring you the best products"
+            subtitle="We work with industry leading suppliers to bring you the best products."
             className="mb-8"
           />
         </div>
