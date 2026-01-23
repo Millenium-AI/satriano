@@ -2,11 +2,11 @@ import ServicePageLayout from '../components/ServicePageLayout';
 import { useState } from 'react';
 
 // Import your images from the assets folder
-import image1 from '../assets/gallery/image-3.jpg';
-import image2 from '../assets/gallery/image-4.jpg';
-import image3 from '../assets/gallery/image-6.jpg';
-import image4 from '../assets/gallery/image-14.jpg';
-import image5 from '../assets/gallery/image-17.jpg';
+import image1 from '../assets/gallery/image29.jpg';
+import image2 from '../assets/gallery/image20.jpg';
+import image3 from '../assets/gallery/image22.jpg';
+import image4 from '../assets/gallery/image39.jpg';
+import image5 from '../assets/gallery/image23.jpg';
 
 export default function DockDesign() {
   const [currentImage, setCurrentImage] = useState(0);

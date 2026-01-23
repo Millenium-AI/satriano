@@ -2,10 +2,10 @@ import ServicePageLayout from '../components/ServicePageLayout';
 import { useState } from 'react';
 
 // Import your images from the assets folder
-import image1 from '../assets/gallery/image-27.jpg';
-import image2 from '../assets/gallery/image-22.jpg';
-import image3 from '../assets/gallery/image-13.jpg';
-import image4 from '../assets/gallery/image-21.jpg';
+import image1 from '../assets/gallery/image25.jpg';
+import image2 from '../assets/gallery/image45.jpg';
+import image3 from '../assets/gallery/image38.jpg';
+import image4 from '../assets/gallery/image44.jpg';
 
 export default function DockAccessories() {
   const [currentImage, setCurrentImage] = useState(0);
@@ -28,7 +28,7 @@ export default function DockAccessories() {
 
   return (
     <ServicePageLayout
-      title="Dock & Boat Lift Accessories"
+      title="Dock, Piling & Boat Lift Accessories"
       description="Enhance your dock and boat lift with quality accessories designed for functionality, safety, and convenience."
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
