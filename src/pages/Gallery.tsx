@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { ArrowLeft, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import TopStrip from '../components/TopStrip';
+import LazyImage from '../components/LazyImage';
+
 
 // Import all images dynamically
 const imageModules = import.meta.glob('../assets/gallery/image*.jpg', { eager: true, query: '?url', import: 'default' });
@@ -21,15 +23,18 @@ const images = Object.entries(imageModules)
     return getNum(a.id) - getNum(b.id);
   });
 
+
 interface GalleryImage {
   id: number;
   src: string;
   alt: string;
 }
 
+
 export default function Gallery() {
   const navigate = useNavigate();
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
+
 
   // Scroll to top on mount
   useEffect(() => {
@@ -38,9 +43,11 @@ export default function Gallery() {
     window.scrollTo(0, 0);
   }, []);
 
+
   // Keyboard navigation for lightbox
   useEffect(() => {
     if (!selectedImage) return;
+
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'ArrowLeft') {
@@ -52,12 +59,34 @@ export default function Gallery() {
       }
     };
 
+
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedImage]);
 
+
+  // Preload adjacent images in lightbox for smooth navigation
+  useEffect(() => {
+    if (!selectedImage) return;
+
+    const currentIndex = images.findIndex(img => img.id === selectedImage.id);
+    const prevIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
+    const nextIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
+
+    // Preload previous and next images
+    const preloadImage = (src: string) => {
+      const img = new Image();
+      img.src = src;
+    };
+
+    preloadImage(images[prevIndex].src);
+    preloadImage(images[nextIndex].src);
+  }, [selectedImage]);
+
+
   const handleBackToHome = () => {
     navigate('/', { replace: true });
+
 
     setTimeout(() => {
       window.scrollTo({
@@ -66,6 +95,7 @@ export default function Gallery() {
       });
     }, 100);
   };
+
 
   const handlePrevImage = (e?: React.MouseEvent) => {
     e?.stopPropagation();
@@ -76,6 +106,7 @@ export default function Gallery() {
     setSelectedImage(images[prevIndex]);
   };
 
+
   const handleNextImage = (e?: React.MouseEvent) => {
     e?.stopPropagation();
     if (!selectedImage) return;
@@ -84,6 +115,7 @@ export default function Gallery() {
     const nextIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
     setSelectedImage(images[nextIndex]);
   };
+
 
   return (
     <>
@@ -116,6 +148,7 @@ export default function Gallery() {
               Back to Home
             </button>
 
+
             {/* Title - Absolutely Centered */}
             <h1 
               className="font-bold text-burgundy absolute left-1/2 -translate-x-1/2"
@@ -124,9 +157,11 @@ export default function Gallery() {
               Project Gallery
             </h1>
 
+
             {/* Invisible Spacer (same width as button for balance) */}
             <div style={{ width: 'clamp(8rem, 10vw, 10rem)' }} />
           </div>
+
 
           {/* Subtitle Section */}
           <div className="text-center mb-fluid-2xl">
@@ -137,6 +172,7 @@ export default function Gallery() {
               Explore our completed marine construction projects showcasing quality craftsmanship and attention to detail.
             </p>
           </div>
+
 
           {/* Image Grid */}
           <div 
@@ -149,7 +185,7 @@ export default function Gallery() {
                 className="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
                 onClick={() => setSelectedImage(image)}
               >
-                <img
+                <LazyImage
                   src={image.src}
                   alt={image.alt}
                   className="w-full object-cover"
@@ -160,6 +196,7 @@ export default function Gallery() {
             ))}
           </div>
         </div>
+
 
         {/* Lightbox Modal */}
         {selectedImage && (
@@ -179,6 +216,7 @@ export default function Gallery() {
               <X style={{ width: 'clamp(1.5rem, 3vw, 2rem)', height: 'clamp(1.5rem, 3vw, 2rem)' }} />
             </button>
 
+
             {/* Previous Button */}
             <button
               onClick={handlePrevImage}
@@ -188,6 +226,7 @@ export default function Gallery() {
             >
               <ChevronLeft style={{ width: 'clamp(1.5rem, 3vw, 2rem)', height: 'clamp(1.5rem, 3vw, 2rem)' }} />
             </button>
+
 
             {/* Next Button */}
             <button
@@ -199,6 +238,7 @@ export default function Gallery() {
               <ChevronRight style={{ width: 'clamp(1.5rem, 3vw, 2rem)', height: 'clamp(1.5rem, 3vw, 2rem)' }} />
             </button>
 
+
             {/* Image Counter */}
             <div 
               className="fixed bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white rounded-full z-10"
@@ -209,6 +249,7 @@ export default function Gallery() {
             >
               {images.findIndex(img => img.id === selectedImage.id) + 1} / {images.length}
             </div>
+
 
             {/* Full Size Image Container */}
             <div 
