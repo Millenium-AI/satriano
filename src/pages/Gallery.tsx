@@ -76,34 +76,39 @@ export default function Gallery() {
           className="container mx-auto px-4"
           style={{ padding: 'clamp(2rem, 3vw, 2.5rem) 1rem' }}
         >
-          {/* Back Button */}
-          <button
-            onClick={handleBackToHome}
-            className="inline-flex items-center bg-white text-burgundy rounded-lg font-semibold border-2 border-burgundy hover:bg-burgundy hover:text-cream transition-all group mb-fluid-lg"
-            style={{
-              gap: 'clamp(0.4rem, 0.8vw, 0.5rem)',
-              padding: 'clamp(0.4rem, 1vw, 0.5rem) clamp(0.75rem, 1.5vw, 1rem)',
-              fontSize: 'clamp(0.8rem, 1vw + 0.4rem, 0.95rem)',
-            }}
-          >
-            <ArrowLeft 
-              className="group-hover:-translate-x-1 transition-transform"
+          {/* Back Button and Title Row */}
+          <div className="flex items-center mb-fluid-lg" style={{ gap: 'clamp(1rem, 2vw, 1.5rem)' }}>
+            {/* Back Button */}
+            <button
+              onClick={handleBackToHome}
+              className="inline-flex items-center bg-white text-burgundy rounded-lg font-semibold border-2 border-burgundy hover:bg-burgundy hover:text-cream transition-all group flex-shrink-0"
               style={{
-                width: 'clamp(0.9rem, 1.2vw, 1rem)',
-                height: 'clamp(0.9rem, 1.2vw, 1rem)',
+                gap: 'clamp(0.4rem, 0.8vw, 0.5rem)',
+                padding: 'clamp(0.4rem, 1vw, 0.5rem) clamp(0.75rem, 1.5vw, 1rem)',
+                fontSize: 'clamp(0.8rem, 1vw + 0.4rem, 0.95rem)',
               }}
-            />
-            Back to Home
-          </button>
+            >
+              <ArrowLeft 
+                className="group-hover:-translate-x-1 transition-transform"
+                style={{
+                  width: 'clamp(0.9rem, 1.2vw, 1rem)',
+                  height: 'clamp(0.9rem, 1.2vw, 1rem)',
+                }}
+              />
+              Back to Home
+            </button>
 
-          {/* Title Section */}
-          <div className="text-center mb-fluid-2xl">
+            {/* Title */}
             <h1 
-              className="font-bold text-burgundy mb-fluid-md"
+              className="font-bold text-burgundy flex-1 text-center"
               style={{ fontSize: 'clamp(2rem, 4vw + 1rem, 3rem)' }}
             >
               Project Gallery
             </h1>
+          </div>
+
+          {/* Subtitle Section */}
+          <div className="text-center mb-fluid-2xl">
             <p 
               className="text-burgundy/80 max-w-2xl mx-auto"
               style={{ fontSize: 'clamp(1rem, 1.2vw + 0.6rem, 1.25rem)' }}
