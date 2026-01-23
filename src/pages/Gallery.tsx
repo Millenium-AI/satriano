@@ -138,7 +138,7 @@ export default function Gallery() {
         {/* Lightbox Modal */}
         {selectedImage && (
           <div
-            className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center overflow-auto"
+            className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center"
             onClick={() => setSelectedImage(null)}
           >
             {/* Close Button */}
@@ -185,11 +185,21 @@ export default function Gallery() {
             </div>
 
             {/* Full Size Image Container */}
-            <div style={{ padding: 'clamp(1rem, 2vw, 2rem)' }}>
+            <div 
+              className="flex items-center justify-center"
+              style={{ padding: 'clamp(1rem, 2vw, 2rem)' }}
+            >
               <img
                 src={selectedImage.src}
                 alt={selectedImage.alt}
-                className="max-w-full h-auto rounded-lg"
+                className="rounded-lg"
+                style={{
+                  maxWidth: '90vw',
+                  maxHeight: '85vh',
+                  width: 'auto',
+                  height: 'auto',
+                  objectFit: 'contain'
+                }}
                 onClick={(e) => e.stopPropagation()}
               />
             </div>
