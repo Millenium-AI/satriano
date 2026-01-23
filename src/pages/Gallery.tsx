@@ -38,6 +38,24 @@ export default function Gallery() {
     window.scrollTo(0, 0);
   }, []);
 
+  // Keyboard navigation for lightbox
+  useEffect(() => {
+    if (!selectedImage) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') {
+        handlePrevImage();
+      } else if (e.key === 'ArrowRight') {
+        handleNextImage();
+      } else if (e.key === 'Escape') {
+        setSelectedImage(null);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedImage]);
+
   const handleBackToHome = () => {
     navigate('/', { replace: true });
 
@@ -49,8 +67,8 @@ export default function Gallery() {
     }, 100);
   };
 
-  const handlePrevImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const handlePrevImage = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
     if (!selectedImage) return;
     
     const currentIndex = images.findIndex(img => img.id === selectedImage.id);
@@ -58,8 +76,8 @@ export default function Gallery() {
     setSelectedImage(images[prevIndex]);
   };
 
-  const handleNextImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const handleNextImage = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
     if (!selectedImage) return;
     
     const currentIndex = images.findIndex(img => img.id === selectedImage.id);
