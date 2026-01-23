@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import TopStrip from '../components/TopStrip';
 
 // Import all images dynamically
-const imageModules = import.meta.glob('../assets/gallery/image-*.jpg', { eager: true, query: '?url', import: 'default' });
+const imageModules = import.meta.glob('../assets/gallery/image*.jpg', { eager: true, query: '?url', import: 'default' });
 const images = Object.entries(imageModules)
   .map(([, url], index) => ({
     id: index + 1,
@@ -15,7 +15,7 @@ const images = Object.entries(imageModules)
     // Extract number from filename for proper sorting
     const getNum = (id: number) => {
       const entry = Object.entries(imageModules)[id - 1];
-      const match = entry[0].match(/image-(\d+)\.jpg/);
+      const match = entry[0].match(/image(\d+)\.jpg/);
       return match ? parseInt(match[1]) : id;
     };
     return getNum(a.id) - getNum(b.id);
