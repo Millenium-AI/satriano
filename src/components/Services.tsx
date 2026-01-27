@@ -82,7 +82,7 @@ export default function Services() {
 
                 {/* Description - Centered */}
                 <div className="flex-grow flex items-center justify-center mb-fluid-sm">
-                  <p className="text-fluid-xs desktop:text-fluid-sm text-burgundy text-center">
+                  <p className="text-fluid-xs desktop:text-fluid-sm text-burgundy text-center max-w-[80%] mx-auto">
                     {service.description}
                   </p>
                 </div>

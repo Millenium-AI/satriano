@@ -66,7 +66,7 @@ export const services: ServiceItem[] = [
     icon: Settings,
     title: 'New Boat Lift Design & Installation',
     description:
-      'Professional boat lift design and installation for vessels of all sizes. Quality motors, cables, and remote controls.',
+      'Professional boat lift design and installation for vessels of all sizes and types.',
     color: 'from-burgundy to-gold',
     slug: 'new-boat-lift-design-installation',
     image: boatLiftInstall,

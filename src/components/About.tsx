@@ -116,9 +116,9 @@ export default function About() {
             </h2>
 
             <p className="text-fluid-base md:text-fluid-lg text-burgundy mb-fluid-md leading-relaxed">
-              Satriano Marine Construction, a family-owned and operated business
-              dedicated to providing a high-quality marine construction service.
-              We take pride in our work and personnel in our service.
+              Satriano Marine Construction is a family-owned and operated business 
+              dedicated to providing high-quality marine construction services. 
+              We take pride in our work and in our personnel.
             </p>
 
             {/* Services Box */}
@@ -157,15 +157,15 @@ export default function About() {
             </div>
 
             <p className="text-fluid-base md:text-fluid-lg text-burgundy mb-fluid-md leading-relaxed">
-              We serve all of Pinellas County with expert craftsmanship and
-              unmatched customer service.
-            </p>
-
-            <p className="text-fluid-lg text-burgundy mb-fluid-lg leading-relaxed">
               If you have waterfront property and are in need of dock or boat
               lift services, please contact us today to see how we can offer
               professional, quality dock and boat lift solutions that set us
               apart from our competitors!
+            </p>
+
+            <p className="text-fluid-lg text-burgundy mb-fluid-lg leading-relaxed">
+              We serve all of Pinellas County with expert craftsmanship and
+              unmatched customer service.
             </p>
           </div>
 
