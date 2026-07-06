@@ -12,6 +12,7 @@ export default function Contact() {
     name: '',
     email: '',
     phone: '',
+    address: '',
     message: '',
     source: '',
   });
@@ -37,6 +38,7 @@ export default function Contact() {
           name: '',
           email: '',
           phone: '',
+          address: '',
           message: '',
           source: '',
         });
@@ -221,6 +223,26 @@ export default function Contact() {
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-lg border border-gold focus:border-burgundy focus:ring-2 focus:ring-gold/20 transition-all outline-none text-base"
                     placeholder="(123) 456-7890"
+                  />
+                </div>
+
+                {/* Address */}
+                <div>
+                  <label
+                    htmlFor="address"
+                    className="block text-sm font-semibold text-burgundy mb-2"
+                  >
+                    Address
+                  </label>
+                  <input
+                    id="address"
+                    type="text"
+                    name="address"
+                    autoComplete="street-address"
+                    value={formData.address}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 rounded-lg border border-gold focus:border-burgundy focus:ring-2 focus:ring-gold/20 transition-all outline-none text-base"
+                    placeholder="123 Main St, City, FL"
                   />
                 </div>
 
