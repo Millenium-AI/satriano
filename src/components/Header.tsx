@@ -31,21 +31,17 @@ const SERVICE_ITEMS: ServiceItem[] = [
   { label: 'Dock & Boat Lift Inspections', slug: 'dock-boat-lift-inspections' },
 ];
 
-// Maps nav action -> dedicated page route
-const ROUTE_MAP: Record<string, string> = {
-  about: '/about',
+// Actions that ALWAYS navigate to a dedicated route (never scroll)
+const ALWAYS_ROUTE: Record<string, string> = {
   gallery: '/gallery',
+  about: '/about',
   contact: '/contact',
   testimonials: '/reviews',
 };
 
-// Maps nav action -> homepage section id (for smooth scroll on home)
-const SECTION_MAP: Record<string, string> = {
-  about: 'about',
-  gallery: 'gallery',
-  contact: 'contact',
+// Actions that scroll to a section on home (no dedicated page)
+const SCROLL_SECTION: Record<string, string> = {
   partners: 'partners',
-  testimonials: 'testimonials',
 };
 
 export default function Header() {
@@ -67,9 +63,7 @@ export default function Header() {
       const shouldHide = y > lastY && y > 50;
       setHidden(shouldHide);
 
-      if (shouldHide) {
-        closeMenus();
-      }
+      if (shouldHide) closeMenus();
 
       setLastY(y);
     };
@@ -94,33 +88,36 @@ export default function Header() {
   };
 
   const handleNavClick = (action: string) => {
+    // HOME — scroll to top if on home, else navigate home
     if (action === 'home') {
-      navigate('/');
-      setIsMobileMenuOpen(false);
-      return;
-    }
-
-    // Partners has no dedicated page — always scroll (navigate home first if needed)
-    if (action === 'partners') {
       if (isHome) {
-        scrollToSection('partners');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         navigate('/');
-        // Scroll after navigation — wait for home to mount
-        setTimeout(() => {
-          document.getElementById('partners')?.scrollIntoView({ behavior: 'smooth' });
-        }, 300);
       }
       setIsMobileMenuOpen(false);
       return;
     }
 
-    if (isHome) {
-      // On home: smooth scroll to section
-      scrollToSection(SECTION_MAP[action] ?? action);
-    } else {
-      // On another page: go to the dedicated route
-      navigate(ROUTE_MAP[action] ?? '/');
+    // Always-route actions — go directly to their page regardless of current location
+    if (ALWAYS_ROUTE[action]) {
+      navigate(ALWAYS_ROUTE[action]);
+      setIsMobileMenuOpen(false);
+      return;
+    }
+
+    // Scroll-only actions (partners) — scroll on home, navigate home then scroll on other pages
+    if (SCROLL_SECTION[action]) {
+      if (isHome) {
+        scrollToSection(SCROLL_SECTION[action]);
+      } else {
+        navigate('/');
+        setTimeout(() => {
+          document.getElementById(SCROLL_SECTION[action])?.scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+      }
+      setIsMobileMenuOpen(false);
+      return;
     }
 
     setIsMobileMenuOpen(false);
@@ -134,13 +131,11 @@ export default function Header() {
       style={{ backgroundColor: '#FEF7EB' }}
     >
       <div className="container mx-auto px-4">
-        {/* Fluid header height using clamp */}
         <div
           className="flex items-center justify-between"
           style={{ height: 'clamp(4rem, 5vw + 2rem, 5rem)' }}
         >
-
-          {/* LOGO & BRAND - Fluid sizing */}
+          {/* LOGO & BRAND */}
           <div
             className="flex items-center cursor-pointer"
             style={{ gap: 'clamp(0.5rem, 1vw, 0.75rem)' }}
@@ -178,7 +173,7 @@ export default function Header() {
             </div>
           </div>
 
-          {/* DESKTOP NAV - Shows at 1400px+ with fluid gap spacing */}
+          {/* DESKTOP NAV */}
           <nav
             className="hidden min-[1400px]:flex items-center"
             style={{ gap: 'clamp(1rem, 2vw, 2rem)' }}
@@ -194,7 +189,7 @@ export default function Header() {
               </button>
             ))}
 
-            {/* SERVICES DROPDOWN - Fluid positioning */}
+            {/* SERVICES DROPDOWN */}
             <div
               className="relative"
               onMouseEnter={() => setIsServicesOpen(true)}
@@ -237,7 +232,7 @@ export default function Header() {
             </div>
           </nav>
 
-          {/* PHONE BUTTON - Fluid sizing, shows at 1400px+ */}
+          {/* PHONE BUTTON */}
           <a
             href="tel:727-954-0041"
             className="hidden min-[1400px]:flex items-center bg-burgundy text-cream rounded-lg hover:shadow-lg transition-all whitespace-nowrap"
@@ -251,7 +246,7 @@ export default function Header() {
             <span className="font-semibold">727-954-0041</span>
           </a>
 
-          {/* MOBILE MENU BUTTON - Shows below 1400px */}
+          {/* MOBILE MENU BUTTON */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="min-[1400px]:hidden p-2 hover:bg-gold/10 rounded-lg transition-colors"
@@ -264,7 +259,7 @@ export default function Header() {
           </button>
         </div>
 
-        {/* MOBILE MENU - Shows below 1400px */}
+        {/* MOBILE MENU */}
         {isMobileMenuOpen && (
           <div className="min-[1400px]:hidden py-4 border-t border-gold">
             <nav className="flex flex-col gap-4">
