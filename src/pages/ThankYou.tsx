@@ -1,7 +1,6 @@
 // src/pages/ThankYou.tsx
 import { useEffect } from 'react';
-import { ArrowLeft, CheckCircle2, Phone, Mail } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { CheckCircle2, Phone, Mail } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -12,18 +11,11 @@ declare global {
 }
 
 export default function ThankYou() {
-  const navigate = useNavigate();
-
   useEffect(() => {
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
     window.scrollTo(0, 0);
 
-    // This is a single-page app, so React Router navigations don't trigger a
-    // real page load — gtag.js only auto-fires a page_view on the initial
-    // load. We send one manually here so Google Ads / Analytics sees a visit
-    // to /thank-you every time the contact form is submitted successfully,
-    // from any page on the site.
     if (typeof window.gtag === 'function') {
       window.gtag('event', 'page_view', {
         page_path: '/thank-you',
@@ -31,8 +23,6 @@ export default function ThankYou() {
         page_location: window.location.href,
       });
 
-      // Google Ads "Submit lead form" conversion — fires once per landing on
-      // this page, which happens right after a successful form submission.
       window.gtag('event', 'conversion', {
         send_to: 'AW-11426589922/AmDBCKvOlc0cEOLZz8gq',
         value: 1.0,
@@ -41,40 +31,9 @@ export default function ThankYou() {
     }
   }, []);
 
-  const handleBackToHome = () => {
-    navigate('/', { replace: true });
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 100);
-  };
-
   return (
     <>
       <Header />
-
-      <div
-        className="container mx-auto px-4"
-        style={{ paddingTop: 'clamp(1.5rem, 2vw, 2rem)', paddingBottom: '0' }}
-      >
-        <button
-          onClick={handleBackToHome}
-          className="inline-flex items-center bg-white text-burgundy rounded-lg font-semibold border-2 border-burgundy hover:bg-burgundy hover:text-cream transition-all group"
-          style={{
-            gap: 'clamp(0.4rem, 0.8vw, 0.5rem)',
-            padding: 'clamp(0.4rem, 1vw, 0.5rem) clamp(0.75rem, 1.5vw, 1rem)',
-            fontSize: 'clamp(0.8rem, 1vw + 0.4rem, 0.95rem)',
-          }}
-        >
-          <ArrowLeft
-            className="group-hover:-translate-x-1 transition-transform"
-            style={{
-              width: 'clamp(0.9rem, 1.2vw, 1rem)',
-              height: 'clamp(0.9rem, 1.2vw, 1rem)',
-            }}
-          />
-          Back to Home
-        </button>
-      </div>
 
       <section className="min-h-[60vh] flex items-center">
         <div
