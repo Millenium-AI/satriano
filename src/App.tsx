@@ -10,7 +10,9 @@ import Inspections from './pages/Inspections';
 import Gallery from './pages/Gallery';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
-
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
+import ReviewsPage from './pages/ReviewsPage';
 
 function App() {
   return (
@@ -19,6 +21,13 @@ function App() {
         {/* Full one-page site */}
         <Route path="/" element={<Home />} />
 
+        {/* Dedicated nav pages */}
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/reviews" element={<ReviewsPage />} />
+
+        {/* Gallery page */}
+        <Route path="/gallery" element={<Gallery />} />
 
         {/* Service detail pages */}
         <Route
@@ -46,9 +55,6 @@ function App() {
           element={<Inspections />}
         />
 
-        {/* Gallery page */}
-        <Route path="/gallery" element={<Gallery />} />
-
         {/* Legal pages */}
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
@@ -56,6 +62,5 @@ function App() {
     </BrowserRouter>
   );
 }
-
 
 export default App;

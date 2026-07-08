@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import logo from '../assets/SMClogo.svg';
 
 interface NavItem {
@@ -31,6 +31,23 @@ const SERVICE_ITEMS: ServiceItem[] = [
   { label: 'Dock & Boat Lift Inspections', slug: 'dock-boat-lift-inspections' },
 ];
 
+// Maps nav action -> dedicated page route
+const ROUTE_MAP: Record<string, string> = {
+  about: '/about',
+  gallery: '/gallery',
+  contact: '/contact',
+  testimonials: '/reviews',
+};
+
+// Maps nav action -> homepage section id (for smooth scroll on home)
+const SECTION_MAP: Record<string, string> = {
+  about: 'about',
+  gallery: 'gallery',
+  contact: 'contact',
+  partners: 'partners',
+  testimonials: 'testimonials',
+};
+
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -39,20 +56,21 @@ export default function Header() {
   const [lastY, setLastY] = useState(0);
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const isHome = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
       const y = window.scrollY;
       setIsScrolled(y > 50);
-      
+
       const shouldHide = y > lastY && y > 50;
       setHidden(shouldHide);
-      
-      // Auto-close menus when header hides
+
       if (shouldHide) {
         closeMenus();
       }
-      
+
       setLastY(y);
     };
 
@@ -76,7 +94,35 @@ export default function Header() {
   };
 
   const handleNavClick = (action: string) => {
-    action === 'gallery' ? navigate('/gallery') : scrollToSection(action);
+    if (action === 'home') {
+      navigate('/');
+      setIsMobileMenuOpen(false);
+      return;
+    }
+
+    // Partners has no dedicated page — always scroll (navigate home first if needed)
+    if (action === 'partners') {
+      if (isHome) {
+        scrollToSection('partners');
+      } else {
+        navigate('/');
+        // Scroll after navigation — wait for home to mount
+        setTimeout(() => {
+          document.getElementById('partners')?.scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+      }
+      setIsMobileMenuOpen(false);
+      return;
+    }
+
+    if (isHome) {
+      // On home: smooth scroll to section
+      scrollToSection(SECTION_MAP[action] ?? action);
+    } else {
+      // On another page: go to the dedicated route
+      navigate(ROUTE_MAP[action] ?? '/');
+    }
+
     setIsMobileMenuOpen(false);
   };
 
@@ -89,35 +135,41 @@ export default function Header() {
     >
       <div className="container mx-auto px-4">
         {/* Fluid header height using clamp */}
-        <div 
+        <div
           className="flex items-center justify-between"
           style={{ height: 'clamp(4rem, 5vw + 2rem, 5rem)' }}
         >
-          
+
           {/* LOGO & BRAND - Fluid sizing */}
           <div
             className="flex items-center cursor-pointer"
             style={{ gap: 'clamp(0.5rem, 1vw, 0.75rem)' }}
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={() => {
+              if (isHome) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              } else {
+                navigate('/');
+              }
+            }}
           >
             <img
               src={logo}
               alt="Satriano Marine Construction"
               className="flex-shrink-0"
-              style={{ 
+              style={{
                 width: 'clamp(2.5rem, 3vw + 1.5rem, 3.5rem)',
                 height: 'clamp(2.5rem, 3vw + 1.5rem, 3.5rem)'
               }}
             />
-            <div 
+            <div
               className="font-bold text-burgundy whitespace-nowrap"
               style={{ fontSize: 'clamp(1.25rem, 2vw + 0.5rem, 1.75rem)' }}
             >
               Satriano Marine
             </div>
-            <div 
+            <div
               className="hidden md:block text-burgundy border-l-2 border-gold"
-              style={{ 
+              style={{
                 paddingLeft: 'clamp(0.5rem, 1vw, 0.75rem)',
                 fontSize: 'clamp(0.75rem, 1vw + 0.25rem, 1rem)'
               }}
@@ -127,7 +179,7 @@ export default function Header() {
           </div>
 
           {/* DESKTOP NAV - Shows at 1400px+ with fluid gap spacing */}
-          <nav 
+          <nav
             className="hidden min-[1400px]:flex items-center"
             style={{ gap: 'clamp(1rem, 2vw, 2rem)' }}
           >
@@ -148,9 +200,9 @@ export default function Header() {
               onMouseEnter={() => setIsServicesOpen(true)}
               onMouseLeave={() => setIsServicesOpen(false)}
             >
-              <button 
+              <button
                 className="text-burgundy hover:text-gold transition-colors font-medium flex items-center whitespace-nowrap"
-                style={{ 
+                style={{
                   fontSize: 'clamp(0.75rem, 0.9vw, 1rem)',
                   gap: 'clamp(0.25rem, 0.5vw, 0.5rem)'
                 }}
@@ -162,7 +214,7 @@ export default function Header() {
               {isServicesOpen && (
                 <div
                   className="absolute left-0 top-full shadow-lg rounded-lg border border-gold py-2"
-                  style={{ 
+                  style={{
                     backgroundColor: '#FEF7EB',
                     width: 'clamp(18rem, 25vw, 22rem)'
                   }}
@@ -172,7 +224,7 @@ export default function Header() {
                       key={slug}
                       onClick={() => goToService(slug)}
                       className="block w-full text-left text-burgundy hover:bg-gold/10 transition-colors"
-                      style={{ 
+                      style={{
                         padding: 'clamp(0.5rem, 1vw, 0.75rem) clamp(0.75rem, 1.5vw, 1rem)',
                         fontSize: 'clamp(0.8rem, 0.9vw, 0.95rem)'
                       }}
@@ -189,7 +241,7 @@ export default function Header() {
           <a
             href="tel:727-954-0041"
             className="hidden min-[1400px]:flex items-center bg-burgundy text-cream rounded-lg hover:shadow-lg transition-all whitespace-nowrap"
-            style={{ 
+            style={{
               gap: 'clamp(0.4rem, 0.8vw, 0.6rem)',
               padding: 'clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem)',
               fontSize: 'clamp(0.8rem, 0.9vw, 1rem)'
