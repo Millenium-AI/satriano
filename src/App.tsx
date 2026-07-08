@@ -13,6 +13,7 @@ import Terms from './pages/Terms';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import ReviewsPage from './pages/ReviewsPage';
+import ThankYou from './pages/ThankYou';
 import ScrollToSection from './pages/ScrollToSection';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/reviews" element={<ReviewsPage />} />
+        <Route path="/thank-you" element={<ThankYou />} />
 
         {/* Gallery page */}
         <Route path="/gallery" element={<Gallery />} />

@@ -1,11 +1,13 @@
 import { useState, useRef } from 'react';
 import { Send, Phone, Mail, MapPin } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import SectionHeader from './SectionHeader';
 
 export default function Contact() {
   const ref = useRef<HTMLElement>(null);
   const isVisible = useIntersectionObserver(ref, 0.1);
+  const navigate = useNavigate();
 
   const [result, setResult] = useState('');
   const [formData, setFormData] = useState({
@@ -33,7 +35,6 @@ export default function Contact() {
       const data = await response.json();
 
       if (data.success) {
-        setResult("Thank you! We'll contact you shortly.");
         setFormData({
           name: '',
           email: '',
@@ -42,7 +43,10 @@ export default function Contact() {
           message: '',
           source: '',
         });
-        setTimeout(() => setResult(''), 5000);
+        // Redirect to a dedicated thank-you page so submissions can be tracked
+        // as a conversion in Google Ads / Analytics, no matter which page the
+        // form was submitted from.
+        navigate('/thank-you');
       } else {
         setResult('Something went wrong. Please try again or call us directly.');
       }
