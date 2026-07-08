@@ -1,5 +1,5 @@
 import { ReactNode, useEffect } from 'react';
-import TopStrip from './TopStrip';
+import Header from './Header';
 
 interface ServicePageLayoutProps {
   title: string;
@@ -28,7 +28,7 @@ export default function ServicePageLayout({
 
   return (
     <>
-      <TopStrip />
+      <Header />
       <div className="min-h-screen bg-cream">
         <div
           className="container mx-auto px-4"
