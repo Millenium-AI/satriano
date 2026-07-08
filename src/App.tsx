@@ -33,7 +33,10 @@ function App() {
         <Route path="/gallery" element={<Gallery />} />
 
         {/* /services -> home, scroll to #services */}
-        <Route path="/services" element={<ScrollToSection sectionId="services" />} />
+        <Route
+          path="/services"
+          element={<ScrollToSection sectionId="services" mobileSectionId="about" />}
+        />
 
         {/* Service detail pages */}
         <Route
