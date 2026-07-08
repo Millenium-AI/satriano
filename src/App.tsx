@@ -13,6 +13,7 @@ import Terms from './pages/Terms';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import ReviewsPage from './pages/ReviewsPage';
+import ScrollToSection from './pages/ScrollToSection';
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
 
         {/* Gallery page */}
         <Route path="/gallery" element={<Gallery />} />
+
+        {/* /services -> home, scroll to #services */}
+        <Route path="/services" element={<ScrollToSection sectionId="services" />} />
 
         {/* Service detail pages */}
         <Route
