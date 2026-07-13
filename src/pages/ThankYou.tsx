@@ -19,11 +19,7 @@ export default function ThankYou() {
     document.body.scrollTop = 0;
     window.scrollTo(0, 0);
 
-    // This is a single-page app, so React Router navigations don't trigger a
-    // real page load — gtag.js only auto-fires a page_view on the initial
-    // load. We send one manually here so Google Ads / Analytics sees a visit
-    // to /thank-you every time the contact form is submitted successfully,
-    // from any page on the site.
+    // SPA route view tracking + Google Ads conversion tracking
     if (typeof window.gtag === 'function') {
       window.gtag('event', 'page_view', {
         page_path: '/thank-you',
@@ -31,8 +27,7 @@ export default function ThankYou() {
         page_location: window.location.href,
       });
 
-      // Google Ads "Submit lead form" conversion — fires once per landing on
-      // this page, which happens right after a successful form submission.
+      // Google Ads "Submit lead form" conversion
       window.gtag('event', 'conversion', {
         send_to: 'AW-11426589922/AmDBCKvOlc0cEOLZz8gq',
         value: 1.0,
