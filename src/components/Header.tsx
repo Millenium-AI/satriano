@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X, Phone } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import logo from '../assets/SMClogo.svg';
+import PhoneLink from '../components/PhoneLink';
 
 interface NavItem {
   label: string;
@@ -233,18 +234,22 @@ export default function Header() {
           </nav>
 
           {/* PHONE BUTTON */}
-          <a
-            href="tel:727-954-0041"
+          <PhoneLink
             className="hidden min-[1400px]:flex items-center bg-burgundy text-cream rounded-lg hover:shadow-lg transition-all whitespace-nowrap"
             style={{
               gap: 'clamp(0.4rem, 0.8vw, 0.6rem)',
               padding: 'clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem)',
-              fontSize: 'clamp(0.8rem, 0.9vw, 1rem)'
+              fontSize: 'clamp(0.8rem, 0.9vw, 1rem)',
             }}
           >
-            <Phone style={{ width: 'clamp(0.9rem, 1.2vw, 1.1rem)', height: 'clamp(0.9rem, 1.2vw, 1.1rem)' }} />
+            <Phone
+              style={{
+                width: 'clamp(0.9rem, 1.2vw, 1.1rem)',
+                height: 'clamp(0.9rem, 1.2vw, 1.1rem)',
+              }}
+            />
             <span className="font-semibold">727-954-0041</span>
-          </a>
+          </PhoneLink>
 
           {/* MOBILE MENU BUTTON */}
           <button

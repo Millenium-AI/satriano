@@ -3,6 +3,7 @@ import { Send, Phone, Mail, MapPin } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import SectionHeader from './SectionHeader';
+import PhoneLink from '../components/PhoneLink';
 
 export default function Contact() {
   const ref = useRef<HTMLElement>(null);
@@ -65,10 +66,7 @@ export default function Contact() {
   // Reusable cards block (used for mobile + desktop)
   const ContactCards = () => (
     <div className="space-y-6">
-      <a
-        href="tel:727-954-0041"
-        className="flex items-start gap-4 p-6 bg-cream rounded-xl shadow-lg hover:shadow-xl transition-shadow border border-gold active:scale-95 touch-manipulation"
-      >
+      <PhoneLink className="flex items-start gap-4 p-6 bg-cream rounded-xl shadow-lg hover:shadow-xl transition-shadow border border-gold active:scale-95 touch-manipulation">
         <div className="w-12 h-12 rounded-lg bg-burgundy flex items-center justify-center flex-shrink-0">
           <Phone className="w-6 h-6 text-cream" />
         </div>
@@ -78,7 +76,7 @@ export default function Contact() {
             727-954-0041
           </span>
         </div>
-      </a>
+      </PhoneLink>
 
       <a
         href="mailto:sal@satrianomarine.com"

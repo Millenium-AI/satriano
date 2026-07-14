@@ -1,4 +1,5 @@
 import { Anchor, Phone, Mail, MapPin } from 'lucide-react';
+import PhoneLink from '../components/PhoneLink';
 
 interface QuickLink {
   label: string;
@@ -72,12 +73,9 @@ export default function Footer() {
               </div>
               <div className="flex items-center text-fluid-sm" style={{ gap: 'clamp(0.4rem, 0.8vw, 0.6rem)' }}>
                 <Phone style={{ width: 'clamp(0.9rem, 1.2vw, 1rem)', height: 'clamp(0.9rem, 1.2vw, 1rem)' }} className="text-cream flex-shrink-0" />
-                <a
-                  href="tel:727-954-0041"
-                  className="text-cream/80 hover:text-cream transition-colors"
-                >
+                <PhoneLink className="text-cream/80 hover:text-cream transition-colors">
                   727-954-0041
-                </a>
+                </PhoneLink>
               </div>
               <div className="flex items-center text-fluid-sm" style={{ gap: 'clamp(0.4rem, 0.8vw, 0.6rem)' }}>
                 <Mail style={{ width: 'clamp(0.9rem, 1.2vw, 1rem)', height: 'clamp(0.9rem, 1.2vw, 1rem)' }} className="text-cream flex-shrink-0" />

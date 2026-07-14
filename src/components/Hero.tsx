@@ -3,6 +3,7 @@ import { ArrowRight, Anchor, ChevronLeft, ChevronRight } from 'lucide-react';
 import image1 from '../assets/ElevatorAngleShot.jpg';
 import image2 from '../assets/Areial.jpg';
 import image3 from '../assets/Dock.jpg';
+import PhoneLink from '../components/PhoneLink';
 
 const IMAGES = [image1, image2, image3];
 const AUTOPLAY_INTERVAL = 6000;
@@ -116,16 +117,15 @@ export default function Hero() {
               Get Your Free Quote
               <ArrowRight style={{ width: 'clamp(1rem, 1.5vw, 1.25rem)', height: 'clamp(1rem, 1.5vw, 1.25rem)' }} />
             </button>
-            <a
-              href="tel:727-954-0041"
-              className="bg-white/10 backdrop-blur-md text-white rounded-lg font-semibold hover:bg-white/20 transition-all border-2 border-white shadow-xl hover:scale-105"
-              style={{ 
-                padding: 'clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem)',
-                fontSize: 'clamp(0.9rem, 1vw + 0.5rem, 1.1rem)'
-              }}
-            >
-              Call 727-954-0041
-            </a>
+              <PhoneLink
+                className="bg-white/10 backdrop-blur-md text-white rounded-lg font-semibold hover:bg-white/20 transition-all border-2 border-white shadow-xl hover:scale-105"
+                style={{
+                  padding: 'clamp(0.75rem, 1.5vw, 1rem) clamp(1.5rem, 3vw, 2rem)',
+                  fontSize: 'clamp(0.9rem, 1vw + 0.5rem, 1.1rem)',
+                }}
+              >
+                Call 727-954-0041
+              </PhoneLink>
           </div>
 
           {/* Stats Grid */}

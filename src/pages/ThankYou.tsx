@@ -4,6 +4,7 @@ import { ArrowLeft, CheckCircle2, Phone, Mail } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import PhoneLink from '../components/PhoneLink';
 
 declare global {
   interface Window {
@@ -96,13 +97,11 @@ export default function ThankYou() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="tel:727-954-0041"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-burgundy text-cream rounded-lg font-semibold hover:shadow-xl hover:scale-105 active:scale-95 transition-all touch-manipulation"
-              >
+              
+              <PhoneLink className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-burgundy text-cream rounded-lg font-semibold hover:shadow-xl hover:scale-105 active:scale-95 transition-all touch-manipulation">
                 <Phone className="w-5 h-5" />
                 727-954-0041
-              </a>
+              </PhoneLink>
 
               <a
                 href="mailto:sal@satrianomarine.com"

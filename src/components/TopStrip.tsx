@@ -1,4 +1,5 @@
 import { Mail, MapPin, Phone } from 'lucide-react';
+import PhoneLink from '../components/PhoneLink';
 
 export default function TopStrip() {
   return (
@@ -14,10 +15,10 @@ export default function TopStrip() {
           <span>Send Email Now</span>
         </a>
 
-        <a href="tel:727-954-0041" className="flex items-center gap-2 hover:text-gold transition-colors font-semibold justify-center md:justify-end">
+        <PhoneLink className="flex items-center gap-2 hover:text-gold transition-colors font-semibold justify-center md:justify-end">
           <Phone className="w-4 h-4" />
           <span>727-954-0041</span>
-        </a>
+        </PhoneLink>
       </div>
     </div>
   );
