@@ -1,5 +1,5 @@
 // src/pages/ThankYou.tsx
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { ArrowLeft, CheckCircle2, Phone, Mail } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
@@ -13,17 +13,16 @@ declare global {
 
 export default function ThankYou() {
   const navigate = useNavigate();
+  const hasTrackedRef = useRef(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
-    window.scrollTo(0, 0);
 
-    // This is a single-page app, so React Router navigations don't trigger a
-    // real page load — gtag.js only auto-fires a page_view on the initial
-    // load. We send one manually here so Google Ads / Analytics sees a visit
-    // to /thank-you every time the contact form is submitted successfully,
-    // from any page on the site.
+    if (hasTrackedRef.current) return;
+    hasTrackedRef.current = true;
+
     if (typeof window.gtag === 'function') {
       window.gtag('event', 'page_view', {
         page_path: '/thank-you',
@@ -31,7 +30,6 @@ export default function ThankYou() {
         page_location: window.location.href,
       });
 
-      // Google Ads "Submit lead form" conversion
       window.gtag('event', 'conversion', {
         send_to: 'AW-11426589922/zB6DCNf4ktAcEOLZz8gq',
       });
@@ -51,7 +49,7 @@ export default function ThankYou() {
 
       <div
         className="container mx-auto px-4"
-        style={{ paddingTop: 'clamp(1.5rem, 2vw, 2rem)', paddingBottom: '0' }}
+        style={{ paddingTop: 'clamp(1.5rem, 2vw, 2rem)', paddingBottom: 0 }}
       >
         <button
           onClick={handleBackToHome}
@@ -105,6 +103,7 @@ export default function ThankYou() {
                 <Phone className="w-5 h-5" />
                 727-954-0041
               </a>
+
               <a
                 href="mailto:sal@satrianomarine.com"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-burgundy rounded-lg font-semibold border-2 border-burgundy hover:bg-burgundy hover:text-cream transition-all touch-manipulation"
