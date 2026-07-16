@@ -60,8 +60,11 @@ export default function Hero() {
 
       {/* Content */}
       <div
-        className="relative z-10 container mx-auto pt-12 pb-20 md:pt-0 md:pb-0"
-        style={{ padding: 'clamp(3rem, 5vw, 5rem) clamp(1rem, 2vw, 2rem)' }}
+        className="relative z-10 container mx-auto pt-12 pb-16 md:pt-0 md:pb-0"
+        style={{
+          paddingLeft: 'clamp(1rem, 2vw, 2rem)',
+          paddingRight: 'clamp(1rem, 2vw, 2rem)',
+        }}
       >
         <div className="max-w-4xl text-left">
           {/* Main Headline */}
