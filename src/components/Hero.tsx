@@ -15,7 +15,7 @@ import image11 from '../assets/gallery/image78.jpg';
 import PhoneLink from '../components/PhoneLink';
 
 const IMAGES = [image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11];
-const AUTOPLAY_INTERVAL = 6000;
+const AUTOPLAY_INTERVAL = 12000;
 
 const STATS = [
   { value: '40+', label: 'Years Experience' },
@@ -72,7 +72,7 @@ export default function Hero() {
           <img
             src={img}
             alt={`Marine construction ${index + 1}`}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-60"
           />
         </div>
       ))}
