@@ -1,11 +1,20 @@
 import { useState, useEffect } from 'react';
 import { ArrowRight, Anchor, ChevronLeft, ChevronRight } from 'lucide-react';
-import image1 from '../assets/ElevatorAngleShot.jpg';
-import image2 from '../assets/Areial.jpg';
-import image3 from '../assets/Dock.jpg';
+import image1 from '../assets/gallery/image26.jpg';
+import image2 from '../assets/gallery/image13.jpg';
+import image3 from '../assets/gallery/image53.jpg';
+import image4 from '../assets/gallery/image58.jpg';
+import image5 from '../assets/gallery/image63.jpg';
+import image6 from '../assets/gallery/image64.jpg';
+import image7 from '../assets/gallery/image66.jpg';
+import image8 from '../assets/gallery/image72.jpg';
+import image9 from '../assets/gallery/image73.jpg';
+import image10 from '../assets/gallery/image74.jpg';
+import image11 from '../assets/gallery/image78.jpg';
+
 import PhoneLink from '../components/PhoneLink';
 
-const IMAGES = [image1, image2, image3];
+const IMAGES = [image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11];
 const AUTOPLAY_INTERVAL = 6000;
 
 const STATS = [
@@ -25,10 +34,23 @@ export default function Hero() {
     setCurrentSlide((prev) => (prev - 1 + IMAGES.length) % IMAGES.length);
   };
 
+  const randomSlide = () => {
+    setCurrentSlide((prev) => {
+      if (IMAGES.length <= 1) return prev;
+
+      let nextIndex = prev;
+      while (nextIndex === prev) {
+        nextIndex = Math.floor(Math.random() * IMAGES.length);
+      }
+
+      return nextIndex;
+    });
+  };
+
   useEffect(() => {
-    const timer = setInterval(nextSlide, AUTOPLAY_INTERVAL);
+    const timer = setInterval(randomSlide, AUTOPLAY_INTERVAL);
     return () => clearInterval(timer);
-  }, [currentSlide]);
+  }, []);
 
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
@@ -67,7 +89,6 @@ export default function Hero() {
         }}
       >
         <div className="max-w-4xl text-left">
-          {/* Main Headline */}
           <h1
             className="font-zalando font-bold text-white mb-fluid-lg leading-tight drop-shadow-2xl"
             style={{ fontSize: 'clamp(2rem, 5vw + 1rem, 4.5rem)' }}
@@ -75,7 +96,6 @@ export default function Hero() {
             Satriano Marine Construction
           </h1>
 
-          {/* Subheadline Badge */}
           <div
             className="flex items-center bg-gold/30 backdrop-blur-md rounded-lg mb-fluid-xl shadow-xl border border-gold/50 max-w-fit md:mx-0"
             style={{
@@ -98,7 +118,6 @@ export default function Hero() {
             </h2>
           </div>
 
-          {/* Description */}
           <p
             className="text-white/90 mb-fluid-xl leading-relaxed drop-shadow-lg max-w-2xl"
             style={{ fontSize: 'clamp(1rem, 1.5vw + 0.5rem, 1.25rem)' }}
@@ -106,7 +125,6 @@ export default function Hero() {
             With over 40 years in the construction business, you can count on us to complete any job large or small.
           </p>
 
-          {/* CTA Buttons */}
           <div
             className="flex flex-wrap mb-fluid-2xl"
             style={{ gap: 'clamp(0.75rem, 1.5vw, 1rem)' }}
@@ -140,7 +158,6 @@ export default function Hero() {
             </PhoneLink>
           </div>
 
-          {/* Stats Grid */}
           <div
             className="grid grid-cols-3 md:grid-cols-3 mt-6 md:mt-0"
             style={{ gap: 'clamp(1rem, 2vw, 1.5rem)' }}
@@ -169,7 +186,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Navigation Arrows - desktop only */}
       <button
         onClick={previousSlide}
         className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/30 hover:bg-white/50 rounded-full transition-all"
@@ -200,7 +216,6 @@ export default function Hero() {
         />
       </button>
 
-      {/* Slide Indicators */}
       <div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex"
         style={{ gap: 'clamp(0.4rem, 0.8vw, 0.5rem)' }}
