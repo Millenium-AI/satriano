@@ -1,7 +1,6 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Send, Phone, Mail, MapPin } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import HCaptcha from '@hcaptcha/react-hcaptcha';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import SectionHeader from './SectionHeader';
 import PhoneLink from '../components/PhoneLink';
@@ -10,10 +9,8 @@ export default function Contact() {
   const ref = useRef<HTMLElement>(null);
   const isVisible = useIntersectionObserver(ref, 0.1);
   const navigate = useNavigate();
-  const captchaRef = useRef<HCaptcha>(null);
 
   const [result, setResult] = useState('');
-  const [captchaToken, setCaptchaToken] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -23,18 +20,19 @@ export default function Contact() {
     source: '',
   });
 
-  const handleCaptchaChange = (token: string) => {
-    setCaptchaToken(token);
-    const captchaInput = document.querySelector('input[name="h-captcha-response"]') as HTMLInputElement;
-    if (captchaInput) {
-      captchaInput.value = token;
-    }
-  };
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://web3forms.com/client/script.js';
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!captchaToken) {
+    const captchaResponse = document.querySelector('textarea[name="h-captcha-response"]') as HTMLTextAreaElement;
+    if (!captchaResponse || !captchaResponse.value) {
       setResult('Please complete the captcha verification.');
       return;
     }
@@ -42,12 +40,12 @@ export default function Contact() {
     setResult('Sending...');
 
     const formElement = e.currentTarget;
-    const formData = new FormData(formElement);
+    const formDataToSend = new FormData(formElement);
 
     try {
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        body: formData,
+        body: formDataToSend,
       });
 
       const data = await response.json();
@@ -61,19 +59,15 @@ export default function Contact() {
           message: '',
           source: '',
         });
-        setCaptchaToken('');
-        captchaRef.current?.resetCaptcha();
         // Redirect to a dedicated thank-you page so submissions can be tracked
         // as a conversion in Google Ads / Analytics, no matter which page the
         // form was submitted from.
         navigate('/thank-you');
       } else {
         setResult('Something went wrong. Please try again or call us directly.');
-        captchaRef.current?.resetCaptcha();
       }
     } catch {
       setResult('Connection error. Please try again or call us at 727-954-0041.');
-      captchaRef.current?.resetCaptcha();
     }
   };
 
@@ -184,7 +178,6 @@ export default function Contact() {
               className="bg-cream rounded-2xl shadow-2xl p-8 border border-gold"
             >
               <input type="hidden" name="access_key" value="6d27bc36-dc20-4fc1-a03e-294b4e40ffa7" />
-              <input type="hidden" name="h-captcha-response" value={captchaToken} onChange={() => {}} />
               <div className="space-y-6">
                 {/* Name */}
                 <div>
@@ -326,12 +319,7 @@ export default function Contact() {
 
                 {/* hCaptcha */}
                 <div className="flex justify-center">
-                  <HCaptcha
-                    ref={captchaRef}
-                    sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
-                    reCaptchaCompat={false}
-                    onVerify={handleCaptchaChange}
-                  />
+                  <div className="h-captcha" data-captcha="true"></div>
                 </div>
 
                 {/* Result message */}
