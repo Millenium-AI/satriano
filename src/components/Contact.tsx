@@ -37,14 +37,14 @@ export default function Contact() {
 
     setResult('Sending...');
 
-    const formDataToSend = new FormData(e.currentTarget);
-    formDataToSend.append('access_key', '6d27bc36-dc20-4fc1-a03e-294b4e40ffa7');
-    formDataToSend.append('h-captcha-response', captchaToken);
+    const formElement = e.currentTarget;
+    const formData = new FormData(formElement);
+    formData.append('h-captcha-response', captchaToken);
 
     try {
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        body: formDataToSend,
+        body: formData,
       });
 
       const data = await response.json();
@@ -180,6 +180,7 @@ export default function Contact() {
               onSubmit={handleSubmit}
               className="bg-cream rounded-2xl shadow-2xl p-8 border border-gold"
             >
+              <input type="hidden" name="access_key" value="6d27bc36-dc20-4fc1-a03e-294b4e40ffa7" />
               <div className="space-y-6">
                 {/* Name */}
                 <div>
