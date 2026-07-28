@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { Send, Phone, Mail, MapPin } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import HCaptcha from '@hcaptcha/react-hcaptcha';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import SectionHeader from './SectionHeader';
 import PhoneLink from '../components/PhoneLink';
@@ -9,8 +10,10 @@ export default function Contact() {
   const ref = useRef<HTMLElement>(null);
   const isVisible = useIntersectionObserver(ref, 0.1);
   const navigate = useNavigate();
+  const captchaRef = useRef<HCaptcha>(null);
 
   const [result, setResult] = useState('');
+  const [captchaToken, setCaptchaToken] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -20,12 +23,23 @@ export default function Contact() {
     source: '',
   });
 
+  const handleCaptchaChange = (token: string) => {
+    setCaptchaToken(token);
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!captchaToken) {
+      setResult('Please complete the captcha verification.');
+      return;
+    }
+
     setResult('Sending...');
 
     const formDataToSend = new FormData(e.currentTarget);
     formDataToSend.append('access_key', '6d27bc36-dc20-4fc1-a03e-294b4e40ffa7');
+    formDataToSend.append('h-captcha-response', captchaToken);
 
     try {
       const response = await fetch('https://api.web3forms.com/submit', {
@@ -44,15 +58,19 @@ export default function Contact() {
           message: '',
           source: '',
         });
+        setCaptchaToken('');
+        captchaRef.current?.resetCaptcha();
         // Redirect to a dedicated thank-you page so submissions can be tracked
         // as a conversion in Google Ads / Analytics, no matter which page the
         // form was submitted from.
         navigate('/thank-you');
       } else {
         setResult('Something went wrong. Please try again or call us directly.');
+        captchaRef.current?.resetCaptcha();
       }
     } catch {
       setResult('Connection error. Please try again or call us at 727-954-0041.');
+      captchaRef.current?.resetCaptcha();
     }
   };
 
@@ -299,6 +317,16 @@ export default function Contact() {
                     <option value="Referral">Referral</option>
                     <option value="Other">Other</option>
                   </select>
+                </div>
+
+                {/* hCaptcha */}
+                <div className="flex justify-center">
+                  <HCaptcha
+                    ref={captchaRef}
+                    sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+                    reCaptchaCompat={false}
+                    onVerify={handleCaptchaChange}
+                  />
                 </div>
 
                 {/* Result message */}
