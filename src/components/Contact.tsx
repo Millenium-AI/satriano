@@ -25,6 +25,10 @@ export default function Contact() {
 
   const handleCaptchaChange = (token: string) => {
     setCaptchaToken(token);
+    const captchaInput = document.querySelector('input[name="h-captcha-response"]') as HTMLInputElement;
+    if (captchaInput) {
+      captchaInput.value = token;
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -39,7 +43,6 @@ export default function Contact() {
 
     const formElement = e.currentTarget;
     const formData = new FormData(formElement);
-    formData.append('h-captcha-response', captchaToken);
 
     try {
       const response = await fetch('https://api.web3forms.com/submit', {
@@ -181,6 +184,7 @@ export default function Contact() {
               className="bg-cream rounded-2xl shadow-2xl p-8 border border-gold"
             >
               <input type="hidden" name="access_key" value="6d27bc36-dc20-4fc1-a03e-294b4e40ffa7" />
+              <input type="hidden" name="h-captcha-response" value={captchaToken} onChange={() => {}} />
               <div className="space-y-6">
                 {/* Name */}
                 <div>
