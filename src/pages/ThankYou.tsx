@@ -8,7 +8,6 @@ import PhoneLink from '../components/PhoneLink';
 
 export default function ThankYou() {
   const navigate = useNavigate();
-  const hasTrackedRef = useRef(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
