@@ -1,16 +1,10 @@
 // src/pages/ThankYou.tsx
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { ArrowLeft, CheckCircle2, Phone, Mail } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import PhoneLink from '../components/PhoneLink';
-
-declare global {
-  interface Window {
-    gtag?: (...args: unknown[]) => void;
-  }
-}
 
 export default function ThankYou() {
   const navigate = useNavigate();
@@ -20,21 +14,6 @@ export default function ThankYou() {
     window.scrollTo(0, 0);
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
-
-    if (hasTrackedRef.current) return;
-    hasTrackedRef.current = true;
-
-    if (typeof window.gtag === 'function') {
-      window.gtag('event', 'page_view', {
-        page_path: '/thank-you',
-        page_title: 'Thank You | Satriano Marine Construction',
-        page_location: window.location.href,
-      });
-
-      window.gtag('event', 'conversion', {
-        send_to: 'AW-11426589922/zB6DCNf4ktAcEOLZz8gq',
-      });
-    }
   }, []);
 
   const handleBackToHome = () => {

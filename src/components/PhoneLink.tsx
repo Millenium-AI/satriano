@@ -1,10 +1,4 @@
-import type { CSSProperties, MouseEvent, ReactNode } from 'react';
-
-declare global {
-  interface Window {
-    gtag?: (...args: unknown[]) => void;
-  }
-}
+import type { CSSProperties, ReactNode } from 'react';
 
 type PhoneLinkProps = {
   phone?: string;
@@ -21,35 +15,8 @@ export default function PhoneLink({
 }: PhoneLinkProps) {
   const telHref = `tel:${phone.replace(/[^\d+]/g, '')}`;
 
-  const reportCallConversion = (url?: string) => {
-    const callback = () => {
-      if (url) {
-        window.location.href = url;
-      }
-    };
-
-    if (typeof window.gtag === 'function') {
-      window.gtag('event', 'conversion', {
-        send_to: 'AW-11426589922/itrRCJry488cEOLZz8gq',
-        value: 3.0,
-        currency: 'USD',
-        event_callback: callback,
-      });
-
-      setTimeout(callback, 1000);
-      return;
-    }
-
-    callback();
-  };
-
-  const handleClick = (e: MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    reportCallConversion(telHref);
-  };
-
   return (
-    <a href={telHref} onClick={handleClick} className={className} style={style}>
+    <a href={telHref} className={className} style={style}>
       {children}
     </a>
   );
