@@ -12,7 +12,7 @@ export default function BoatLiftRepair() {
 
   const whenToCall = [
     'Lift is slow or not raising smoothly',
-    'Controls don't respond consistently',
+    'Controls don\'t respond consistently',
     'Visible rust or structural damage',
     'Motor sounds strained or noisy',
     'Cable or pulley damage',
