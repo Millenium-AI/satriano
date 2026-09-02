@@ -63,6 +63,27 @@
     <!-- Preconnect to External Domains for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Google Ads Website Call Tracking -->
+    <script>
+      var callback = function(formatted_number, mobile_number) {
+        // Update all phone links with the formatted number and mobile tel: link
+        var elements = document.querySelectorAll(".marine-phone");
+        if (elements) {
+          elements.forEach(function(e) {
+            e.href = "tel:" + mobile_number;
+            e.innerHTML = formatted_number;
+          });
+        }
+      };
+
+      window.gtag = window.gtag || function() { (window.dataLayer = window.dataLayer || []).push(arguments); };
+      gtag('config', 'AW-11227364656/7238284272', {
+        'phone_conversion_number': '727-954-0041',
+        'phone_conversion_callback': callback
+      });
+    </script>
+    <!-- End Google Ads Website Call Tracking -->
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
