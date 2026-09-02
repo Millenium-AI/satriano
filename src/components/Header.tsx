@@ -302,13 +302,10 @@ export default function Header() {
                 )}
               </div>
 
-              <a
-                href="tel:727-954-0041"
-                className="flex items-center justify-center gap-2 bg-burgundy text-cream px-6 py-3 rounded-lg hover:shadow-lg transition-all mt-2"
-              >
+              <PhoneLink className="flex items-center justify-center gap-2 bg-burgundy text-cream px-6 py-3 rounded-lg hover:shadow-lg transition-all mt-2">
                 <Phone className="w-4 h-4" />
                 <span className="font-semibold">727-954-0041</span>
-              </a>
+              </PhoneLink>
             </nav>
           </div>
         )}
