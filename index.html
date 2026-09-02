@@ -13,35 +13,24 @@
     <!-- End Google Tag Manager -->
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11426589922"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-2165924815"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      console.log('🔵 gtag.js loaded');
-
-      // Phone conversion callback - Google will pass the forwarding number here
-      var phoneCallback = function(formatted_number, mobile_number) {
-        console.log('✅ Callback fired!', { formatted_number, mobile_number });
-        var elements = document.querySelectorAll(".marine-phone");
-        console.log('Found elements:', elements.length);
-        if (elements && elements.length > 0) {
-          elements.forEach(function(e) {
-            console.log('Updating element from', e.innerHTML, 'to', formatted_number);
-            e.href = "tel:" + mobile_number;
-            e.innerHTML = formatted_number;
-          });
+      var callback = function(formatted_number, mobile_number) {
+        var e = document.getElementById("marine-phone");
+        if (e) {
+          e.href = "tel:" + mobile_number;
+          e.innerHTML = formatted_number;
         }
       };
 
-      console.log('🔵 About to fire gtag config');
-      gtag('config', 'AW-11426589922/4ob6CPDnvfsaEOLZz8gq', {
-        'phone_conversion_number': '7279540041',
-        'phone_conversion_css_class': 'marine-phone',
-        'phone_conversion_callback': phoneCallback
+      gtag('config', 'AW-2165924815/4ob6CPDnvfsaEOLZz8gq', {
+        'phone_conversion_number': '727-954-0041',
+        'phone_conversion_callback': callback
       });
-      console.log('🔵 gtag config fired');
     </script>
     <!-- End Google tag (gtag.js) -->
 
