@@ -12,20 +12,31 @@
     })(window,document,'script','dataLayer','GTM-N884PR5D');</script>
     <!-- End Google Tag Manager -->
 
-    <!-- Meta Pixel Code -->
+    <!-- Google Tag (gtag.js) for Phone Conversion Tracking -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11227364656"></script>
     <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1066675102506266');
-    fbq('track', 'PageView');
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      // Phone conversion callback - Google will pass the forwarding number here
+      var phoneCallback = function(formatted_number, mobile_number) {
+        var elements = document.querySelectorAll(".marine-phone");
+        if (elements && elements.length > 0) {
+          elements.forEach(function(e) {
+            e.href = "tel:" + mobile_number;
+            e.innerHTML = formatted_number;
+          });
+        }
+      };
+
+      // Configure phone conversion tracking
+      gtag('config', 'AW-11227364656/7238284272', {
+        'phone_conversion_number': '727-954-0041',
+        'phone_conversion_callback': phoneCallback
+      });
     </script>
-    <!-- End Meta Pixel Code -->
+    <!-- End Google Tag (gtag.js) -->
 
     <!-- Viewport Configuration for Mobile & Desktop -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
@@ -63,39 +74,12 @@
     <!-- Preconnect to External Domains for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!-- Google Ads Website Call Tracking -->
-    <script>
-      var callback = function(formatted_number, mobile_number) {
-        // Update all phone links with the formatted number and mobile tel: link
-        var elements = document.querySelectorAll(".marine-phone");
-        if (elements) {
-          elements.forEach(function(e) {
-            e.href = "tel:" + mobile_number;
-            e.innerHTML = formatted_number;
-          });
-        }
-      };
-
-      window.gtag = window.gtag || function() { (window.dataLayer = window.dataLayer || []).push(arguments); };
-      gtag('config', 'AW-11227364656/7238284272', {
-        'phone_conversion_number': '727-954-0041',
-        'phone_conversion_callback': callback
-      });
-    </script>
-    <!-- End Google Ads Website Call Tracking -->
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N884PR5D"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-
-    <!-- Meta Pixel (noscript) -->
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1066675102506266&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel (noscript) -->
 
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
