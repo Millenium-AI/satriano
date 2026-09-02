@@ -12,27 +12,8 @@
     })(window,document,'script','dataLayer','GTM-N884PR5D');</script>
     <!-- End Google Tag Manager -->
 
-    <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) for Phone Conversion Tracking -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-2165924815"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      var callback = function(formatted_number, mobile_number) {
-        var e = document.getElementById("marine-phone");
-        if (e) {
-          e.href = "tel:" + mobile_number;
-          e.innerHTML = formatted_number;
-        }
-      };
-
-      gtag('config', 'AW-2165924815/4ob6CPDnvfsaEOLZz8gq', {
-        'phone_conversion_number': '727-954-0041',
-        'phone_conversion_callback': callback
-      });
-    </script>
-    <!-- End Google tag (gtag.js) -->
 
     <!-- Viewport Configuration for Mobile & Desktop -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
