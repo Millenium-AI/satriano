@@ -1,88 +1,105 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import Header from '../components/Header';
 import LazyImage from '../components/LazyImage';
 
-// Import all images dynamically
+// Full-size images (used in the lightbox)
 const imageModules = import.meta.glob('../assets/gallery/image*.jpg', { eager: true, query: '?url', import: 'default' });
-const images = Object.entries(imageModules)
-  .map(([, url], index) => ({
-    id: index + 1,
-    src: url as string,
-    alt: `Marine construction project ${index + 1}`
-  }))
-  .sort((a, b) => {
-    const getNum = (id: number) => {
-      const entry = Object.entries(imageModules)[id - 1];
-      const match = entry[0].match(/image(\d+)\.jpg/);
-      return match ? parseInt(match[1]) : id;
-    };
-    return getNum(a.id) - getNum(b.id);
-  });
+// Auto-generated WebP thumbnails (used in the grid) — see vite-plugin-gallery-thumbs.ts.
+// A brand-new photo won't have a thumbnail until the next dev/build run, so we
+// fall back to the full-size image for it in the meantime.
+const thumbModules = import.meta.glob('../assets/gallery/thumbs/image*.webp', { eager: true, query: '?url', import: 'default' });
 
 interface GalleryImage {
   id: number;
   src: string;
+  thumbSrc: string;
   alt: string;
+  num: number;
 }
 
+const images: GalleryImage[] = Object.entries(imageModules)
+  .map(([path, url], index) => {
+    const match = path.match(/image(\d+)\.jpg/);
+    const num = match ? parseInt(match[1], 10) : index;
+    const thumbPath = `../assets/gallery/thumbs/image${num}.webp`;
+    return {
+      id: index + 1,
+      src: url as string,
+      thumbSrc: (thumbModules[thumbPath] as string) || (url as string),
+      alt: `Marine construction project ${index + 1}`,
+      num,
+    };
+  })
+  .sort((a, b) => a.num - b.num);
+
 export default function Gallery() {
-  const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
+  const [selectedId, setSelectedId] = useState<number | null>(null);
+
+  const selectedIndex = useMemo(
+    () => (selectedId === null ? -1 : images.findIndex((img) => img.id === selectedId)),
+    [selectedId]
+  );
+  const selectedImage = selectedIndex >= 0 ? images[selectedIndex] : null;
 
   useEffect(() => {
-    document.documentElement.scrollTop = 0;
-    document.body.scrollTop = 0;
     window.scrollTo(0, 0);
   }, []);
 
+  const handlePrevImage = useCallback((e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    setSelectedId((current) => {
+      if (current === null) return current;
+      const idx = images.findIndex((img) => img.id === current);
+      const prevIdx = idx === 0 ? images.length - 1 : idx - 1;
+      return images[prevIdx].id;
+    });
+  }, []);
+
+  const handleNextImage = useCallback((e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    setSelectedId((current) => {
+      if (current === null) return current;
+      const idx = images.findIndex((img) => img.id === current);
+      const nextIdx = idx === images.length - 1 ? 0 : idx + 1;
+      return images[nextIdx].id;
+    });
+  }, []);
+
   useEffect(() => {
-    if (!selectedImage) return;
+    if (selectedId === null) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft') {
-        handlePrevImage();
-      } else if (e.key === 'ArrowRight') {
-        handleNextImage();
-      } else if (e.key === 'Escape') {
-        setSelectedImage(null);
-      }
+      if (e.key === 'ArrowLeft') handlePrevImage();
+      else if (e.key === 'ArrowRight') handleNextImage();
+      else if (e.key === 'Escape') setSelectedId(null);
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedImage]);
+  }, [selectedId, handlePrevImage, handleNextImage]);
 
+  // Preload only the NEXT image at high priority; the prev image at low priority,
+  // and stagger it slightly so it doesn't compete with the current full-res load.
   useEffect(() => {
-    if (!selectedImage) return;
+    if (selectedIndex < 0) return;
 
-    const currentIndex = images.findIndex(img => img.id === selectedImage.id);
-    const prevIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
-    const nextIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
+    const nextIdx = selectedIndex === images.length - 1 ? 0 : selectedIndex + 1;
+    const prevIdx = selectedIndex === 0 ? images.length - 1 : selectedIndex - 1;
 
-    const preloadImage = (src: string) => {
-      const img = new Image();
-      img.src = src;
-    };
+    const nextImg = new Image();
+    nextImg.src = images[nextIdx].src;
+    // fetchPriority is supported in Chrome/Edge/Safari 17.2+; harmless no-op elsewhere
+    (nextImg as any).fetchPriority = 'high';
 
-    preloadImage(images[prevIndex].src);
-    preloadImage(images[nextIndex].src);
-  }, [selectedImage]);
+    const timer = window.setTimeout(() => {
+      const prevImg = new Image();
+      prevImg.src = images[prevIdx].src;
+      (prevImg as any).fetchPriority = 'low';
+    }, 150);
 
-  const handlePrevImage = (e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    if (!selectedImage) return;
-    const currentIndex = images.findIndex(img => img.id === selectedImage.id);
-    const prevIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
-    setSelectedImage(images[prevIndex]);
-  };
-
-  const handleNextImage = (e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    if (!selectedImage) return;
-    const currentIndex = images.findIndex(img => img.id === selectedImage.id);
-    const nextIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
-    setSelectedImage(images[nextIndex]);
-  };
+    return () => window.clearTimeout(timer);
+  }, [selectedIndex]);
 
   return (
     <>
@@ -92,7 +109,6 @@ export default function Gallery() {
           className="container mx-auto px-4"
           style={{ padding: 'clamp(2rem, 3vw, 2.5rem) 1rem' }}
         >
-          {/* Title */}
           <div className="text-center mb-fluid-lg">
             <h1
               className="font-bold text-burgundy"
@@ -102,7 +118,6 @@ export default function Gallery() {
             </h1>
           </div>
 
-          {/* Subtitle */}
           <div className="text-center mb-fluid-2xl">
             <p
               className="text-burgundy/80 max-w-2xl mx-auto"
@@ -112,22 +127,25 @@ export default function Gallery() {
             </p>
           </div>
 
-          {/* Image Grid */}
           <div
             className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 desktop:grid-cols-4"
             style={{ gap: 'clamp(1rem, 2vw, 1.5rem)' }}
           >
-            {images.map((image) => (
+            {images.map((image, idx) => (
               <div
                 key={image.id}
                 className="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
-                onClick={() => setSelectedImage(image)}
+                onClick={() => setSelectedId(image.id)}
               >
                 <LazyImage
-                  src={image.src}
+                  src={image.thumbSrc}
                   alt={image.alt}
                   className="w-full object-cover"
                   style={{ height: 'clamp(12rem, 20vw, 16rem)' }}
+                  // First few tiles are almost certainly above the fold — load eagerly,
+                  // let everything else stay lazy (native lazy-loading, all modern browsers).
+                  loading={idx < 4 ? 'eager' : 'lazy'}
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-burgundy/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -135,14 +153,13 @@ export default function Gallery() {
           </div>
         </div>
 
-        {/* Lightbox Modal */}
         {selectedImage && (
           <div
             className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center"
-            onClick={() => setSelectedImage(null)}
+            onClick={() => setSelectedId(null)}
           >
             <button
-              onClick={() => setSelectedImage(null)}
+              onClick={() => setSelectedId(null)}
               className="fixed z-10 text-white hover:text-gold transition-colors"
               style={{
                 top: 'clamp(0.75rem, 1.5vw, 1rem)',
@@ -177,7 +194,7 @@ export default function Gallery() {
                 fontSize: 'clamp(0.8rem, 1vw + 0.4rem, 0.95rem)'
               }}
             >
-              {images.findIndex(img => img.id === selectedImage.id) + 1} / {images.length}
+              {selectedIndex + 1} / {images.length}
             </div>
 
             <div
@@ -195,6 +212,7 @@ export default function Gallery() {
                   height: 'auto',
                   objectFit: 'contain'
                 }}
+                decoding="async"
                 onClick={(e) => e.stopPropagation()}
               />
             </div>

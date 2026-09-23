@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 
 interface LazyImageProps {
   src: string;
@@ -6,45 +6,41 @@ interface LazyImageProps {
   className?: string;
   style?: React.CSSProperties;
   onClick?: () => void;
+  loading?: 'lazy' | 'eager';
+  decoding?: 'async' | 'sync' | 'auto';
+  width?: number;
+  height?: number;
 }
 
-export default function LazyImage({ src, alt, className, style, onClick }: LazyImageProps) {
+export default function LazyImage({
+  src,
+  alt,
+  className,
+  style,
+  onClick,
+  loading = 'lazy',
+  decoding = 'async',
+  width,
+  height,
+}: LazyImageProps) {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isInView, setIsInView] = useState(false);
-  const imgRef = useRef<HTMLImageElement>(null);
-
-  useEffect(() => {
-    if (!imgRef.current) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsInView(true);
-            observer.disconnect();
-          }
-        });
-      },
-      {
-        rootMargin: '50px', // Start loading 50px before entering viewport
-      }
-    );
-
-    observer.observe(imgRef.current);
-
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <img
-      ref={imgRef}
-      src={isInView ? src : undefined}
+      src={src}
       alt={alt}
       className={className}
-      style={style}
+      style={{
+        ...style,
+        opacity: isLoaded ? 1 : 0,
+        transition: 'opacity 0.3s ease',
+      }}
+      width={width}
+      height={height}
       onClick={onClick}
       onLoad={() => setIsLoaded(true)}
-      loading="lazy"
+      loading={loading}
+      decoding={decoding}
     />
   );
 }
