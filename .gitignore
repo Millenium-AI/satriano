@@ -21,3 +21,6 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# Auto-generated gallery thumbnails (built by vite-plugin-gallery-thumbs.ts)
+src/assets/gallery/thumbs/
