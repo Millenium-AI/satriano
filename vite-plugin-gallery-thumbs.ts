@@ -53,6 +53,7 @@ async function generateThumbs() {
 
     try {
       await sharp(srcPath)
+        .rotate() // apply EXIF orientation before resizing so portrait photos stay upright
         .resize({ width: THUMB_WIDTH, withoutEnlargement: true })
         .webp({ quality: 75 })
         .toFile(thumbPath);
