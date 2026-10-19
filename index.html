@@ -27,11 +27,15 @@
       gtag('config', 'AW-2165924815/4ob6CPDnvfsaEOLZz8gq', {
         'phone_conversion_number': '727-954-0041',
         'phone_conversion_callback': function (formatted_number, mobile_number) {
-          var e = document.getElementById('marine-phone');
-          if (e) {
-            e.href = 'tel:' + mobile_number;
-            e.innerHTML = formatted_number;
-          }
+          // Update every phone link, and only swap the number text so icons and "Call" labels stay
+          document.querySelectorAll('[data-phone-link]').forEach(function (a) {
+            a.href = 'tel:' + mobile_number;
+            var walker = document.createTreeWalker(a, NodeFilter.SHOW_TEXT);
+            var node;
+            while ((node = walker.nextNode())) {
+              node.nodeValue = node.nodeValue.replace('727-954-0041', formatted_number);
+            }
+          });
         }
       });
     </script>

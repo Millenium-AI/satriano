@@ -16,7 +16,7 @@ export default function PhoneLink({
   const telHref = `tel:${phone.replace(/[^\d+]/g, '')}`;
 
   return (
-    <a id="marine-phone" href={telHref} className={className} style={style}>
+    <a data-phone-link href={telHref} className={className} style={style}>
       {children}
     </a>
   );
