@@ -30,6 +30,16 @@
       gtag('config', 'AW-11426589922');
     </script>
 
+    <!-- Google Ads conversion AW-11426589922: "Call Click" - fires when any phone link is clicked -->
+    <script>
+      document.addEventListener('click', function (e) {
+        var link = e.target.closest && e.target.closest('a[href^="tel:"]');
+        if (link) {
+          gtag('event', 'conversion', {'send_to': 'AW-11426589922/ypnMCMvQ3LAdEOLZz8gq'});
+        }
+      });
+    </script>
+
     <!-- Google Ads phone conversion - Step 2: swaps the phone number shown on the site.
          Number must match the site's text format exactly (727-954-0041). -->
     <script>
