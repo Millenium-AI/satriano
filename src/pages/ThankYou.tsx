@@ -13,6 +13,14 @@ export default function ThankYou() {
     window.scrollTo(0, 0);
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
+
+    // Google Ads conversion AW-11426589922: "Form Submission"
+    const gtag = (window as any).gtag;
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', {
+        send_to: 'AW-11426589922/YTz2CIqh5LAdEOLZz8gq',
+      });
+    }
   }, []);
 
   const handleBackToHome = () => {
